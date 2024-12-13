@@ -8,20 +8,29 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     public GameObject Bomb;
-    // Start is called before the first frame update
+    //规定0为向左攻击，右为向右攻击
+    public int Direction;
+    //攻击冷却时间。
+    public float CoolDown;
+    private float CoolDownCounter = 0;
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        //计时器如果小于0，表明冷却完毕，停止计时减少运算量
+        if (CoolDownCounter >= 0)
+        {
+            CoolDownCounter -= Time.deltaTime;
+        }
         //鼠标点击？
         //GetAxisRaw()会在鼠标左键点击时返回1
-        if (Input.GetAxisRaw("Fire1") == 1)
+        if (CoolDownCounter<0 && Input.GetAxisRaw("Fire1") == 1)
         {
-            Instantiate(Bomb,transform.position,Quaternion.identity);
+            Instantiate(Bomb,this.transform.position,Quaternion.identity);
+            CoolDownCounter = CoolDown;
         }
         //按键开火？
 
