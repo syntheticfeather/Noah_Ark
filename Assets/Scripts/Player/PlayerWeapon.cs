@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,9 +8,9 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     public GameObject Bomb;
-    //¹æ¶¨0ÎªÏò×ó¹¥»÷£¬ÓÒÎªÏòÓÒ¹¥»÷
+    //è§„å®š0ä¸ºå‘å·¦æ”»å‡»ï¼Œå³ä¸ºå‘å³æ”»å‡»
     public int Direction;
-    //¹¥»÷ÀäÈ´Ê±¼ä¡£
+    //æ”»å‡»å†·å´æ—¶é—´ã€‚
     public float CoolDown;
     private float CoolDownCounter = 0;
     void Start()
@@ -20,19 +20,20 @@ public class PlayerWeapon : MonoBehaviour
     
     void Update()
     {
-        //¼ÆÊ±Æ÷Èç¹ûÐ¡ÓÚ0£¬±íÃ÷ÀäÈ´Íê±Ï£¬Í£Ö¹¼ÆÊ±¼õÉÙÔËËãÁ¿
+        //è®¡æ—¶å™¨å¦‚æžœå°äºŽ0ï¼Œè¡¨æ˜Žå†·å´å®Œæ¯•ï¼Œåœæ­¢è®¡æ—¶å‡å°‘è¿ç®—é‡
         if (CoolDownCounter >= 0)
         {
             CoolDownCounter -= Time.deltaTime;
         }
-        //Êó±êµã»÷£¿
-        //GetAxisRaw()»áÔÚÊó±ê×ó¼üµã»÷Ê±·µ»Ø1
+        //é¼ æ ‡ç‚¹å‡»ï¼Ÿ
+        //GetAxisRaw()ä¼šåœ¨é¼ æ ‡å·¦é”®ç‚¹å‡»æ—¶è¿”å›ž1
         if (CoolDownCounter<0 && Input.GetAxisRaw("Fire1") == 1)
         {
-            Instantiate(Bomb,this.transform.position,Quaternion.identity);
+            GameObject BombToSpawn = Instantiate(Bomb, this.transform.position, Quaternion.identity);
+            BombToSpawn.SetActive(true);
             CoolDownCounter = CoolDown;
         }
-        //°´¼ü¿ª»ð£¿
+        //æŒ‰é”®å¼€ç«ï¼Ÿ
 
 
     }
