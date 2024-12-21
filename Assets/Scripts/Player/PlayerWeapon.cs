@@ -30,8 +30,14 @@ public class PlayerWeapon : MonoBehaviour
         if (CoolDownCounter<0 && Input.GetAxisRaw("Fire1") == 1)
         {
             GameObject BombToSpawn = Instantiate(Bomb, this.transform.position, Quaternion.identity);
+           
+            //科研
+            //获取炸药上的组件
+            BombToSpawn.GetComponent<Rigidbody2D>();
+
             BombToSpawn.SetActive(true);
             CoolDownCounter = CoolDown;
+            
         }
         //按键开火？
 

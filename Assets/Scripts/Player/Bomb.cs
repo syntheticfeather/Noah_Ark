@@ -10,20 +10,27 @@ public class Bomb : MonoBehaviour
 
     private float LifeTimeCounter;
     private Vector3 Direction;
+
     void Start()
     {
         LifeTimeCounter = LifeTime;
         Direction = artillery.transform.up;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position += Direction * Speed * Time.deltaTime;
-        LifeTimeCounter -= Time.deltaTime;
-        if (LifeTimeCounter < 0 )
-        {
-            Destroy(gameObject);
-        }    
+
+        Destroy(gameObject, LifeTime);
+
+        //两者相同
+        //LifeTimeCounter -= Time.deltaTime;
+        //if (LifeTimeCounter < 0)
+        //{
+        //    Destroy(gameObject);
+        //}
     }
+
+
+
 }
