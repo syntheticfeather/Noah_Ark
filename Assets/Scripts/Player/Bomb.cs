@@ -6,9 +6,12 @@ public class Bomb : MonoBehaviour
 {
     public GameObject artillery;
     public float Speed;
-    public float LifeTime;
+    public float Decration;
+    public float ChangeRate;
 
+    public float LifeTime;
     private float LifeTimeCounter;
+
     private Vector3 Direction;
 
     void Start()
@@ -20,17 +23,17 @@ public class Bomb : MonoBehaviour
     void Update()
     {
         transform.position += Direction * Speed * Time.deltaTime;
-
-        Destroy(gameObject, LifeTime);
-
-        //两者相同
-        //LifeTimeCounter -= Time.deltaTime;
-        //if (LifeTimeCounter < 0)
-        //{
-        //    Destroy(gameObject);
-        //}
-    }
-
-
-
+        if (Speed > 0)
+        {
+            Speed -= Time.deltaTime * Decration;
+        }
+        if (Speed <= 0)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, ChangeRate);
+            if (transform.localScale == Vector3.zero)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }  
 }
