@@ -59,6 +59,4 @@ public class PlayerMovement : MonoBehaviour
             transform.Rotate(0, 0, -turn); // 2D 中绕 Z 轴旋转
         }
     }
-
-
 }
