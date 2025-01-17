@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealthContler : MonoBehaviour
 {
     public int Health;
-
+    public int Shield;
 
     public static PlayerHealthContler instance;
     // Start is called before the first frame update
@@ -22,7 +22,15 @@ public class PlayerHealthContler : MonoBehaviour
     
     public void TakeDamage(int Damage)
     {
-        Health -= Damage;
+        if (Shield >= 0)
+        {
+            Shield -= Damage;
+            if (Shield < 0){ Shield = 0; }
+        }
+        else
+        {
+            Health -= Damage;
+        }
         CameraShake.instance.Shake();
         if (Health <= 0)
         {
