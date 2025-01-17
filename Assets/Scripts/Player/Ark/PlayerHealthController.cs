@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealthContler : MonoBehaviour
+public class PlayerHealthController : MonoBehaviour
 {
     public int Health;
     public int Shield;
 
-    public static PlayerHealthContler instance;
+    public static PlayerHealthController instance;
     // Start is called before the first frame update
     void Start()
     {

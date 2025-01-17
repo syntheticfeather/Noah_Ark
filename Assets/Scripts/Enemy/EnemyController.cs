@@ -59,7 +59,7 @@ public class EnemyController : MonoBehaviour
             isRetreating = true;
             isCircling = false;
             Direc = Random.value;
-            PlayerHealthContler.instance.TakeDamage(Damage);
+            PlayerHealthController.instance.TakeDamage(Damage);
         }
     }
     private void Movement(float KnockCounter)

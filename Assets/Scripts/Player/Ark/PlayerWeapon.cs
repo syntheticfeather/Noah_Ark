@@ -32,7 +32,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             CoolDownCounter -= Time.deltaTime;
         }
-        if (IsUsing)
+        if (IsUsing && Time.timeScale == 1f)
         {
             Attack();
             FollowMouse();
