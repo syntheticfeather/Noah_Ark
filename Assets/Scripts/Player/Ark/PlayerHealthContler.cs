@@ -22,7 +22,7 @@ public class PlayerHealthContler : MonoBehaviour
     
     public void TakeDamage(int Damage)
     {
-        if (Shield >= 0)
+        if (Shield > 0)
         {
             Shield -= Damage;
             if (Shield < 0){ Shield = 0; }

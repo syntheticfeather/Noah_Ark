@@ -1,16 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
     public static CameraShake instance;
-    public float shakeDuration = 1f; // Õğ¶¯³ÖĞøÊ±¼ä£¨Ôö¼ÓÒÔÈÃÕğ¶¯¸ü»ºÂı£©
-    public float shakeMagnitude = 0.05f; // Õğ¶¯Ç¿¶È£¨¼õĞ¡ÒÔÈÃÕğ¶¯¸üÇáÎ¢£©
-    public float smoothness = 2f; // Æ½»¬¶È£¨Ôö¼ÓÒÔÈÃÕğ¶¯¸üÈáºÍ£©
+    public float shakeDuration = 1f; // éœ‡åŠ¨æŒç»­æ—¶é—´ï¼ˆå¢åŠ ä»¥è®©éœ‡åŠ¨æ›´ç¼“æ…¢ï¼‰
+    public float shakeMagnitude = 0.05f; // éœ‡åŠ¨å¼ºåº¦ï¼ˆå‡å°ä»¥è®©éœ‡åŠ¨æ›´è½»å¾®ï¼‰
+    public float smoothness = 2f; // å¹³æ»‘åº¦ï¼ˆå¢åŠ ä»¥è®©éœ‡åŠ¨æ›´æŸ”å’Œï¼‰
 
 
-    private float currentShakeDuration = 0f; // µ±Ç°Õğ¶¯Ê£ÓàÊ±¼ä
+    private float currentShakeDuration = 0f; // å½“å‰éœ‡åŠ¨å‰©ä½™æ—¶é—´
 
     void Start()
     {
@@ -21,16 +21,16 @@ public class CameraShake : MonoBehaviour
     {
         if (currentShakeDuration > 0)
         {
-            Debug.Log("¿ªÊ¼Õğ¶¯");
-            // Ëæ»úÆ«ÒÆÉãÏñÍ·Î»ÖÃ
+            Debug.Log("å¼€å§‹éœ‡åŠ¨");
+            // éšæœºåç§»æ‘„åƒå¤´ä½ç½®
             float x = Random.Range(-1f, 1f) * shakeMagnitude;
             float y = Random.Range(-1f, 1f) * shakeMagnitude;
             Vector3 targetPosition = transform.position + new Vector3(x, y, 0);
 
-            // Æ½»¬¹ı¶Éµ½Ä¿±êÎ»ÖÃ
+            // å¹³æ»‘è¿‡æ¸¡åˆ°ç›®æ ‡ä½ç½®
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, smoothness * Time.deltaTime);
 
-            // ¼õÉÙÕğ¶¯Ê±¼ä
+            // å‡å°‘éœ‡åŠ¨æ—¶é—´
             currentShakeDuration -= Time.deltaTime;
         }
         else

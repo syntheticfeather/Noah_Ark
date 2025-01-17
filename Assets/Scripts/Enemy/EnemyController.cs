@@ -1,12 +1,12 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    //  ¸ú×ÙÍæ¼Ò£¬½üÕ½×²»÷£¬Ô¶Àë»»Î»
-    //  ¾àÀëÍæ¼ÒÒ»¶¨Î»ÖÃ£¬ÈÆĞĞ£¬Ô¶³Ì¹¥»÷¡£
-    // <><><> ½üÕ½µ½Ò»¶¨¾àÀëÍ£Ö¹
+    //  è·Ÿè¸ªç©å®¶ï¼Œè¿‘æˆ˜æ’å‡»ï¼Œè¿œç¦»æ¢ä½
+    //  è·ç¦»ç©å®¶ä¸€å®šä½ç½®ï¼Œç»•è¡Œï¼Œè¿œç¨‹æ”»å‡»ã€‚
+    // <><><> è¿‘æˆ˜åˆ°ä¸€å®šè·ç¦»åœæ­¢
     public int kind;
 
     public float Speed = 5;
@@ -20,8 +20,8 @@ public class EnemyController : MonoBehaviour
     private float Angle;
     private float Direc;
 
-    private bool isRetreating = false; // ÊÇ·ñÕıÔÚºóÍË
-    private bool isCircling = false; // ÊÇ·ñÕıÔÚÈÆÈ¦
+    private bool isRetreating = false; // æ˜¯å¦æ­£åœ¨åé€€
+    private bool isCircling = false; // æ˜¯å¦æ­£åœ¨ç»•åœˆ
 
     private Vector2 Direction;
 
@@ -33,44 +33,35 @@ public class EnemyController : MonoBehaviour
     {       
         PlayerTransform = FindAnyObjectByType<PlayerMovement>().transform;
     }
-
     // Update is called once per frame
     void Update()
     {
         KnockCounter-=Time.deltaTime;
         Direction = PlayerTransform.position - transform.position;
+        //æœå‘ç©å®¶
         float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
-        // Ó¦ÓÃĞı×ª
+        // åº”ç”¨æ—‹è½¬
         transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         if (KnockCounter < 0)
         {
             isRetreating = false;
             isCircling = false;
             rb.velocity = Direction.normalized * Speed;
-
         }
         Movement(KnockCounter);        
     }
-
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.transform.tag == "Player" && KnockCounter < 0)
         {
             KnockCounter = KnockTime;
-            // ´¥·¢ºóÍËÂß¼­
+            // è§¦å‘åé€€é€»è¾‘
             isRetreating = true;
             isCircling = false;
             Direc = Random.value;
             PlayerHealthContler.instance.TakeDamage(Damage);
         }
     }
-
-
-
-
-
-
     private void Movement(float KnockCounter)
     {
 
@@ -88,24 +79,24 @@ public class EnemyController : MonoBehaviour
     }
     void Retreat()
     {
-        // ºóÍËµ½Ö¸¶¨¾àÀë
+        // åé€€åˆ°æŒ‡å®šè·ç¦»
         transform.position += -(Vector3)Direction * Speed * Time.deltaTime;
 
-        // ¼ì²éÊÇ·ñ´ïµ½ºóÍË¾àÀë
+        // æ£€æŸ¥æ˜¯å¦è¾¾åˆ°åé€€è·ç¦»
         float distanceToPlayer = Vector2.Distance(transform.position, PlayerTransform.position);
         if (distanceToPlayer >= Radius)
         {
             isRetreating = false;
             isCircling = true;
 
-            // ³õÊ¼»¯Ô²ÖÜÔË¶¯µÄ½Ç¶È
+            // åˆå§‹åŒ–åœ†å‘¨è¿åŠ¨çš„è§’åº¦
             Vector2 direction = transform.position - PlayerTransform.position;
             Angle = Mathf.Atan2(direction.y, direction.x);
         }
     }
     void CirclePlayer()
     {
-        // ¸üĞÂ½Ç¶È
+        // æ›´æ–°è§’åº¦
         if (Direc >= 0.5)
         {
             Angle += CircleSpeed * Time.deltaTime;
@@ -115,11 +106,11 @@ public class EnemyController : MonoBehaviour
             Angle -= CircleSpeed * Time.deltaTime;
         }
 
-        // ¼ÆËãĞÂÎ»ÖÃ
+        // è®¡ç®—æ–°ä½ç½®
         float x = PlayerTransform.position.x + Radius * Mathf.Cos(Angle);
         float y = PlayerTransform.position.y + Radius * Mathf.Sin(Angle);
 
-        // ¸üĞÂµĞÈËÎ»ÖÃ        
+        // æ›´æ–°æ•Œäººä½ç½®        
         transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, transform.position.z), 0.5f);
     }
 }

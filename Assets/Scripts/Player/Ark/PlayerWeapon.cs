@@ -18,6 +18,8 @@ public class PlayerWeapon : MonoBehaviour
     //攻击冷却时间。
     public float CoolDown;
     private float CoolDownCounter = 0;
+
+    public bool IsUsing;
     void Start()
     {
     }
@@ -30,8 +32,11 @@ public class PlayerWeapon : MonoBehaviour
         {
             CoolDownCounter -= Time.deltaTime;
         }
-        Attack();
-        FollowMouse();
+        if (IsUsing)
+        {
+            Attack();
+            FollowMouse();
+        }
     }    
 
     //攻击
