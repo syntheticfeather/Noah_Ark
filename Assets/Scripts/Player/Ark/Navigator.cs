@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ public class Navigator : MonoBehaviour
     {
         if (IsUsing)
         {
-            //��ʾUI
+            //显示UI
         }
     }
 }
