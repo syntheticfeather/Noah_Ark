@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour
 {
-    public int Health;
-    public int Shield;
-
+    
     public static PlayerHealthController instance;
+    public float Health;
+    public float Shield;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         instance = this;
     }
