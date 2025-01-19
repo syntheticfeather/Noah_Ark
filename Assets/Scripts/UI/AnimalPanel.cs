@@ -25,8 +25,16 @@ public class AnimalPanel : MonoBehaviour
         int i = 0;
         foreach (var item in ChewController.instance.ChewList)
         {
-            AnimalButtonList[i].GetComponentInChildren<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;// 给图像
-            //其他数值,暂定
+            if (item != null)
+            {
+                Debug.Log("开始添加图片");
+                AnimalButtonList[i].GetComponent<ChewButton>().UpdateText(item.GetComponent<Chew>().sprite);
+            }//其他数值,暂定
+            i++;
+            if (i >= ChewController.instance.MaxChew)
+            {
+                break;
+            }
         }
     }
 }
