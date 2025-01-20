@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Chew : MonoBehaviour
 {   
-    public List<ChewStats> Stats;
+    // 小动物的父类，所有小动物继承该类
+    public List<ChewStats> Stats; // 用于小动物升级的列表
     public Sprite sprite;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,6 @@ public class Chew : MonoBehaviour
 [System.Serializable]
 public class ChewStats
 {
-    public float Damage, Range, TimeBetweenAttacks, Duration;
+    public float Damage, Range, TimeBetweenAttacks, Duration, Labor;
     //public string UpGradeText;?
 }

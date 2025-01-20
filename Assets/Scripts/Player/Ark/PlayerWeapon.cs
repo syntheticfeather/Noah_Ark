@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
+    // 初始的火炮设置
     public GameObject Bomb;
     public GameObject Ark;
     private Vector3 MousePos;
@@ -71,5 +72,10 @@ public class PlayerWeapon : MonoBehaviour
 
         //开始旋转
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, RotateSpeed * Time.deltaTime);        
+    }
+
+    public void AutoAttack()
+    {
+
     }
 }

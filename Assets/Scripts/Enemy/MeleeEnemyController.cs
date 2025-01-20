@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class MeleeEnemyController : MonoBehaviour
 {
     //  跟踪玩家，近战撞击，远离换位
     //  距离玩家一定位置，绕行，远程攻击。
     // <><><> 近战到一定距离停止
-    public int kind;
 
     public float Speed = 5;
     public float CircleSpeed;
@@ -18,7 +17,7 @@ public class EnemyController : MonoBehaviour
     private float KnockCounter = 0;
 
     private float Angle;
-    private float Direc;
+    private float Direc;    
 
     private bool isRetreating = false; // 是否正在后退
     private bool isCircling = false; // 是否正在绕圈
@@ -30,7 +29,7 @@ public class EnemyController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {       
+    {
         PlayerTransform = FindAnyObjectByType<PlayerMovement>().transform;
     }
     // Update is called once per frame
@@ -84,11 +83,10 @@ public class EnemyController : MonoBehaviour
 
         // 检查是否达到后退距离
         float distanceToPlayer = Vector2.Distance(transform.position, PlayerTransform.position);
-        if (distanceToPlayer >= Radius)
+        if (distanceToPlayer >= Radius + Random.Range(0,1))
         {
             isRetreating = false;
-            isCircling = true;
-
+            isCircling = true;           
             // 初始化圆周运动的角度
             Vector2 direction = transform.position - PlayerTransform.position;
             Angle = Mathf.Atan2(direction.y, direction.x);
@@ -107,8 +105,8 @@ public class EnemyController : MonoBehaviour
         }
 
         // 计算新位置
-        float x = PlayerTransform.position.x + Radius * Mathf.Cos(Angle);
-        float y = PlayerTransform.position.y + Radius * Mathf.Sin(Angle);
+        float x = PlayerTransform.position.x + (Radius + Random.Range(0, 1)) * Mathf.Cos(Angle);
+        float y = PlayerTransform.position.y + (Radius + Random.Range(0, 1)) * Mathf.Sin(Angle);
 
         // 更新敌人位置        
         transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, transform.position.z), 0.5f);

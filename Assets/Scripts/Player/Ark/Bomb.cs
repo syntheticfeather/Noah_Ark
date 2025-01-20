@@ -78,6 +78,7 @@ public class Bomb : MonoBehaviour
     void PlayExplosionEffect()
     {
         Instantiate(ParticleSystem, transform.position, Quaternion.identity);
+        // 音效暂定
     }
 
     void OnDrawGizmosSelected()
