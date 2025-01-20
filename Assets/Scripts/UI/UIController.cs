@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,9 +9,9 @@ public class UIController : MonoBehaviour
     
     public int Position;
 
-    public GameObject ChewManagerPanel; // ¼×°å·ÖÅä½çÃæ
-    public GameObject ChewPanel; // ¶¯ÎïÏÔÊ¾½çÃæ
-    // ¹æ¶¨ Áìº½Ô±Îª0£¬ÅÚÊÖ´Ó×óµ½ÓÒ£¬´ÓÉÏµ½ÏÂÒÀ´ÎÎª1¡¢2¡¢3¡¢4£¬¶æÊÖÎª5.
+    public GameObject ChewManagerPanel; // ç”²æ¿åˆ†é…ç•Œé¢
+    public GameObject ChewPanel; // åŠ¨ç‰©æ˜¾ç¤ºç•Œé¢
+    // è§„å®š é¢†èˆªå‘˜ä¸º0ï¼Œç‚®æ‰‹ä»å·¦åˆ°å³ï¼Œä»ä¸Šåˆ°ä¸‹ä¾æ¬¡ä¸º1ã€2ã€3ã€4ï¼Œèˆµæ‰‹ä¸º5.
     void Start()
     {
         Instance = this;
@@ -39,7 +39,7 @@ public class UIController : MonoBehaviour
 
     public void ShowChew(int Number)
     {
-        // ÓÃÒÔ±ê¼ÇÖ°Î»µÄNumber
+        // ç”¨ä»¥æ ‡è®°èŒä½çš„Number
         Position = Number;
         Debug.Log(Position);
         ChewPanel.SetActive(true);
@@ -47,7 +47,7 @@ public class UIController : MonoBehaviour
 
     public void OnDuty(int Number)
     {
-        //ÓÃÓÚ±ê¼Ç¶¯ÎïµÄNumber
+        //ç”¨äºæ ‡è®°åŠ¨ç‰©çš„Number
 
     }
 }

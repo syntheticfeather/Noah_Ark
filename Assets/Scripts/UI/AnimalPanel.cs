@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class AnimalPanel : MonoBehaviour
 {
     public static AnimalPanel instance;
-    // °´Å¥ÁÐ±í
+    // æŒ‰é’®åˆ—è¡¨
     public List<GameObject> AnimalButtonList = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -27,9 +27,9 @@ public class AnimalPanel : MonoBehaviour
         {
             if (item != null)
             {
-                Debug.Log("¿ªÊ¼Ìí¼ÓÍ¼Æ¬");
+                Debug.Log("å¼€å§‹æ·»åŠ å›¾ç‰‡");
                 AnimalButtonList[i].GetComponent<ChewButton>().UpdateText(item.GetComponent<Chew>().sprite);
-            }//ÆäËûÊýÖµ,ÔÝ¶¨
+            }//å…¶ä»–æ•°å€¼,æš‚å®š
             i++;
             if (i >= ChewController.instance.MaxChew)
             {
