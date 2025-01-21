@@ -11,14 +11,13 @@ public class CameraFollow : MonoBehaviour
     public float moveSpeed = 5f; // 移动速度
     public float smoothTime = 0.1f; // 平滑时间
 
-    private Vector3 TargetPosition;
+    public Vector3 TargetPosition = Vector3.zero;
 
     public static CameraFollow instance;
     public GameObject Target;   
     void Start()
     {
         instance = this;
-        TargetPosition = transform.position;
     }
 
     // Update is called once per frame
