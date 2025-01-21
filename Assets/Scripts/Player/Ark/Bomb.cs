@@ -43,10 +43,15 @@ public class Bomb : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Explode();
+        if (collision.tag == "Enemy")
+        {
+            Explode();
+        }
+        // 播放爆炸特效或音效
+        PlayExplosionEffect();
+        // 销毁炮弹
+        Destroy(gameObject);
     }
-
-
     void Explode()
     {
         // 检测爆炸范围内的所有物体

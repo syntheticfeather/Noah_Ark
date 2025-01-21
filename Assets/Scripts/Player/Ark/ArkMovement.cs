@@ -6,9 +6,9 @@ using static UnityEngine.GraphicsBuffer;
 
 //玩家运动脚本
 //采用了AD控制方向，WS控制移动的运动原理。
-public class PlayerMovement : MonoBehaviour
+public class ArkMovement : MonoBehaviour
 {
-    public static PlayerMovement Instance;
+    public static ArkMovement Instance;
     public Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -22,15 +22,23 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float moveInput = Input.GetAxis("Vertical"); 
-        float turnInput = Input.GetAxis("Horizontal"); 
-        MoveBoat(moveInput);        
-        TurnBoat(turnInput);
+        Movement();
     }
+    public void Movement()
+    {
+        if (CameraFollow.instance.followArk && Wheel.instance.IsUsing)
+        {
+            float moveInput = Input.GetAxis("Vertical");
+            float turnInput = Input.GetAxis("Horizontal");
+            MoveBoat(moveInput);
+            TurnBoat(turnInput);
+        }
+    }
+
 
     void MoveBoat(float input)
     {
-        if (input != 0 && Wheel.instance.IsUsing == true)
+        if (input != 0)
         {
             // 计算移动方向（前方）
             Vector2 moveDirection = transform.up * input * moveSpeed * Time.deltaTime;
@@ -51,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     void TurnBoat(float input)
     {
-        if (input != 0 && Wheel.instance.IsUsing == true)
+        if (input != 0)
         {
             // 计算转向角度
             float turn = input * turnSpeed * Time.deltaTime;
