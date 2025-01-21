@@ -9263,8 +9263,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothSpeed: 0.95
   followArk: 1
-  moveSpeed: 10
+  moveSpeed: 5
   smoothTime: 0.1
+  TargetPosition: {x: 0, y: 0, z: 0}
   Target: {fileID: 122821504}
 --- !u!114 &1918023370
 MonoBehaviour:
