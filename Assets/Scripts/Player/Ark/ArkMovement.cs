@@ -10,15 +10,19 @@ public class ArkMovement : MonoBehaviour
 {
     public static ArkMovement Instance;
     public Rigidbody2D rb;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Instance = this;
-    }
     public float moveSpeed = 5f;      // 移动速度
     public float turnSpeed = 100f;   // 转向速度
     public float maxSpeed = 10f;     // 最大速度
     public float deceleration = 2f;  // 减速度
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (Instance = this)
+        {
+            Debug.Log("1");   
+        }
+    }
 
     void Update()
     {

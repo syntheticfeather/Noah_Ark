@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class EnemyHealthController : MonoBehaviour
 {
+    public static EnemyHealthController Instance;
     public int Heatlh;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Instance = this;   
     }
 
     // Update is called once per frame
