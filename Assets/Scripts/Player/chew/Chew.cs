@@ -22,6 +22,6 @@ public class Chew : MonoBehaviour
 [System.Serializable]
 public class ChewStats
 {
-    public float Damage, Range, TimeBetweenAttacks, Duration, Labor;
+    public float Damage, Range, TimeBetweenAttacks, Duration, Labor, Cost;
     //public string UpGradeText;?
 }

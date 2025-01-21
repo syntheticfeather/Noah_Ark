@@ -30,7 +30,7 @@ public class MeleeEnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerTransform = FindAnyObjectByType<PlayerMovement>().transform;
+        PlayerTransform = ArkMovement.Instance.transform;
     }
     // Update is called once per frame
     void Update()

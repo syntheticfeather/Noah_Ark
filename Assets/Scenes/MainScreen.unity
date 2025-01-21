@@ -5799,8 +5799,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e7be131835144468c94af15ad76cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 122821504}
   smoothSpeed: 0.95
+  followArk: 1
+  Target: {fileID: 122821504}
+  moveSpeed: 10
+  smoothTime: 0.1
+  TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1918023370
 MonoBehaviour:
   m_ObjectHideFlags: 0

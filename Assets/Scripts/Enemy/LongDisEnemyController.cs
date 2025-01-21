@@ -33,7 +33,7 @@ public class LongDisEnemyController : MonoBehaviour
         Debug.Log(Rate);
         Radius += Random.Range(-2f, 3f);
         Direc = Random.Range(0,1);
-        PlayerTransform = FindAnyObjectByType<PlayerMovement>().transform;
+        PlayerTransform = ArkMovement.Instance.transform;
     }
 
     
