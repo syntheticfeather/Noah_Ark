@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ArkStatusManager : MonoBehaviour
 {
-    public GameObject pausePanel; // 暂停界面
+    public Animator animator; //失败界面动画
+    public GameObject deathPanel; // 失败界面
     public Image healthFillImage; // 血条的填充部分
     public Image shieldFillImage; // 盾条的填充部分
     public Image healthFillImage1; // 血条的渐变填充部分
@@ -56,8 +57,9 @@ public class ArkStatusManager : MonoBehaviour
     private void OnDeath()
     {
         // 游戏结束逻辑，加载失败场景
-        Time.timeScale = 0;
-        pausePanel.SetActive(true);
+        deathPanel.SetActive(true);
+        PausePanelManager.instance.GameIsDead = true;
+        animator.SetBool("IsDead", true);
     }
 }
 

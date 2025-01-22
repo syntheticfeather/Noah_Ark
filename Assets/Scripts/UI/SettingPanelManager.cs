@@ -42,5 +42,6 @@ public class SettingPanelManager : MonoBehaviour
     public void Exit()
     {
         settingPanel.SetActive(false);
+        PausePanelManager.instance.IsSetting = false;
     }
 }

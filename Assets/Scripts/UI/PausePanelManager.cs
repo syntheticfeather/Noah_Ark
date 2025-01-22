@@ -5,14 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class PausePanelManager : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
+    public static PausePanelManager instance{ get; private set; }
+    public bool GameIsPaused = false;
+    public bool IsSetting = false;
+    public bool GameIsDead = false;
     public GameObject settingPanel; // 设置界面的面板
+    public GameObject deathPanel; //死亡界面的面板
     public GameObject pauseMenuUI; // 暂停菜单的UI面板
 
+    private void Awake()
+    {
+        instance = this;
+    }
     // 更新方法检查是否按下暂停键（ESC）
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && IsSetting == false && GameIsDead == false)
         {
             if (GameIsPaused)
             {
@@ -52,6 +60,7 @@ public class PausePanelManager : MonoBehaviour
     public void Setting()
     {
         settingPanel.SetActive(true);
+        IsSetting = true;
     }
     // 退出游戏
     public void QuitGame()
