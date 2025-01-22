@@ -1977,7 +1977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 1
   Radius: 5
-  NumOfGuard: 0
+  NumOfGuard: 3
   CurOfGuard: 0
   KnockTime: 5
   rb: {fileID: 470721606}
@@ -10642,7 +10642,7 @@ MonoBehaviour:
   Decration: 1
   ChangeRate: 0.125
   explosionRadius: 3
-  ATK: 12
+  ATK: 3
   LifeTime: 3
   damageLayers:
     serializedVersion: 2

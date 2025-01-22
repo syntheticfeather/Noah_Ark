@@ -75,7 +75,7 @@ public class MomEnemy : MonoBehaviour
     public void Generate()
     {
         BabyEnemy.transform.rotation = Quaternion.AngleAxis(Angle, Vector3.forward);
-        Instantiate(BabyEnemy, transform.position, BabyEnemy.transform.rotation).gameObject.SetActive(true);
+        Instantiate(BabyEnemy, transform.position, BabyEnemy.transform.rotation,transform).gameObject.SetActive(true);
         KnockCounter = KnockTime;
     }
 }

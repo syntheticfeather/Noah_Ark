@@ -31,28 +31,30 @@ public class BabyEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mom.CurOfGuard < Mom.NumOfGuard)
-        {
-            Protect = true;
-        }
-        Guard();
         KnockCounter -= Time.deltaTime;
         Direction = PlayerTransform.position - transform.position;
         //朝向玩家
         float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
         // 应用旋转
         transform.rotation = Quaternion.Euler(0, 0, angle - 90);
-        if (!isStaggered)
+        if (Mom.CurOfGuard < Mom.NumOfGuard)
         {
-            rb.velocity = Direction.normalized * Speed;
+            Protect = true;
+        }
+        if (Protect)
+        {
+            Guard();
+        }else
+        {
+            if (!isStaggered)
+            {
+                rb.velocity = Direction.normalized * Speed;
+            }
         }
     }
     public void Guard()
     {
-        if (Protect)
-        {
 
-        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
