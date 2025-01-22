@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PausePanelManager : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-
+    public GameObject settingPanel; // 设置界面的面板
     public GameObject pauseMenuUI; // 暂停菜单的UI面板
 
     // 更新方法检查是否按下暂停键（ESC）
@@ -51,7 +51,7 @@ public class PausePanelManager : MonoBehaviour
     // 设置面板
     public void Setting()
     {
-
+        settingPanel.SetActive(true);
     }
     // 退出游戏
     public void QuitGame()
