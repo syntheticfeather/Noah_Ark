@@ -7,7 +7,9 @@ public class BabyEnemy : MonoBehaviour
     // 正常进展逻辑，外加护卫母体
     public int Damage;
     public float Speed;
+    public float Radius;
     private float Angle;
+
 
     public float KnockTime = 5;
     private float KnockCounter = 0;
@@ -26,26 +28,27 @@ public class BabyEnemy : MonoBehaviour
     void Start()
     {
         PlayerTransform = PlayerHealthController.instance.transform;
+        //IfProtect();
     }
 
     // Update is called once per frame
     void Update()
     {
         KnockCounter -= Time.deltaTime;
-        Direction = PlayerTransform.position - transform.position;
+
         //朝向玩家
-        float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
+        Direction = (PlayerTransform.position - transform.position).normalized;
+        Angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg - 90;
         // 应用旋转
-        transform.rotation = Quaternion.Euler(0, 0, angle - 90);
-        if (Mom.CurOfGuard < Mom.NumOfGuard)
-        {
-            Protect = true;
-        }
+        transform.rotation = Quaternion.Euler(0, 0, Angle);
+
         if (Protect)
         {
-            Guard();
+            // 护卫线路
+            //Guard();
         }else
         {
+            // 进攻线路
             if (!isStaggered)
             {
                 rb.velocity = Direction.normalized * Speed;
@@ -54,8 +57,17 @@ public class BabyEnemy : MonoBehaviour
     }
     public void Guard()
     {
-
     }
+
+    public void IfProtect()
+    {
+        if (Mom.BabyGuard.Count < Mom.NumOfGuard)
+        {
+            Protect = true;// 护卫小怪
+            Mom.BabyGuard.Add(gameObject); // 加入列表中
+        }        
+    }
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -66,9 +78,6 @@ public class BabyEnemy : MonoBehaviour
             StartStagger();
         }
     }
-
-
-
     void StartStagger()
     {
         if (!isStaggered)
@@ -92,5 +101,10 @@ public class BabyEnemy : MonoBehaviour
         isStaggered = false;
         Debug.Log("Monster is no longer staggered!");
 
+    }
+
+    private void OnDestroy()
+    {
+        Mom.BabyGuard.Remove(gameObject);
     }
 }

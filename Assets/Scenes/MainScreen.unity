@@ -1978,9 +1978,10 @@ MonoBehaviour:
   Speed: 1
   Radius: 5
   NumOfGuard: 3
-  CurOfGuard: 0
-  KnockTime: 5
+  KnockTime: 3
+  Direction: {x: 0, y: 0}
   rb: {fileID: 470721606}
+  BabyGuard: []
   ColorSprite: {fileID: 1761887286}
   BabyEnemy: {fileID: 530310551}
 --- !u!114 &470721608
@@ -2329,6 +2330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 1
   Speed: 2
+  Radius: 5
   KnockTime: 3
   staggerDuration: 3
   Protect: 0

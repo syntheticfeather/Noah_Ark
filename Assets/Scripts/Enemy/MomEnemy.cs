@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class MomEnemy : MonoBehaviour
@@ -8,8 +9,7 @@ public class MomEnemy : MonoBehaviour
     //召唤小怪
     public float Speed = 1;    
     public float Radius;
-    public int NumOfGuard = 3;
-    public int CurOfGuard = 0;
+    public int NumOfGuard = 3;    
 
     public float KnockTime = 5;
     private float KnockCounter = 0;
@@ -17,18 +17,19 @@ public class MomEnemy : MonoBehaviour
     private bool toOrbit = true;
     private float Angle;
 
-    private Vector2 Direction;
+    public Vector2 Direction;
 
     private Transform PlayerTransform;
     public Rigidbody2D rb;
 
+    public List<GameObject> BabyGuard = new List<GameObject>();
     public GameObject ColorSprite;// 指定位置变化形态
     public GameObject BabyEnemy;
 
     void Start()
     {
         Radius += Random.Range(-2f, 3f);
-        PlayerTransform = PlayerHealthController.instance.transform;
+        PlayerTransform = PlayerHealthController.instance.transform;        
     }
 
 
@@ -48,13 +49,10 @@ public class MomEnemy : MonoBehaviour
     }
     private void Movement()
     {
-        if (KnockCounter > 0)
+        if (toOrbit)
         {
-            if (toOrbit)
-            {
-                ToOrbit();
-            }
-        }
+            ToOrbit();
+        }        
     }
     public void ToOrbit()
     {
@@ -74,8 +72,14 @@ public class MomEnemy : MonoBehaviour
 
     public void Generate()
     {
-        BabyEnemy.transform.rotation = Quaternion.AngleAxis(Angle, Vector3.forward);
-        Instantiate(BabyEnemy, transform.position, BabyEnemy.transform.rotation,transform).gameObject.SetActive(true);
+        for (int i = 0; i < 3; i++)
+        {
+            BabyEnemy.transform.rotation = Quaternion.AngleAxis(Angle, Vector3.forward);
+            
+            Instantiate(BabyEnemy, transform.position + new Vector3(Random.Range(-3f, 3f), Random.Range(3f, 3f), 0), BabyEnemy.transform.rotation, transform).gameObject.SetActive(true);
+        }
         KnockCounter = KnockTime;
     }
+
 }
+

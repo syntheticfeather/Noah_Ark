@@ -14,7 +14,7 @@ public class IsLandController : MonoBehaviour
     void Start()
     {
         GeneratePoints();
-        LogPoints();
+        //LogPoints();
     }
 
     // Update is called once per frame

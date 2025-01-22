@@ -72,19 +72,13 @@ public class Bomb : MonoBehaviour
                 health.TakeDamage(ATK);
             }
         }
-        // 销毁炮弹
-        Destroy(gameObject);
-
-        // 播放爆炸特效或音效
-        PlayExplosionEffect();
-
     }
 
     void PlayExplosionEffect()
     {
-        ;
+        
         // 音效暂定
-        Destroy(Instantiate(ParticleSystem, transform.position, Quaternion.identity), 2);
+        Instantiate(ParticleSystem, transform.position, Quaternion.identity);
     }
 
     void OnDrawGizmosSelected()
