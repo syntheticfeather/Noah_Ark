@@ -18,10 +18,7 @@ public class ArkMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Instance = this)
-        {
-            Debug.Log("1");   
-        }
+        Instance = this;
     }
 
     void Update()

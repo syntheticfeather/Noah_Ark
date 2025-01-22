@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class IsLandController : MonoBehaviour
 {
-
     public int numberOfIsLand = 12; // 需要生成的岛屿数量
     public float radius = 1000f; // 圆的半径
     public float minDistance = 500f; // 点之间的最小距离
@@ -26,18 +25,6 @@ public class IsLandController : MonoBehaviour
             Construction();
         }
     }
-    //登陆,切换镜头移动方式。
-    public void ToLand()
-    {
-        CameraFollow.instance.followArk = false;
-        CameraFollow.instance.TargetPosition = ArkMovement.Instance.transform.position + new Vector3(0, 0, -10);
-        //停靠动画，暂定
-        ArkMovement.Instance.rb.velocity = Vector3.zero;
-    }
-    public void ToShip()
-    {
-        CameraFollow.instance.followArk = true;
-    }
 
     public void Construction()
     {
@@ -55,8 +42,21 @@ public class IsLandController : MonoBehaviour
                 }
             }
         }
-
     }
+    //登陆,切换镜头移动方式。
+    public void ToLand()
+    {
+        CameraFollow.instance.followArk = false;
+        CameraFollow.instance.TargetPosition = ArkMovement.Instance.transform.position + new Vector3(0, 0, -10);
+        //停靠动画，暂定
+        ArkMovement.Instance.rb.velocity = Vector3.zero;
+    }
+    public void ToShip()
+    {
+        CameraFollow.instance.followArk = true;
+    }
+
+
     void GeneratePoints()
     {
         int maxAttempts = 1000; // 最大尝试次数，避免无限循环
@@ -74,10 +74,10 @@ public class IsLandController : MonoBehaviour
             }
             attempts++;
         }
-        if (points.Count < numberOfIsLand)
-        {
-            Debug.LogWarning("Failed to generate all points within the maximum attempts.");
-        }
+        //if (points.Count < numberOfIsLand)
+        //{
+        //    Debug.LogWarning("Failed to generate all points within the maximum attempts.");
+        //}
     }
 
     Vector2 GetRandomPointInCircle(float radius)
