@@ -5,11 +5,13 @@ using UnityEngine;
 public class EnemyHealthController : MonoBehaviour
 {
     public static EnemyHealthController Instance;
-    public int Heatlh;
+    private int CurHeatlh;
+    public int MaxHealth;
     // Start is called before the first frame update
     void Start()
     {
-        Instance = this;   
+        Instance = this;
+        CurHeatlh = MaxHealth;
     }
 
     // Update is called once per frame
@@ -20,10 +22,20 @@ public class EnemyHealthController : MonoBehaviour
 
     public void TakeDamage(int Damage)
     {
-        Heatlh -= Damage;
-        if (Heatlh <= 0)
+        CurHeatlh -= Damage;
+        if (CurHeatlh <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void TakeHeal(int Heal)
+    {
+        CurHeatlh += Heal;
+        if (CurHeatlh >= MaxHealth)
+        {
+            CurHeatlh = MaxHealth;
+        }
+        Debug.Log("getheal");
     }
 }
