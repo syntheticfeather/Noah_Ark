@@ -13,6 +13,7 @@ public class MomEnemy : MonoBehaviour
 
     public float KnockTime = 5;
     private float KnockCounter = 0;
+    public int NumToSpawn;
 
     private bool toOrbit = true;
     private float Angle;
@@ -47,6 +48,16 @@ public class MomEnemy : MonoBehaviour
         }
         Movement();
     }
+    public void Generate()
+    {
+        for (int i = 0; i < NumToSpawn; i++)
+        {
+            //BabyEnemy.transform.rotation = Quaternion.AngleAxis(Angle, Vector3.forward);
+            Instantiate(BabyEnemy, transform.position + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0),
+                BabyEnemy.transform.rotation).gameObject.SetActive(true);
+        }
+        KnockCounter = KnockTime;
+    }
     private void Movement()
     {
         if (toOrbit)
@@ -70,16 +81,6 @@ public class MomEnemy : MonoBehaviour
         }
     }
 
-    public void Generate()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            BabyEnemy.transform.rotation = Quaternion.AngleAxis(Angle, Vector3.forward);
-            
-            Instantiate(BabyEnemy, transform.position + new Vector3(Random.Range(-3f, 3f), Random.Range(3f, 3f), 0), BabyEnemy.transform.rotation, transform).gameObject.SetActive(true);
-        }
-        KnockCounter = KnockTime;
-    }
 
 }
 

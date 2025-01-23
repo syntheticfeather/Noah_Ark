@@ -15,6 +15,7 @@ public class BabyEnemy : MonoBehaviour
     private float KnockCounter = 0;
 
 
+
     public float staggerDuration = 2f; // 僵直持续时间
     private bool isStaggered = false; // 是否处于僵直状态
 
@@ -28,25 +29,26 @@ public class BabyEnemy : MonoBehaviour
     void Start()
     {
         PlayerTransform = PlayerHealthController.instance.transform;
-        //IfProtect();
+        IfProtect();
     }
 
     // Update is called once per frame
     void Update()
     {
         KnockCounter -= Time.deltaTime;
-
         //朝向玩家
         Direction = (PlayerTransform.position - transform.position).normalized;
         Angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg - 90;
+
         // 应用旋转
         transform.rotation = Quaternion.Euler(0, 0, Angle);
 
         if (Protect)
         {
             // 护卫线路
-            //Guard();
-        }else
+            Guard();
+        }
+        else
         {
             // 进攻线路
             if (!isStaggered)
@@ -54,9 +56,18 @@ public class BabyEnemy : MonoBehaviour
                 rb.velocity = Direction.normalized * Speed;
             }
         }
+        if (Mom == null)
+        {
+            Destroy(gameObject);
+        }
     }
     public void Guard()
     {
+        Vector2 direc = (PlayerTransform.position - Mom.transform.position).normalized;
+        float angle = Mathf.Atan2(direc.y, direc.x) - 30 * Mathf.Deg2Rad;//弧度制
+        Vector3 Tarposition = new Vector3(Mom.transform.position.x + (Mathf.Cos(angle + (30 * Mathf.Deg2Rad * Mom.BabyGuard.IndexOf(gameObject))) * Radius), 
+            Mom.transform.position.y + (Mathf.Sin(angle + (30 * Mathf.Deg2Rad * Mom.BabyGuard.IndexOf(gameObject))) * Radius), 0); // 目标位置 sin cos需要弧度制
+        transform.position = Vector3.Lerp(transform.position, Tarposition, 1 * Time.deltaTime);
     }
 
     public void IfProtect()
