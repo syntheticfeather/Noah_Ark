@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
     void Start()
     {
         StrikeCounter = StrikeBetTime;
+        SweepCounter = SweepBetTime;
         Player = PlayerHealthController.instance.gameObject;
         Instance = this;
     }
@@ -66,6 +67,6 @@ public class Boss : MonoBehaviour
     }
     public void Sweep()
     {
-        Instantiate(SweepATK, CurSweepArea.transform.position, Quaternion.identity).SetActive(true);
+        Instantiate(SweepATK, CurSweepArea.transform.position + new Vector3(0, 9f, 0), Quaternion.identity).SetActive(true);
     }
 }
