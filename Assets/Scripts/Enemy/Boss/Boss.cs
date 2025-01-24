@@ -46,7 +46,7 @@ public class Boss : MonoBehaviour
     }
     public void Strike()
     {
-        Instantiate(StrikeATK, CurStrikeArea.transform.position, Quaternion.identity).SetActive(true);
+        Instantiate(StrikeATK, CurStrikeArea.transform.position + new Vector3(0,-.8f,0), Quaternion.identity).SetActive(true);
     }
 
     public int SweepDelayTime;

@@ -17,6 +17,7 @@ public class CameraFollow : MonoBehaviour
     public GameObject Target;   
     void Start()
     {
+        transform.position = Target.transform.position;
         instance = this;
     }
 

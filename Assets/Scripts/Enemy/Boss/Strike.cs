@@ -8,7 +8,7 @@ public class Strike : MonoBehaviour
     public bool OneATK = false;
     void Start()
     {        
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 2);
     }
 
     // Update is called once per frame
