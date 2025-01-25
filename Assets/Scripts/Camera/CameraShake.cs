@@ -12,9 +12,13 @@ public class CameraShake : MonoBehaviour
 
     private float currentShakeDuration = 0f; // 当前震动剩余时间
 
-    void Start()
+    private void Awake()
     {
         instance = this;
+    }
+    void Start()
+    {
+
     }
 
     void Update()

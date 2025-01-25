@@ -101,5 +101,5 @@ public class Boss : MonoBehaviour
         Instantiate(DropATK, CurDropArea.transform.position, Quaternion.Euler(0, 0, Angle - 90)).SetActive(true);
         Destroy(CurDropArea);
     }
-    public Dictionary<GameObject,int> EnemySpawn;
+
 }
