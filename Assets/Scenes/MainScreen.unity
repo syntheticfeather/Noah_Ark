@@ -1858,7 +1858,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 241963621}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 945238801}
+        m_TargetAssemblyTypeName: CharacterPanelController, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 241963620}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &241963621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2852,7 +2864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &344751882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4993,7 +5005,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 583190499}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 945238801}
+        m_TargetAssemblyTypeName: CharacterPanelController, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 583190498}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &583190499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7032,6 +7056,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPanel: {fileID: 0}
+  isPanelActive: 0
+  list: []
 --- !u!222 &778891669
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8079,7 +8105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &850038942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9321,6 +9347,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPanel: {fileID: 778891666}
+  isPanelActive: 0
+  list:
+  - {fileID: 2131914955}
+  - {fileID: 850038941}
+  - {fileID: 1118211073}
+  - {fileID: 344751881}
+  - {fileID: 1111878692}
+  - {fileID: 1987472964}
+  - {fileID: 1277723897}
 --- !u!1 &957983646
 GameObject:
   m_ObjectHideFlags: 0
@@ -9748,7 +9783,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1007449126}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 945238801}
+        m_TargetAssemblyTypeName: CharacterPanelController, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1007449125}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1007449126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10455,7 +10502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1111878693
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10609,7 +10656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1118211074
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11092,7 +11139,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1144120970}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 945238801}
+        m_TargetAssemblyTypeName: CharacterPanelController, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1144120969}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1144120970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12101,7 +12160,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1263575192}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 945238801}
+        m_TargetAssemblyTypeName: CharacterPanelController, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1263575191}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1263575192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12241,7 +12312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1277723898
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13723,7 +13794,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1510227211}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 945238801}
+        m_TargetAssemblyTypeName: CharacterPanelController, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1510227210}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1510227211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16179,7 +16262,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1710560001}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 945238801}
+        m_TargetAssemblyTypeName: CharacterPanelController, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1710560000}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1710560001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19379,7 +19474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1987472965
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20431,7 +20526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2131914956
 RectTransform:
   m_ObjectHideFlags: 0
