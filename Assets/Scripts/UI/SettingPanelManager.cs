@@ -17,6 +17,11 @@ public class SettingPanelManager : MonoBehaviour
     void Update()
     {
         SoundControl();
+        // esc退出界面
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Exit();
+        }
     }
 
     //控制声音的函数
