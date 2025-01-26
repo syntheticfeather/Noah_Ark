@@ -24,8 +24,7 @@ public class CameraShake : MonoBehaviour
     void Update()
     {
         if (currentShakeDuration > 0)
-        {
-            Debug.Log("开始震动");
+        {            
             // 随机偏移摄像头位置
             float x = Random.Range(-1f, 1f) * shakeMagnitude;
             float y = Random.Range(-1f, 1f) * shakeMagnitude;

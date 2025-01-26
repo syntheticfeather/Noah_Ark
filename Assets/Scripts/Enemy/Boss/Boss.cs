@@ -20,6 +20,7 @@ public class Boss : MonoBehaviour
         StrikeCounter -= Time.deltaTime;
         SweepCounter -= Time.deltaTime;
         DropCounter -= Time.deltaTime;
+        LaserCounter -= Time.deltaTime;
         if (StrikeCounter < 0)
         {
             StartCoroutine(DelayStrike());
@@ -31,6 +32,10 @@ public class Boss : MonoBehaviour
         if (DropCounter < 0)
         {
             StartCoroutine(DelayDrop());
+        }
+        if (LaserCounter < 0)
+        {
+            StartCoroutine(DelayLaser());
         }
     }
     public int StrikeDelayTime;
@@ -84,9 +89,7 @@ public class Boss : MonoBehaviour
     public float Angle;
     // 突刺
     IEnumerator DelayDrop()
-    {
-        // 获取物体的 SpriteRenderer 组件
-        
+    {               
         Direction = Player.transform.position - transform.position;
         Angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
         DropCounter = DropBetTime + DropDelayTime;
@@ -102,4 +105,29 @@ public class Boss : MonoBehaviour
         Destroy(CurDropArea);
     }
 
+    public int LaserDelayTime;
+    public int LaserBetTime;
+    public float LaserCounter;
+    public GameObject LaserArea;
+    public GameObject CurLaserArea;
+    public GameObject LaserATK;
+    // 突刺
+    IEnumerator DelayLaser()
+    {        
+        Direction = Player.transform.position - transform.position;
+        Angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
+        LaserCounter = LaserBetTime + LaserDelayTime;
+        CurLaserArea = Instantiate(LaserArea, Player.transform.position, Quaternion.identity);
+        CurLaserArea.SetActive(true);
+        yield return new WaitForSeconds(LaserDelayTime);
+        Laser();
+    }   
+    public void Laser()
+    {
+        GameObject Laser = Instantiate(LaserATK, transform.position, Quaternion.Euler(0, 0, Angle));
+        Laser.SetActive(true);
+        Laser.GetComponent<Laser>().Line1.SetPosition(1, CurLaserArea.transform.position);
+        Laser.GetComponent<Laser>().Line2.SetPosition(1, CurLaserArea.transform.position);
+        Destroy(CurLaserArea);
+    }
 }

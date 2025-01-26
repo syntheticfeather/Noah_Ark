@@ -26,8 +26,6 @@ public class EnemySpawnController : MonoBehaviour
     {
         Camera = CameraShake.instance.transform;
         StartNextWave();
-        Debug.Log(maxspawn.position);
-        Debug.Log(minspawn.position);
     }
 
     void Update()
