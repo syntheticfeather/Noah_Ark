@@ -63,11 +63,18 @@ public class BabyEnemy : MonoBehaviour
     }
     public void Guard()
     {
-        Vector2 direc = (PlayerTransform.position - Mom.transform.position).normalized;
-        float angle = Mathf.Atan2(direc.y, direc.x) - 30 * Mathf.Deg2Rad;//弧度制
-        Vector3 Tarposition = new Vector3(Mom.transform.position.x + (Mathf.Cos(angle + (30 * Mathf.Deg2Rad * Mom.BabyGuard.IndexOf(gameObject))) * Radius), 
-            Mom.transform.position.y + (Mathf.Sin(angle + (30 * Mathf.Deg2Rad * Mom.BabyGuard.IndexOf(gameObject))) * Radius), 0); // 目标位置 sin cos需要弧度制
-        transform.position = Vector3.Lerp(transform.position, Tarposition, 1 * Time.deltaTime);
+        if (Mom)
+        {
+            Vector2 direc = (PlayerTransform.position - Mom.transform.position).normalized;
+            float angle = Mathf.Atan2(direc.y, direc.x) - 30 * Mathf.Deg2Rad;//弧度制
+            Vector3 Tarposition = new Vector3(Mom.transform.position.x + (Mathf.Cos(angle + (30 * Mathf.Deg2Rad * Mom.BabyGuard.IndexOf(gameObject))) * Radius), 
+                Mom.transform.position.y + (Mathf.Sin(angle + (30 * Mathf.Deg2Rad * Mom.BabyGuard.IndexOf(gameObject))) * Radius), 0); // 目标位置 sin cos需要弧度制
+            transform.position = Vector3.Lerp(transform.position, Tarposition, 1 * Time.deltaTime);
+        }
+        else
+        {
+            rb.velocity = Direction.normalized * Speed;
+        }
     }
 
     public void IfProtect()

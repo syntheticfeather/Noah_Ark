@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 0.125f; // 平滑速度
     
     public bool followArk;
+    public bool BossFight;
     public float moveSpeed = 5f; // 移动速度
     public float smoothTime = 0.1f; // 平滑时间
 
@@ -19,19 +20,28 @@ public class CameraFollow : MonoBehaviour
     {
         transform.position = Target.transform.position;
         instance = this;
+        BossFight = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (followArk)
+        if (!BossFight)
         {
-            FollowArk();
+            if (followArk)
+            {
+                FollowArk();
+            }
+            if (!followArk)
+            {
+                FreeMovement();
+            }
         }
-        if (!followArk)
+        else
         {
-            FreeMovement();
+            Stay();
         }
+
     }
     public void FollowArk()
     {
@@ -48,4 +58,10 @@ public class CameraFollow : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, TargetPosition, smoothTime);
     }
 
+
+
+    public void Stay()
+    {
+        transform.position = new Vector3(800,-8,-10);
+    }
 }

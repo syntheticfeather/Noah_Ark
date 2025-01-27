@@ -53,8 +53,11 @@ public class MomEnemy : MonoBehaviour
         for (int i = 0; i < NumToSpawn; i++)
         {
             //BabyEnemy.transform.rotation = Quaternion.AngleAxis(Angle, Vector3.forward);
-            Instantiate(BabyEnemy, transform.position + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0),
-                BabyEnemy.transform.rotation).gameObject.SetActive(true);
+            GameObject Spa = Instantiate(BabyEnemy, transform.position + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0),
+                BabyEnemy.transform.rotation);
+            Spa.SetActive(true);
+            Spa.GetComponent<BabyEnemy>().Mom = this;
+
         }
         KnockCounter = KnockTime;
     }

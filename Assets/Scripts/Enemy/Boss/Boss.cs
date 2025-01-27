@@ -6,21 +6,40 @@ public class Boss : MonoBehaviour
 {
     public static Boss Instance;
     private GameObject Player;
+    public EnemyHealthController EnemyHealthController;
     // Start is called before the first frame update
+
+    // 100 œ¬‘“”ÎÕª¥Ã
+    // 80 ø™…®
+    // 50 ‰ˆŒ–
+    // 40 º§π‚
     void Start()
     {
         StrikeCounter = StrikeBetTime;
+        DropCounter = DropBetTime;
         SweepCounter = SweepBetTime;
+        LaserCounter = LaserBetTime;
+        VortexCounter = VortexBetTime;
         Player = PlayerHealthController.instance.gameObject;
         Instance = this;
-    }
-    // Update is called once per frame
+        
+    }    
     void Update()
-    {
+    {        
         StrikeCounter -= Time.deltaTime;
-        SweepCounter -= Time.deltaTime;
         DropCounter -= Time.deltaTime;
-        LaserCounter -= Time.deltaTime;
+        if (EnemyHealthController.CurHealth < (EnemyHealthController.MaxHealth * 0.8))
+        {            
+            SweepCounter -= Time.deltaTime;  
+        }
+        if (EnemyHealthController.CurHealth < (EnemyHealthController.MaxHealth * 0.5))
+        {
+            VortexCounter -= Time.deltaTime;   
+        }
+        if (EnemyHealthController.CurHealth < (EnemyHealthController.MaxHealth * 0.4))
+        {            
+            LaserCounter -= Time.deltaTime;
+        }
         if (StrikeCounter < 0)
         {
             StartCoroutine(DelayStrike());
@@ -36,9 +55,13 @@ public class Boss : MonoBehaviour
         if (LaserCounter < 0)
         {
             StartCoroutine(DelayLaser());
+        }        
+        if (VortexCounter < 0)
+        {
+            StartCoroutine(DelayVortex());
         }
     }
-    public int StrikeDelayTime;
+    public float StrikeDelayTime;
     public int StrikeBetTime;
     public float StrikeCounter;
     public GameObject StrikeArea;
@@ -48,7 +71,7 @@ public class Boss : MonoBehaviour
     IEnumerator DelayStrike()
     {   
         StrikeCounter = StrikeBetTime + StrikeDelayTime;
-        CurStrikeArea = Instantiate(StrikeArea, Player.transform.position, Quaternion.identity);
+        CurStrikeArea = Instantiate(StrikeArea, Player.transform.position + new Vector3(Random.Range(-2, 3), Random.Range(-2, 3), 0), Quaternion.identity);
         CurStrikeArea.SetActive(true);
         yield return new WaitForSeconds(StrikeDelayTime);
         Strike();               
@@ -59,7 +82,7 @@ public class Boss : MonoBehaviour
         Destroy(CurStrikeArea);
     }
 
-    public int SweepDelayTime;
+    public float SweepDelayTime;
     public int SweepBetTime;
     public float SweepCounter;
     public GameObject SweepArea;
@@ -69,7 +92,7 @@ public class Boss : MonoBehaviour
     IEnumerator DelaySweep()
     {
         SweepCounter = SweepBetTime + SweepDelayTime;
-        CurSweepArea = Instantiate(SweepArea, Player.transform.position, Quaternion.identity);
+        CurSweepArea = Instantiate(SweepArea, Player.transform.position + new Vector3(Random.Range(-2, 3), Random.Range(-2, 3), 0), Quaternion.identity);
         CurSweepArea.SetActive(true);
         yield return new WaitForSeconds(SweepDelayTime);
         Sweep();
@@ -79,7 +102,7 @@ public class Boss : MonoBehaviour
         Instantiate(SweepATK, CurSweepArea.transform.position + new Vector3(0, 9f, 0), Quaternion.identity).SetActive(true);
         Destroy(CurSweepArea);
     }
-    public int DropDelayTime;
+    public float DropDelayTime;
     public int DropBetTime;
     public float DropCounter;
     public GameObject DropArea;
@@ -129,5 +152,27 @@ public class Boss : MonoBehaviour
         Laser.GetComponent<Laser>().Line1.SetPosition(1, CurLaserArea.transform.position);
         Laser.GetComponent<Laser>().Line2.SetPosition(1, CurLaserArea.transform.position);
         Destroy(CurLaserArea);
+    }
+
+    public int VortexDelayTime;
+    public int VortexBetTime;
+    public float VortexCounter;
+    public GameObject VortexArea;
+    public GameObject CurVortexArea;
+    public GameObject VortexATK;
+    // Õª¥Ã
+    IEnumerator DelayVortex()
+    {        
+        VortexCounter = VortexBetTime + VortexDelayTime;
+        CurVortexArea = Instantiate(VortexArea, Player.transform.position + new Vector3(Random.Range(-2, 3), Random.Range(-2, 3), 0), Quaternion.identity);
+        CurVortexArea.SetActive(true);
+        yield return new WaitForSeconds(VortexDelayTime);
+        Vortex();
+    }
+    public void Vortex()
+    {
+        GameObject Vortex = Instantiate(VortexATK, CurVortexArea.transform.position, Quaternion.Euler(0, 0, Angle));
+        Vortex.SetActive(true);              
+        Destroy(CurVortexArea);
     }
 }

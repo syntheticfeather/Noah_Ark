@@ -47,6 +47,10 @@ public class Bomb : MonoBehaviour
         {
             Explode();
         }
+        if (collision.name == "boss")
+        {
+            Boss.Instance.GetComponent<EnemyHealthController>().CurHealth -= ATK / 3;
+        }
         // 播放爆炸特效或音效
         PlayExplosionEffect();
         // 销毁炮弹
@@ -59,12 +63,6 @@ public class Bomb : MonoBehaviour
 
         foreach (Collider2D hitCollider in hitColliders)
         {
-            // 计算物体与爆炸中心的距离
-            float distance = Vector2.Distance(transform.position, hitCollider.transform.position);
-
-            // 根据距离计算伤害（距离越远，伤害越小）
-            float damage = ATK * (1 - distance / explosionRadius);
-
             // 对物体应用伤害
             EnemyHealthController health = hitCollider.GetComponent<EnemyHealthController>();
             if (health != null)
