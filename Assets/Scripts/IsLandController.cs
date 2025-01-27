@@ -9,7 +9,9 @@ public class IsLandController : MonoBehaviour
     public float radius = 1000f; // 圆的半径
     public float minDistance = 500f; // 点之间的最小距离
     private List<Vector2> points = new List<Vector2>(); // 存储生成的中心点位置
-    public List<GameObject> IsLand_List = new List<GameObject>();
+    public List<GameObject> InitIsLand_List = new List<GameObject>();
+    public List<GameObject> CurIsLand_List = new List<GameObject>();
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,7 @@ public class IsLandController : MonoBehaviour
 
     public void Construction()
     {
-        foreach (var Island in IsLand_List)
+        foreach (var Island in CurIsLand_List)
         {
             if (Island.GetComponent<Land>().CanLand)
             {
@@ -70,14 +72,16 @@ public class IsLandController : MonoBehaviour
             if (IsPointValid(newPoint))
             {
                 points.Add(newPoint);
-                IsLand_List[points.Count - 1].transform.position = newPoint;
+                GameObject NewLand = Instantiate(InitIsLand_List[Random.Range(0, 12)]);
+                NewLand.transform.position = newPoint;
+                CurIsLand_List.Add(NewLand);
             }
             attempts++;
         }
-        //if (points.Count < numberOfIsLand)
-        //{
-        //    Debug.LogWarning("Failed to generate all points within the maximum attempts.");
-        //}
+        if (points.Count < numberOfIsLand)
+        {
+            Debug.LogWarning("Failed to generate all points within the maximum attempts.");
+        }
     }
 
     Vector2 GetRandomPointInCircle(float radius)
@@ -95,11 +99,15 @@ public class IsLandController : MonoBehaviour
 
     bool IsPointValid(Vector2 newPoint)
     {
+        float distance1 = Vector2.Distance(newPoint, Vector2.zero);
+        if (distance1 < 100)
+        {
+            return false;
+        }
         foreach (Vector2 point in points)
         {
             // 计算两点之间的距离
-            float distance = Vector2.Distance(newPoint, point);
-
+            float distance = Vector2.Distance(newPoint, point);            
             // 如果距离小于最小距离，则新点无效
             if (distance < minDistance)
             {
