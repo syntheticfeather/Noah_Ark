@@ -8,7 +8,10 @@ public class Boss : MonoBehaviour
     private GameObject Player;
     public EnemyHealthController EnemyHealthController;
     // Start is called before the first frame update
-
+    private void Awake()
+    {
+        Instance = this;
+    }
     // 100 ÏÂÔÒÓëÍ»´Ì
     // 80 ¿ªÉ¨
     // 50 äöÎĞ
@@ -21,7 +24,7 @@ public class Boss : MonoBehaviour
         LaserCounter = LaserBetTime;
         VortexCounter = VortexBetTime;
         Player = PlayerHealthController.instance.gameObject;
-        Instance = this;
+
         
     }    
     void Update()
