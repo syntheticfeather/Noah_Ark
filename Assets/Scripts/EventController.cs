@@ -9,6 +9,7 @@ public class EventController : MonoBehaviour
     public GameObject boss;
     public CameraFollow Camera;
     public GameObject PlayerOnMap;
+    public GameObject MapLight;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,15 +47,17 @@ public class EventController : MonoBehaviour
     {
         Time.timeScale = 0f;
         Camera.Map = true;
-        PlayerOnMap.SetActive(true);
         IsOpenMap = true;
+        PlayerOnMap.SetActive(true);
+        MapLight.SetActive(true);
 }
     public void CloseMap()
     {
         Time.timeScale = 1f;
         Camera.Map = false;
-        PlayerOnMap.SetActive(false);
         IsOpenMap = false;
+        PlayerOnMap.SetActive(false);
+        MapLight.SetActive(false);
         Camera.transform.position = PlayerOnMap.transform.position;
     }
 }

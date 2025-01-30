@@ -16,7 +16,8 @@ public class CameraFollow : MonoBehaviour
     public Vector3 TargetPosition = Vector3.zero;
 
     public static CameraFollow instance;
-    public GameObject Target;   
+    public GameObject Target;
+    public GameObject Light;
     void Start()
     {
         transform.position = Target.transform.position;
@@ -54,6 +55,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, Target.transform.position + new Vector3(0, 0, -10), smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
         transform.GetComponent<Camera>().orthographicSize = 20;
+        Light.transform.position = Target.transform.position;
     }
 
     void FreeMovement()
@@ -63,6 +65,7 @@ public class CameraFollow : MonoBehaviour
         TargetPosition += new Vector3(horizontal, vertical, 0) * moveSpeed * Time.deltaTime;
         transform.position = Vector3.Lerp(transform.position, TargetPosition, smoothTime);
         transform.GetComponent<Camera>().orthographicSize = 20;
+        Light.transform.position = transform.position + new Vector3(0, 0, 10);
     }
 
     public void MapCamera()
