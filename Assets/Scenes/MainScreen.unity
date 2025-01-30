@@ -19171,7 +19171,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907377856}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b5025ea516187d489ec3c81e88bc21b, type: 3}
   m_Name: 
@@ -28549,6 +28549,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurHealth: 0
   MaxHealth: 100
+  renderer: {fileID: 1840244687}
+  flashDuration: 0.1
+  ParticleSystem: {fileID: 0}
 --- !u!58 &1338912228
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -40366,6 +40369,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurHealth: 0
   MaxHealth: 100
+  renderer: {fileID: 1362690461}
+  flashDuration: 0.1
+  ParticleSystem: {fileID: 0}
 --- !u!58 &1947894930
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -42465,6 +42471,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   ParticleSystem: {fileID: 7219533666000683474, guid: 3732791395d554c49a0f721478671c02, type: 3}
+  BloodSystem: {fileID: 7713143353904145913, guid: a411967e846926a4baf9ed8c74b4fe64, type: 3}
 --- !u!4 &508484258112299060
 Transform:
   m_ObjectHideFlags: 0

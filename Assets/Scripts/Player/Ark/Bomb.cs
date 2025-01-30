@@ -18,6 +18,7 @@ public class Bomb : MonoBehaviour
     private Vector3 Direction;
     public LayerMask damageLayers; // 可以受到伤害的图层
     public ParticleSystem ParticleSystem;
+    public ParticleSystem BloodSystem;
 
     void Start()
     {
@@ -50,6 +51,7 @@ public class Bomb : MonoBehaviour
         if (collision.name == "boss")
         {
             Boss.Instance.GetComponent<EnemyHealthController>().CurHealth -= ATK / 3;
+            Instantiate(BloodSystem, transform.position, Quaternion.identity);
         }
         // 播放爆炸特效或音效
         PlayExplosionEffect();
@@ -74,7 +76,7 @@ public class Bomb : MonoBehaviour
 
     void PlayExplosionEffect()
     {
-        
+
         // 音效暂定
         Instantiate(ParticleSystem, transform.position, Quaternion.identity);
     }

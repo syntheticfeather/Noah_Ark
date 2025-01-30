@@ -182,7 +182,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78acc9eaecaa5144906fef3e44f4bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurHealth: 0
   MaxHealth: 10
+  renderer: {fileID: 1839031363319251296}
+  flashDuration: 0.1
+  ParticleSystem: {fileID: 7713143353904145913, guid: a411967e846926a4baf9ed8c74b4fe64, type: 3}
 --- !u!58 &8681350084298276367
 CircleCollider2D:
   m_ObjectHideFlags: 0
