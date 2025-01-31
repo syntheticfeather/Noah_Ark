@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurHealth: 0
   MaxHealth: 10
-  renderer: {fileID: 6483276679331492078}
+  renderer2D: {fileID: 6483276679331492078}
   flashDuration: 0.1
 --- !u!50 &7416317880694394890
 Rigidbody2D:
