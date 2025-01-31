@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResouceManager : MonoBehaviour
+public class ResourceManager : MonoBehaviour
 {
     public int Wood { get; set; }
     public int Stone { get; set; }
@@ -45,21 +45,18 @@ public class ResouceManager : MonoBehaviour
         }
     }
 
-    public void UseStone(int amount)
+    public bool UseResource(int FoodAmount, int StoneAmount)
     {
-        if (Stone >= amount)
+        if (Food >= FoodAmount && Stone >= StoneAmount)
         {
-            Stone -= amount;
-
+            Stone -= StoneAmount;
+            Food -= FoodAmount;
+            return true;
         }
-    }
 
-    public void UseFood(int amount)
-    {
-        if (Food >= amount)
+        else
         {
-            Food -= amount;
-
+            return false;
         }
     }
 }
