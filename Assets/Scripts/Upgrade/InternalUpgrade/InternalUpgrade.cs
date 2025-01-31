@@ -12,7 +12,6 @@ public class InternalUpgrade : MonoBehaviour
 
     void Start()
     {
-        // 假设资源管理器在同一对象上
         resourceManager = GetComponent<ResourceManager>();
     }
 

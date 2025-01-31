@@ -8,8 +8,7 @@ public class ResourceManager : MonoBehaviour
     public int Wood { get; set; }
     public int Stone { get; set; }
     public int Food { get; set; }
-
-
+    public int Crystal { get; set; }
 
     public void InitialResource(int initialWood, int initialStone, int initialFood)
     {
@@ -36,11 +35,11 @@ public class ResourceManager : MonoBehaviour
 
     }
 
-    public void UseWood(int amount)
+    public void UseCrystal(int amount)
     {
-        if (Wood >= amount)
+        if (Crystal >= amount)
         {
-            Wood -= amount;
+            Crystal -= amount;
 
         }
     }
