@@ -35,13 +35,18 @@ public class ResourceManager : MonoBehaviour
 
     }
 
-    public void UseCrystal(int amount)
+    public bool UseCrystal(int amount)
     {
         if (Crystal >= amount)
         {
             Crystal -= amount;
-
+            return true;
         }
+        else
+        {
+            return false;
+        }
+       
     }
 
     public bool UseResource(int FoodAmount, int StoneAmount)
