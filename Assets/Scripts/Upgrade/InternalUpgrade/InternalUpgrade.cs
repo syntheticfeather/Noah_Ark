@@ -9,10 +9,12 @@ public class InternalUpgrade : MonoBehaviour
     public int CannoneerSlots { get; set; }
 
     private ResourceManager resourceManager;
+    private PlayerHealthController healthController;
 
     void Start()
     {
         resourceManager = GetComponent<ResourceManager>();
+        healthController = GetComponent<PlayerHealthController>();
     }
 
     public void UpgradeBeds(int woodCost, int stoneCost)
@@ -28,8 +30,18 @@ public class InternalUpgrade : MonoBehaviour
     {
         if (resourceManager.UseResource(woodCost, stoneCost))
         {
-            CannoneerSlots++;
-            
+            CannoneerSlots++;   
+        }
+    }
+
+    public void RepairBoat(float percent)
+    {
+
+        int woodCost = (int)(percent * 10);
+        int stoneCost = (int)(percent * 5);
+        if (resourceManager.UseResource(woodCost, stoneCost))
+        {
+            healthController.Repair(percent);
         }
     }
 }
