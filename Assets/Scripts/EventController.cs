@@ -5,6 +5,11 @@ using UnityEngine;
 public class EventController : MonoBehaviour
 {
     public GameObject Light;
+    public bool IsOpenMap = false;
+    public GameObject boss;
+    public CameraFollow Camera;
+    public GameObject PlayerOnMap;
+    public GameObject MapLight;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,18 +19,45 @@ public class EventController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(PlayerHealthController.instance.transform.position,Vector3.zero) <= 50)
+        if (Vector3.Distance(PlayerHealthController.instance.transform.position,Vector3.zero) <= 40)
         {
             BossFight();           
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (!IsOpenMap)
+            {
+                OpenMap();
+            }
+            else
+            {
+                CloseMap();
+            }
         }
     }
 
     public void BossFight()
     {
-        PlayerHealthController.instance.transform.position = new Vector3(800, -8, 0);
+        PlayerHealthController.instance.transform.position = new Vector3(1600, -8, 0);
         Light.SetActive(true);
         CameraFollow.instance.BossFight = true;
-        Boss.Instance.gameObject.SetActive(true);
+        boss.SetActive(true);
     }
-
+    public void OpenMap()
+    {
+        Time.timeScale = 0f;
+        Camera.Map = true;
+        IsOpenMap = true;
+        PlayerOnMap.SetActive(true);
+        MapLight.SetActive(true);
+}
+    public void CloseMap()
+    {
+        Time.timeScale = 1f;
+        Camera.Map = false;
+        IsOpenMap = false;
+        PlayerOnMap.SetActive(false);
+        MapLight.SetActive(false);
+        Camera.transform.position = PlayerOnMap.transform.position;
+    }
 }

@@ -39,6 +39,7 @@ public class PausePanelManager : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1;
         GameIsPaused = false;
+        
     }
 
     // 暂停游戏
@@ -47,6 +48,7 @@ public class PausePanelManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0;
         GameIsPaused = true;
+        
     }
 
     // 载入主菜单

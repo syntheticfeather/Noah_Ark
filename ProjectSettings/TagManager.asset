@@ -56,3 +56,6 @@ TagManager:
   - name: UnderUI
     uniqueID: 2767999195
     locked: 0
+  - name: FogWar
+    uniqueID: 2384880205
+    locked: 0

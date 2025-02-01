@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SettingPanelManager : MonoBehaviour
-{
+{    
+    
     public GameObject settingPanel; //设置界面
     // public List<AudioSource> audioSources1 = new List<AudioSource>(); //游戏音频文件list
     // public List<AudioSource> audioSources2 = new List<AudioSource>(); //游戏音效文件list 
@@ -12,7 +13,7 @@ public class SettingPanelManager : MonoBehaviour
     public Slider slider2; //音效大小进度条
     public Text text1; //音量大小文本显示
     public Text text2; //音效大小文本显示
-
+  
     // Update is called once per frame
     void Update()
     {
