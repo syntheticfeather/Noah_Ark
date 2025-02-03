@@ -42,7 +42,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public void Repair(float percent)
     {
-        int healing =(int) (percent * MaxHealth);
+        float healing =percent * MaxHealth;
 
         if (Health > 0)
         {

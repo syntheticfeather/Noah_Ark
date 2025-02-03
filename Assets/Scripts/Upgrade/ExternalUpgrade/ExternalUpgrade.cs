@@ -1,117 +1,106 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class ExternalUpgrade : MonoBehaviour
 {
-    private ResourceManager resourceManager;
-    void Start()
-    {
-        resourceManager = GetComponent<ResourceManager>();
-    }
+    public List<Skill> skills;
+    GameObject resourceManager_ = GameObject.Find("TotalManager");
+    private InternalUpgrade internalUpgrade;
 
-}
-
-public class CompleteTechTree : MonoBehaviour
-{
-    public static CompleteTechTree Instance;
-    public List<TechNode> techNodes;
-
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     void Start()
     {
-        // 初始化科技树
-        InitializeTechTree();
+        // 初始化技能系统
+        InitializeSkills();
+        internalUpgrade = GetComponent<InternalUpgrade>();
     }
 
-    void InitializeTechTree()
+    void InitializeSkills()
     {
-        // 添加科技(分别为科技名，花费，前置科技）
-        techNodes = new List<TechNode>
+        // 添加技能
+        skills = new List<Skill>
         {
-            new TechNode("Resource Gathering", 100, null),
-            new TechNode("Enemy Delaying", 150, null)
+            new Skill("Shield", 200),
+            new Skill("Speed", 200),
+            new Skill("Extra Bed", 200),
+            new Skill("Dash", 200)
         };
     }
 
-    public bool UnlockTech(string techName, int crystal)
+    public bool UnlockSkill(string skillName)
     {
-        TechNode node = techNodes.Find(t => t.name == techName);
-        if (node != null && node.CanUnlock(crystal))
+        int crystal=0;
+        if(resourceManager_ != null)
+{
+            ResourceManager resourceManager = resourceManager_.GetComponent<ResourceManager>();
+            if (resourceManager != null)
+            {
+                crystal = resourceManager.Crystal;
+            }
+        }
+        Skill skill = skills.Find(s => s.name == skillName);
+        if (skill != null && skill.CanUnlock(crystal))
         {
-            node.Unlock();
+            Unlock(skill.name);
+            skill.UnLock();
             return true;
         }
         return false;
     }
 
-    public bool IsTechUnlocked(string techName)
+    public void Unlock(string name)
     {
-        TechNode node = techNodes.Find(t => t.name == techName);
-        return node != null && node.isUnlocked;
+        
+        switch (name)
+        {
+            case "Shield":
+
+                break;
+            case "Speed":
+
+                break;
+            case "Extra Bed":
+                internalUpgrade.Beds++;
+                break;
+            case "Dash":
+
+                break;
+            default:
+
+                break;
+        }
     }
 }
 
-public class TechNode
+public class Skill
 {
+    
     public string name;
     public int cost;
     public bool isUnlocked;
-    public List<string> prerequisites;
 
-    public TechNode(string name, int cost, List<string> prerequisites)
+   
+    public Skill(string name, int cost)
     {
         this.name = name;
         this.cost = cost;
         this.isUnlocked = false;
-        this.prerequisites = prerequisites ?? new List<string>();
     }
 
-    public bool CanUnlock(int availableResources)
+    public bool CanUnlock(int crystal)
     {
-        // 检查资源是否足够以及前置科技是否已解锁
-        return !isUnlocked && availableResources >= cost && ArePrerequisitesMet();
+        // 检查水晶是否足够
+        return !isUnlocked && crystal >= cost;
     }
 
-    public void Unlock()
+    public void UnLock()
     {
         isUnlocked = true;
-        // 解锁科技的效果
-        switch (name)
-        {
-            case "Resource Gathering":
-
-                break;
-            default:
-                break;
- 
-        }
-    }
-
-    private bool ArePrerequisitesMet()
-    {
-        // 检查所有前置科技是否已解锁
-        foreach (var prerequisite in prerequisites)
-        {
-            if (!CompleteTechTree.Instance.IsTechUnlocked(prerequisite))
-            {
-                return false;
-            }
-        }
-        return true;
     }
 }
+
 
