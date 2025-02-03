@@ -8,7 +8,7 @@ public class EnemyHealthController : MonoBehaviour
     public static EnemyHealthController Instance;
     public int CurHealth;
     public int MaxHealth;
-    public SpriteRenderer renderer; // 物体的渲染组件
+    public SpriteRenderer renderer2D; // 物体的渲染组件
     private Color originalColor; // 记录原始颜色
     public float flashDuration = 0.1f; // 变红持续时间
     // Start is called before the first frame update
@@ -16,7 +16,7 @@ public class EnemyHealthController : MonoBehaviour
     {
         Instance = this;
         CurHealth = MaxHealth;        
-        originalColor = renderer.color; // 保存原始颜色
+        originalColor = renderer2D.color; // 保存原始颜色
     }
 
     // Update is called once per frame
@@ -49,12 +49,12 @@ public class EnemyHealthController : MonoBehaviour
     IEnumerator FlashRed()
     {
         // 将颜色设为红色
-        renderer.material.color = Color.red;
+        renderer2D.material.color = Color.red;
 
         // 等待一段时间后恢复原色
         yield return new WaitForSeconds(flashDuration);
 
-        renderer.material.color = originalColor;
+        renderer2D.material.color = originalColor;
     }
 
 }

@@ -239,9 +239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurHealth: 0
   MaxHealth: 10
-  renderer: {fileID: 1827350353230591919}
+  renderer2D: {fileID: 1827350353230591919}
   flashDuration: 0.1
-  ParticleSystem: {fileID: 7713143353904145913, guid: a411967e846926a4baf9ed8c74b4fe64, type: 3}
 --- !u!50 &296201902161336502
 Rigidbody2D:
   serializedVersion: 4

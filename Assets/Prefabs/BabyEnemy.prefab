@@ -301,6 +301,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurHealth: 0
   MaxHealth: 10
-  renderer: {fileID: 3448011830711042658}
+  renderer2D: {fileID: 3448011830711042658}
   flashDuration: 0.1
-  ParticleSystem: {fileID: 0}
