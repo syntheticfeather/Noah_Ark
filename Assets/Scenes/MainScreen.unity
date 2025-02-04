@@ -407,13 +407,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: OnDuty
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 5
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &42691523
@@ -1372,6 +1372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 1000
+  MaxHealth: 0
   Shield: 10
 --- !u!95 &122821510
 Animator:
@@ -3047,13 +3048,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: OnDuty
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &348681626
@@ -9648,13 +9649,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ShowChew
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 5
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 5
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1184700239}
@@ -9796,13 +9797,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: OnDuty
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 4
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &566523143
@@ -11044,13 +11045,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: OnDuty
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &678777425
@@ -11344,13 +11345,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ShowChew
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 4
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 4
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1184700239}
@@ -11489,13 +11490,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ShowChew
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 2
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1184700239}
@@ -17316,13 +17317,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ShowChew
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 3
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1184700239}
@@ -18933,13 +18934,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ShowChew
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1184700239}
@@ -20064,7 +20065,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ffcfa4a493bd24eb1aff4ba2c8895a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: 0
+  jobs:
+  - {fileID: 1046577986}
+  - {fileID: 906966437}
+  - {fileID: 715563099}
+  - {fileID: 783520965}
+  - {fileID: 707064638}
+  - {fileID: 548334603}
+  animals:
+  - {fileID: 1659863898}
+  - {fileID: 348681623}
+  - {fileID: 678777422}
+  - {fileID: 1533799991}
+  - {fileID: 566523140}
+  - {fileID: 42691520}
   ChewManagerPanel: {fileID: 829365190}
   ChewPanel: {fileID: 1184700235}
 --- !u!114 &945238797
@@ -25666,13 +25680,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ShowChew
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 0
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1184700239}
@@ -29444,7 +29458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -7.760437}
+  m_AnchoredPosition: {x: 0, y: -7.760498}
   m_SizeDelta: {x: -1307.6494, y: -139.51855}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1419131914
@@ -30354,13 +30368,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: OnDuty
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1533799994
@@ -31837,13 +31851,13 @@ MonoBehaviour:
       - m_Target: {fileID: 945238796}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: OnDuty
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 0
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1659863901
