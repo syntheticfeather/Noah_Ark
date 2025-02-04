@@ -15,8 +15,11 @@ public class EnemyHealthController : MonoBehaviour
     void Start()
     {
         Instance = this;
-        CurHealth = MaxHealth;        
-        originalColor = renderer2D.color; // 保存原始颜色
+        CurHealth = MaxHealth;
+        if (renderer2D != null)
+        {
+            originalColor = renderer2D.color; // 保存原始颜色
+        }
     }
 
     // Update is called once per frame
