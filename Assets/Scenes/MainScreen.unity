@@ -19231,35 +19231,35 @@ MonoBehaviour:
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
-      count: 2
-    - monsterPrefab: {fileID: 5939811088646145120, guid: 4c2b38abbe4a3564484ddc87df2fb95b, type: 3}
       count: 0
-    - monsterPrefab: {fileID: 4485669409662654673, guid: 8e3000bbea3d30f4e81a4db382ef066e, type: 3}
-      count: 0
-    - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
-      count: 0
-    spawnInterval: 0.5
-    waveInterval: 45
-  - monsterGroups:
-    - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
-      count: 4
-    - monsterPrefab: {fileID: 5939811088646145120, guid: 4c2b38abbe4a3564484ddc87df2fb95b, type: 3}
-      count: 0
-    - monsterPrefab: {fileID: 4485669409662654673, guid: 8e3000bbea3d30f4e81a4db382ef066e, type: 3}
-      count: 0
-    - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
-      count: 0
-    spawnInterval: 0.5
-    waveInterval: 45
-  - monsterGroups:
-    - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
-      count: 4
     - monsterPrefab: {fileID: 5939811088646145120, guid: 4c2b38abbe4a3564484ddc87df2fb95b, type: 3}
       count: 1
     - monsterPrefab: {fileID: 4485669409662654673, guid: 8e3000bbea3d30f4e81a4db382ef066e, type: 3}
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
+    spawnInterval: 0.5
+    waveInterval: 45
+  - monsterGroups:
+    - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
+      count: 0
+    - monsterPrefab: {fileID: 5939811088646145120, guid: 4c2b38abbe4a3564484ddc87df2fb95b, type: 3}
+      count: 0
+    - monsterPrefab: {fileID: 4485669409662654673, guid: 8e3000bbea3d30f4e81a4db382ef066e, type: 3}
+      count: 1
+    - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
+      count: 0
+    spawnInterval: 0.5
+    waveInterval: 45
+  - monsterGroups:
+    - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
+      count: 0
+    - monsterPrefab: {fileID: 5939811088646145120, guid: 4c2b38abbe4a3564484ddc87df2fb95b, type: 3}
+      count: 0
+    - monsterPrefab: {fileID: 4485669409662654673, guid: 8e3000bbea3d30f4e81a4db382ef066e, type: 3}
+      count: 0
+    - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
+      count: 1
     spawnInterval: 0.5
     waveInterval: 45
   - monsterGroups:
@@ -19658,8 +19658,21 @@ MonoBehaviour:
       count: 50
     spawnInterval: 0.5
     waveInterval: 45
-  minspawn: {fileID: 381103993}
-  maxspawn: {fileID: 934206245}
+  Bosswave:
+    monsterGroups:
+    - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
+      count: 8
+    - monsterPrefab: {fileID: 5939811088646145120, guid: 4c2b38abbe4a3564484ddc87df2fb95b, type: 3}
+      count: 2
+    - monsterPrefab: {fileID: 4485669409662654673, guid: 8e3000bbea3d30f4e81a4db382ef066e, type: 3}
+      count: 2
+    - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
+      count: 2
+    spawnInterval: 0.5
+    waveInterval: 15
+  minspawn: {x: 0, y: 0, z: 0}
+  maxspawn: {x: 0, y: 0, z: 0}
+  Counter: 0
 --- !u!1 &909895679
 GameObject:
   m_ObjectHideFlags: 0
