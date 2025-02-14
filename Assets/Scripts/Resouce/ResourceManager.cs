@@ -1,45 +1,39 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class ResourceManager : MonoBehaviour
 {
-    public int Wood { get; set; }
-    public int Stone { get; set; }
-    public int Food { get; set; }
-    public int Crystal { get; set; }
+    public static ResourceManager instance;
+    public List<int> Resource = new List<int>();// 定义顺序为 木头， 矿石，食物, crystal;
 
+    private void Awake()
+    {
+        instance = this;
+        Resource[3] = PlayerPrefs.GetInt("CrystalCount", 0);// 读写局外crystal数据。
+        InitialResource(5, 0, 5);
+    }
     public void InitialResource(int initialWood, int initialStone, int initialFood)
     {
-        Wood = initialWood;
-        Stone = initialStone;
-        Food = initialFood;
+        // ，通过文件读写来初始化crystal资源
+        Resource[0] = initialWood;
+        Resource[1] = initialStone;
+        Resource[2] = initialFood;
     }
-
-    public void AddWood(int amount)
+    public void AddResource(int amount, int type)// 依据索引来添加资源
     {
-        Wood += amount;
-
-    }
-
-    public void AddStone(int amount)
-    {
-        Stone += amount;
-
-    }
-
-    public void AddFood(int amount)
-    {
-        Food += amount;
-
+        Resource[type] += amount;
     }
 
     public bool UseCrystal(int amount)
     {
-        if (Crystal >= amount)
+        if (Resource[3] >= amount)
         {
-            Crystal -= amount;
+            Resource[3] -= amount;
             return true;
         }
         else
@@ -51,10 +45,10 @@ public class ResourceManager : MonoBehaviour
 
     public bool UseResource(int FoodAmount, int StoneAmount)
     {
-        if (Food >= FoodAmount && Stone >= StoneAmount)
+        if (Resource[0] >= FoodAmount && Resource[1] >= StoneAmount)
         {
-            Stone -= StoneAmount;
-            Food -= FoodAmount;
+            Resource[1] -= StoneAmount;
+            Resource[0] -= FoodAmount;
             return true;
         }
 

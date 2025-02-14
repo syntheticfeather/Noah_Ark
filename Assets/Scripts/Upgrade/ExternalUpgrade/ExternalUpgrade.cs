@@ -39,7 +39,7 @@ public class ExternalUpgrade : MonoBehaviour
             ResourceManager resourceManager = resourceManager_.GetComponent<ResourceManager>();
             if (resourceManager != null)
             {
-                crystal = resourceManager.Crystal;
+                crystal = resourceManager.Resource[3];
             }
         }
         Skill skill = skills.Find(s => s.name == skillName);
