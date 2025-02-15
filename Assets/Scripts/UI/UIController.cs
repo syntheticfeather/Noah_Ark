@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -17,6 +18,7 @@ public class UIController : MonoBehaviour
     void Start()
     {
         Instance = this;
+        UpdateResourceUI();
     }
 
     
@@ -37,7 +39,14 @@ public class UIController : MonoBehaviour
             }
         }
     }
-
+    public TMP_Text ResourceUI;
+    public void UpdateResourceUI()
+    {
+        ResourceUI.text = "Wood: " + ResourceManager.instance.Resource[0] + "\n" 
+            + "Stone: " + ResourceManager.instance.Resource[1] + "\n" 
+            + "Food: " + ResourceManager.instance.Resource[2] + "\n"
+            + "Crystal: " + ResourceManager.instance.Resource[3];
+    }
 
     public void ShowChew(string Number)
     {

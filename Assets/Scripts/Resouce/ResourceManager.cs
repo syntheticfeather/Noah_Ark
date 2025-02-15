@@ -10,7 +10,6 @@ public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager instance;
     public List<int> Resource = new List<int>();// 定义顺序为 木头， 矿石，食物, crystal;
-
     private void Awake()
     {
         instance = this;
@@ -27,6 +26,7 @@ public class ResourceManager : MonoBehaviour
     public void AddResource(int amount, int type)// 依据索引来添加资源
     {
         Resource[type] += amount;
+        UIController.Instance.UpdateResourceUI();
     }
 
     public bool UseCrystal(int amount)

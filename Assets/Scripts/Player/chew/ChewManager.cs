@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChewManager : MonoBehaviour
@@ -42,4 +43,19 @@ public class ChewManager : MonoBehaviour
     {
         idleCrews.Enqueue(crew);
     }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.G))
+    //    {
+    //        AllBackToShip();
+    //    }
+    //}
+
+    //public void AllBackToShip()
+    //{
+    //    foreach (var crew in allCrews)
+    //    {
+    //        crew.GoArk = true;
+    //    }
+    //}
 }

@@ -14,7 +14,7 @@ public class ChewAI : MonoBehaviour
     private Resource currentResource;
     private bool isCarryingWood;
     private bool isonark = true;
-
+    public  bool GoArk = false;
 
     void Start()
     {
@@ -30,9 +30,18 @@ public class ChewAI : MonoBehaviour
     void Update()
     {
         if (currentResource == null) return;
+        //if (GoArk || CameraFollow.instance.followArk)
+        //{
+        //    transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
+        //    if (Vector3.Distance(transform.position, shipDepositPoint.position) < 0.5f)
+        //    {
+        //        GoArk = false;
+        //    }
+        //    return;
+        //}
 
         // 检测到达目标
-        if (isCarryingWood)
+        if (!CameraFollow.instance.followArk && isCarryingWood)
         {               
             { 
                 DeliverToShip();
@@ -92,4 +101,20 @@ public class ChewAI : MonoBehaviour
             }
         }
     }
+    //private Vector3 lastValidPosition;
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Island"))
+    //    {
+    //        lastValidPosition = gameObject.transform.position;
+    //    }
+    //}
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Island"))
+    //    {
+    //        gameObject.transform.position = lastValidPosition;
+    //    }
+    //}
+
 }
