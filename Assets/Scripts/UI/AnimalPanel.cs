@@ -23,15 +23,15 @@ public class AnimalPanel : MonoBehaviour
     public void InitPanel()
     {
         int i = 0;
-        foreach (var item in ChewController.instance.ChewList)
+        foreach (var item in ChewManager.Instance.allCrews)
         {
-            if (item != null && i < ChewController.instance.MaxChew)
+            if (item != null && i < ChewManager.Instance.MaxChew)
             {
                 Debug.Log("开始添加图片");
                 AnimalButtonList[i].SetActive(true);
                 AnimalButtonList[i].GetComponent<ChewButton>().UpdateText(item.GetComponent<Chew>().sprite);
             }//其他数值,暂定
-            if (i >= ChewController.instance.MaxChew || item == null)
+            if (i >= ChewManager.Instance.MaxChew || item == null)
             {
                 AnimalButtonList[i].SetActive(false);
             }

@@ -1,57 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Resource : MonoBehaviour
 {
-    private int i;
-    public int type;
-    //总量
-    public int Amount;
-    //采集时长
-    public float CollectTime;
-    public float Counter;
+    public int woodAmount = 10; // 单棵树木材量
+    public GameObject selectionEffect; // 选中特效
 
-    //标记符
-    private bool isCollecting = false;
-    private bool isToCollect = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Counter = CollectTime;
-    }
+    private bool isMarked;
+    private Vector3 harvestPosition;
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseDown()
     {
-        if (isToCollect && !CameraFollow.instance.followArk)
+        if (!isMarked)
         {
-            //ChewController.instance.ChewList[i];该成员前去采集
-            //i++;切换到下一人
-        }
-        if (isCollecting)
-        {
-            Counter -= Time.deltaTime;
-        }
-        if (Counter < 0)
-        {
-            ResourceManager.instance.AddResource(Amount, type);
+            // 标记树木
+            isMarked = true;
+            selectionEffect.SetActive(true);
+
+            // 通知船员管理器
+            ChewManager.Instance.AssignHarvestTask(this);
         }
     }
 
-    private void OnMouseDown()
+    public Vector3 GetHarvestPosition()
     {
-        // 标记待采集
-        isToCollect = true;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        isCollecting = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isCollecting = false;
+        // 计算树木周围的可行走位置
+        return transform.position + Vector3.up * 2;
     }
 }
