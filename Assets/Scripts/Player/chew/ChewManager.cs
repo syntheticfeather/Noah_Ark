@@ -17,6 +17,10 @@ public class ChewManager : MonoBehaviour
         InitializeCrews();
     }
 
+    private void Update()
+    {
+    }
+
     void InitializeCrews()
     {
         foreach (var crew in allCrews)

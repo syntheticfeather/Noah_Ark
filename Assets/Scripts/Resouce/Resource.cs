@@ -13,7 +13,7 @@ public class Resource : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!isMarked)
+        if (!isMarked && !CameraFollow.instance.followArk)
         {
             // ±ê¼ÇÊ÷Ä¾
             isMarked = true;

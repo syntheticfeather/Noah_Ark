@@ -44,20 +44,20 @@ public class IsLandController : MonoBehaviour
                 }
             }
         }
-        //foreach (var Island in InitIsLand_List)
-        //{
-        //    if (Island.GetComponent<Land>().CanLand)
-        //    {
-        //        if (CameraFollow.instance.followArk)
-        //        {
-        //            ToLand();
-        //        }
-        //        else
-        //        {
-        //            ToShip();
-        //        }
-        //    }
-        //}
+        foreach (var Island in InitIsLand_List)
+        {
+            if (Island.GetComponent<Land>().CanLand)
+            {
+                if (CameraFollow.instance.followArk)
+                {
+                    ToLand();
+                }
+                else
+                {
+                    ToShip();
+                }
+            }
+        }
     }
     //登陆,切换镜头移动方式。
     public void ToLand()
