@@ -56,7 +56,7 @@ public class ChewAI : MonoBehaviour
             }
             else
             {
-                if (OneStep)
+                if (currentResource != null && OneStep)
                 {
                     OneStep = false;
                     StartCoroutine(HarvestResource());
@@ -102,7 +102,7 @@ public class ChewAI : MonoBehaviour
 
     void DeliverToShip()
     {
-        if (Vector3.Distance(transform.position, shipDepositPoint.position) < 2f)
+        if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
         {
             Debug.Log("Deliver to ship");            
             // ½«Ä¾²Ä´æÈë´¬Ö»
