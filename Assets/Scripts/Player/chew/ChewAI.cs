@@ -53,7 +53,7 @@ public class ChewAI : MonoBehaviour
             }
             else
             {
-                StartCoroutine(HarvestTree());
+                StartCoroutine(HarvestResource());
             }
         }
         
@@ -79,7 +79,7 @@ public class ChewAI : MonoBehaviour
 
     }
 
-    IEnumerator HarvestTree()
+    IEnumerator HarvestResource()
     {
         // 播放砍伐动画
         //GetComponent<Animator>().SetTrigger("Chop");
@@ -95,19 +95,28 @@ public class ChewAI : MonoBehaviour
 
     void DeliverToShip()
     {
-        Debug.Log(Vector3.Distance(transform.position, shipDepositPoint.position));
         if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
         {
-            Debug.Log("Deliver to ship");
-            
+            Debug.Log("Deliver to ship");            
             // 将木材存入船只
-            ResourceManager.instance.AddResource(currentResource.woodAmount, 0);
+            ResourceManager.instance.AddResource(currentResource.woodAmount, currentResource.type);
             isCarryingWood = false;
             currentResource = null;
             transform.position = shipDepositPoint.position;
+            if (ChewManager.Instance.ResourceQueue.Count == 0)
             // 回到闲置状态
-            ChewManager.Instance.ReturnIdleCrew(this);
-            gameObject.SetActive(false);
+            {
+                ChewManager.Instance.ReturnIdleCrew(this);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                // 继续工作
+                if (currentResource == null)
+                {
+                    AssignTask(ChewManager.Instance.ResourceQueue.Dequeue());
+                }
+            }
         }
         else
         {

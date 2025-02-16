@@ -7,7 +7,7 @@ public class Resource : MonoBehaviour
 {
     public int woodAmount = 10; // 单棵树木材量
     public GameObject selectionEffect; // 选中特效
-
+    public int type;
     private bool isMarked;
     private Vector3 harvestPosition;
 

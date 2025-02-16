@@ -9,7 +9,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager instance;
-    public List<int> Resource = new List<int>();// 定义顺序为 木头， 矿石，食物, crystal;
+    public List<int> Resource = new List<int>();// 定义顺序为 木头 -> 0， 矿石 -> 1，食物 -> 2, crystal -> 3;
     private void Awake()
     {
         instance = this;
