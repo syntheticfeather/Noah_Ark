@@ -14,9 +14,9 @@ public class ChewAI : MonoBehaviour
     
     private Resource currentResource;
     private bool isCarryingWood;
-    public  bool GoArk = false;
     public bool OneStep = true;
     public bool FinishHarvest = false;
+    public bool DirectToShip = false;
     CircleCollider2D Collider;
     private void Awake()
     {
@@ -37,9 +37,25 @@ public class ChewAI : MonoBehaviour
 
     void Update()
     {
-        if (currentResource == null)
+        if (DirectToShip)
         {
-            transform.position = shipDepositPoint.position;
+            transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
+            return;
+        }
+        if (currentResource == null || currentResource.Amount <= 0)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
+            {
+                if (ChewManager.Instance.ResourceList.Count != 0)
+                {
+                    AssignTask(ChewManager.Instance.ResourceList[0]);
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
+            }
             return;
         }
         // 检测到达目标

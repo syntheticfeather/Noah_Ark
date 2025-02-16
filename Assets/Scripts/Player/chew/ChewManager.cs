@@ -11,7 +11,13 @@ public class ChewManager : MonoBehaviour
     public List<Resource> ResourceList = new List<Resource>();
     public int MaxChew = 5;
     private Queue<ChewAI> idleCrews = new Queue<ChewAI>();
-
+    public void AllBack()
+    {
+        foreach (var item in allCrews)
+        {
+            item.DirectToShip = true;
+        }
+    }
     void Awake()
     {
         Instance = this;

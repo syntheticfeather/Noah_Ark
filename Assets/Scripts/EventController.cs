@@ -34,6 +34,10 @@ public class EventController : MonoBehaviour
                 CloseMap();
             }
         }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            //AllBack();
+        }
     }
 
     public void BossFight()
