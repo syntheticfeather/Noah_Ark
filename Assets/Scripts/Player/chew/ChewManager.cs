@@ -32,6 +32,7 @@ public class ChewManager : MonoBehaviour
 
     public void AssignHarvestTask(Resource resource)
     {
+        ResourceList.Add(resource);
         if (idleCrews.Count > 0)
         {
             ChewAI crew = idleCrews.Dequeue();
@@ -39,7 +40,6 @@ public class ChewManager : MonoBehaviour
         }
         else
         {
-            ResourceList.Add(resource);
             // 显示UI提示"无可用船员"
             Debug.Log("No available crew");
         }

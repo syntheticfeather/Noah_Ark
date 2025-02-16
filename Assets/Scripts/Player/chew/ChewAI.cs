@@ -15,6 +15,7 @@ public class ChewAI : MonoBehaviour
     private Resource currentResource;
     private bool isCarryingWood;
     public  bool GoArk = false;
+    public bool OneStep = true;
     public bool FinishHarvest = false;
     CircleCollider2D Collider;
     private void Awake()
@@ -55,7 +56,11 @@ public class ChewAI : MonoBehaviour
             }
             else
             {
-                StartCoroutine(HarvestResource());
+                if (OneStep)
+                {
+                    OneStep = false;
+                    StartCoroutine(HarvestResource());
+                }
             }
         }
         
@@ -91,13 +96,13 @@ public class ChewAI : MonoBehaviour
         yield return new WaitForSeconds(harvestTime);
         currentResource.Amount -= harvestCapacity;
         currentResource.IsEmpty();
-        isCarryingWood = true;   
-
+        isCarryingWood = true;
+        OneStep = true;
     }
 
     void DeliverToShip()
     {
-        if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
+        if (Vector3.Distance(transform.position, shipDepositPoint.position) < 2f)
         {
             Debug.Log("Deliver to ship");            
             // 将木材存入船只
@@ -116,8 +121,7 @@ public class ChewAI : MonoBehaviour
                 // 继续工作
                 if (currentResource == null)
                 {
-                    AssignTask(ChewManager.Instance.ResourceList[0]);
-                    ChewManager.Instance.ResourceList.RemoveAt(0);
+                    AssignTask(ChewManager.Instance.ResourceList[0]);                    
                     Debug.Log("Continue Task");
                 }
             }
@@ -127,20 +131,4 @@ public class ChewAI : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
         }
     }
-    //private Vector3 lastValidPosition;
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Island"))
-    //    {
-    //        lastValidPosition = gameObject.transform.position;
-    //    }
-    //}
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Island"))
-    //    {
-    //        gameObject.transform.position = lastValidPosition;
-    //    }
-    //}
-
 }

@@ -47,8 +47,11 @@ public class Resource : MonoBehaviour
     }    
     public void IsEmpty()
     {
-        gameObject.SetActive(false);
-        selectionEffect.SetActive(false);
-        ChewManager.Instance.ResourceList.Remove(this);
+        if (Amount <= 0)
+        {
+            gameObject.SetActive(false);
+            selectionEffect.SetActive(false);
+            ChewManager.Instance.ResourceList.Remove(this);
+        }
     }
 }
