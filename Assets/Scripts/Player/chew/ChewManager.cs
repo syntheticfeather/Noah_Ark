@@ -8,7 +8,7 @@ public class ChewManager : MonoBehaviour
     public static ChewManager Instance;
 
     public List<ChewAI> allCrews = new List<ChewAI>();
-    public Queue<Resource> ResourceQueue = new Queue<Resource>();
+    public List<Resource> ResourceList = new List<Resource>();
     public int MaxChew = 5;
     private Queue<ChewAI> idleCrews = new Queue<ChewAI>();
 
@@ -39,9 +39,9 @@ public class ChewManager : MonoBehaviour
         }
         else
         {
-            ResourceQueue.Enqueue(resource);
+            ResourceList.Add(resource);
             // 显示UI提示"无可用船员"
-            Debug.LogWarning("No available crew!");
+            Debug.Log("No available crew");
         }
     }
 

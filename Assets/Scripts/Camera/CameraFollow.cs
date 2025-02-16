@@ -78,5 +78,6 @@ public class CameraFollow : MonoBehaviour
     {
         transform.GetComponent<Camera>().orthographicSize = 20;
         transform.position = new Vector3(1600,-8,-10);
+        SpawnTimer.instance.UpdateMaxSlider();
     }
 }

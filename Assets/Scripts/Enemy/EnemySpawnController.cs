@@ -18,14 +18,20 @@ public class MonsterGroup
 }
 public class EnemySpawnController : MonoBehaviour
 {
+    public static EnemySpawnController instance;
     public List<Wave> waves; // 波次列表
     public Wave Bosswave;
-    private int currentWaveIndex = 0; // 当前波次索引
+    public  int currentWaveIndex = 0; // 当前波次索引
     private bool isSpawning = false; // 是否正在生成怪物
     private Transform player;
     public Vector3 minspawn, maxspawn;
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
+
         player = PlayerHealthController.instance.transform;
     }
     public float Counter = 0;

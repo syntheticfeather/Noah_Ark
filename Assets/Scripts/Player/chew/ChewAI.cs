@@ -8,12 +8,14 @@ public class ChewAI : MonoBehaviour
 {
     public float moveSpeed = 3.5f;
     public float harvestTime = 2f;
+    public int harvestCapacity = 3;
     public Transform shipDepositPoint;
     private Vector3 Target;
     
     private Resource currentResource;
     private bool isCarryingWood;
     public  bool GoArk = false;
+    public bool FinishHarvest = false;
     CircleCollider2D Collider;
     private void Awake()
     {
@@ -60,11 +62,13 @@ public class ChewAI : MonoBehaviour
         if (isCarryingWood)
         {
             Collider.isTrigger = false;
+
         }
         else
         {
             Collider.isTrigger = true;
         }
+
         //else
         //{
         //    transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
@@ -85,12 +89,10 @@ public class ChewAI : MonoBehaviour
         //GetComponent<Animator>().SetTrigger("Chop");
 
         yield return new WaitForSeconds(harvestTime);
-
-        // 获取资源
-        //Target = shipDepositPoint.position;
-        currentResource.gameObject.SetActive(false);
-        currentResource.selectionEffect.SetActive(false);
+        currentResource.Amount -= harvestCapacity;
+        currentResource.IsEmpty();
         isCarryingWood = true;   
+
     }
 
     void DeliverToShip()
@@ -99,14 +101,14 @@ public class ChewAI : MonoBehaviour
         {
             Debug.Log("Deliver to ship");            
             // 将木材存入船只
-            ResourceManager.instance.AddResource(currentResource.woodAmount, currentResource.type);
+            ResourceManager.instance.AddResource(harvestCapacity, currentResource.type);
             isCarryingWood = false;
             currentResource = null;
             transform.position = shipDepositPoint.position;
-            if (ChewManager.Instance.ResourceQueue.Count == 0)
+            ChewManager.Instance.ReturnIdleCrew(this);  
+            if (ChewManager.Instance.ResourceList.Count == 0)
             // 回到闲置状态
             {
-                ChewManager.Instance.ReturnIdleCrew(this);
                 gameObject.SetActive(false);
             }
             else
@@ -114,7 +116,9 @@ public class ChewAI : MonoBehaviour
                 // 继续工作
                 if (currentResource == null)
                 {
-                    AssignTask(ChewManager.Instance.ResourceQueue.Dequeue());
+                    AssignTask(ChewManager.Instance.ResourceList[0]);
+                    ChewManager.Instance.ResourceList.RemoveAt(0);
+                    Debug.Log("Continue Task");
                 }
             }
         }
