@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 [System.Serializable]
 public class Wave
 {
@@ -17,24 +18,49 @@ public class MonsterGroup
 }
 public class EnemySpawnController : MonoBehaviour
 {
+    public static EnemySpawnController instance;
     public List<Wave> waves; // 波次列表
-    private int currentWaveIndex = 0; // 当前波次索引
+    public Wave Bosswave;
+    public  int currentWaveIndex = 0; // 当前波次索引
     private bool isSpawning = false; // 是否正在生成怪物
-    private Transform Camera;
-    public Transform minspawn, maxspawn;
+    private Transform player;
+    public Vector3 minspawn, maxspawn;
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
-        Camera = CameraShake.instance.transform;
-        StartNextWave();
-    }
 
+        player = PlayerHealthController.instance.transform;
+    }
+    public float Counter = 0;
     void Update()
     {
+
+        Counter += Time.deltaTime;
         // 检测当前波次是否完成
-        if (!isSpawning && currentWaveIndex < waves.Count && AllMonstersDead())
+        if (!CameraFollow.instance.BossFight)
         {
-            // 等待波次间隔后开始下一波
-            Invoke("StartNextWave", waves[currentWaveIndex].waveInterval);
+            if (!isSpawning && currentWaveIndex < waves.Count)
+            {
+                // 等待波次间隔后开始下一波          
+                if (Counter > waves[currentWaveIndex].waveInterval)
+                {
+                    Debug.Log("continue" + (currentWaveIndex) + "波次");
+                    StartNextWave();
+                    Counter = 0;
+                }
+            }
+        }
+        else
+        {
+            if (Counter > Bosswave.waveInterval)
+            {
+                Debug.Log("boss生成怪");
+                StartCoroutine(SpawnWave(Bosswave));
+                Counter = 0;
+            }
         }
     }
 
@@ -65,7 +91,6 @@ public class EnemySpawnController : MonoBehaviour
                 yield return new WaitForSeconds(wave.spawnInterval);
             }
         }
-
         isSpawning = false;
     }
 
@@ -77,30 +102,40 @@ public class EnemySpawnController : MonoBehaviour
     }
     public Vector3 SelectSpawnPosition()
     {
+        if (!CameraFollow.instance.BossFight)
+        {
+            minspawn = player.position + new Vector3(-28, -16, 0);
+            maxspawn = player.position + new Vector3(+28, 16, 0);
+        }
+        else
+        {
+            minspawn = player.position + new Vector3(-32, -32, 0);
+            maxspawn = player.position + new Vector3(+32, -16, 0);
+        }
         Vector3 spawnPos = Vector3.zero;
         bool spawnVerticalEdge = Random.Range(0f, 1f) >= .5f;
         if (spawnVerticalEdge)
         {
-            spawnPos.y = Random.Range(minspawn.position.y, maxspawn.position.y);
+            spawnPos.y = Random.Range(minspawn.y, maxspawn.y);
             if (Random.Range(0f, 1f) > 0.5f)
             {
-                spawnPos.x = maxspawn.position.x;
+                spawnPos.x = maxspawn.x;
             }
             else
             {
-                spawnPos.x = minspawn.position.x;
+                spawnPos.x = minspawn.x;
             }
         }
         else
         {
-            spawnPos.x = Random.Range(minspawn.position.x, maxspawn.position.x);
+            spawnPos.x = Random.Range(minspawn.x, maxspawn.x);
             if (Random.Range(0f, 1f) > 0.5f)
             {
-                spawnPos.y = maxspawn.position.y;
+                spawnPos.y = maxspawn.y;
             }
             else
             {
-                spawnPos.y = minspawn.position.y;
+                spawnPos.y = minspawn.y;
             }
         }
         return spawnPos;

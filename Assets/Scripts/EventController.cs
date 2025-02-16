@@ -10,10 +10,10 @@ public class EventController : MonoBehaviour
     public CameraFollow Camera;
     public GameObject PlayerOnMap;
     public GameObject MapLight;
+    public GameObject BossHealthUi;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -42,6 +42,7 @@ public class EventController : MonoBehaviour
         Light.SetActive(true);
         CameraFollow.instance.BossFight = true;
         boss.SetActive(true);
+        BossHealthUi.SetActive(true);
     }
     public void OpenMap()
     {

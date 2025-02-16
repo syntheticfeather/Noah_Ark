@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UIController : MonoBehaviour
 {
-    public static UIController Instance;
-    
-    public int Position;
+    public static UIController Instance;   
+    public List<GameObject> jobs ;//6个位置    
+    public List<GameObject> animals ;//6个动物
+    private string selectedJob = "";//存储当前选择的职位
+    private Dictionary<string,string> animalJobMapping = new Dictionary<string,string>();//记录每个动物的职位
 
     public GameObject ChewManagerPanel; // 甲板分配界面
     public GameObject ChewPanel; // 动物显示界面
@@ -15,6 +18,7 @@ public class UIController : MonoBehaviour
     void Start()
     {
         Instance = this;
+        UpdateResourceUI();
     }
 
     
@@ -35,19 +39,61 @@ public class UIController : MonoBehaviour
             }
         }
     }
+    public TMP_Text ResourceUI;
+    public void UpdateResourceUI()
+    {
+        ResourceUI.text = "Wood: " + ResourceManager.instance.Resource[0] + "\n" 
+            + "Stone: " + ResourceManager.instance.Resource[1] + "\n" 
+            + "Food: " + ResourceManager.instance.Resource[2] + "\n"
+            + "Crystal: " + ResourceManager.instance.Resource[3];
+    }
 
-
-    public void ShowChew(int Number)
+    public void ShowChew(string Number)
     {
         // 用以标记职位的Number
-        Position = Number;
-        Debug.Log(Position);
+        selectedJob = Number; 
         ChewPanel.SetActive(true);
     }
 
-    public void OnDuty(int Number)
+    public void OnDuty(string Number)
     {
-        //用于标记动物的Number
+        // 如果没有职位被选中
+        if (string.IsNullOrEmpty(selectedJob))
+        {
+            // todo打印“请选择职位”
+        }
+        // 如果有职位被选中且该人员尚未被分配职位
+        else if (!animalJobMapping.ContainsKey(Number))
+        {
+            // 将人员分配给选定的职位
+            animalJobMapping[Number] = selectedJob;          
+            // 重置选定职位
+            selectedJob = "";
+        }
+        // 如果该人员已经被分配了职位
+        else if (animalJobMapping.ContainsKey(Number))
+        {   
+            // todo弹窗“该人物已有职位（），是否切换职位
+            // 将人员分配给选定的职位
+            animalJobMapping[Number] = selectedJob;
+            // 重置选定职位
+            selectedJob = "";
+            
+        }
 
     }
+
+    //这个方法用于返回某个职位的人员string
+    public string GetPersonByJob(string job)
+    {
+        foreach(var position in animalJobMapping)
+        {
+            if(position.Value == job)
+            {
+                return position.Key; //返回对应人员
+            }
+        } 
+        return null; // 未找到
+    }
 }
+

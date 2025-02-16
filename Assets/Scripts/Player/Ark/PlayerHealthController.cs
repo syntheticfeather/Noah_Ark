@@ -7,6 +7,7 @@ public class PlayerHealthController : MonoBehaviour
     
     public static PlayerHealthController instance;
     public float Health;
+    public float MaxHealth;
     public float Shield;
 
     // Start is called before the first frame update
@@ -38,4 +39,22 @@ public class PlayerHealthController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void Repair(float percent)
+    {
+        float healing =percent * MaxHealth;
+
+        if (Health > 0)
+        {
+            if ((healing + Health) >= MaxHealth)
+            {
+                Health = MaxHealth;
+            }
+            else
+            {
+                Health += healing;
+            }
+        }
+    }
+
 }

@@ -15,8 +15,11 @@ public class EnemyHealthController : MonoBehaviour
     void Start()
     {
         Instance = this;
-        CurHealth = MaxHealth;        
-        originalColor = renderer2D.color; // 保存原始颜色
+        CurHealth = MaxHealth;
+        if (renderer2D != null)
+        {
+            originalColor = renderer2D.color; // 保存原始颜色
+        }
     }
 
     // Update is called once per frame
@@ -32,6 +35,7 @@ public class EnemyHealthController : MonoBehaviour
 
         if (CurHealth <= 0)
         {
+            ResourceManager.instance.AddResource(Random.Range(1, 5), 3);// 随机掉落资源
             Destroy(gameObject);
         }
 

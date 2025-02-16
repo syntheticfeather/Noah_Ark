@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 public class StartSceneManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class StartSceneManager : MonoBehaviour
     //退出游戏按钮点击
     public void OnExitGame()
     {
+        PlayerPrefs.SetInt("CrystalCount", ResourceManager.instance.Resource[3]);
+        PlayerPrefs.Save();
         Application.Quit();
     }
 }
