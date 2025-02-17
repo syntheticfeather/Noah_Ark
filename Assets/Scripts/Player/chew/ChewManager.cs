@@ -11,7 +11,21 @@ public class ChewManager : MonoBehaviour
     public List<Resource> ResourceList = new List<Resource>();
     public int MaxChew = 5;
     private Queue<ChewAI> idleCrews = new Queue<ChewAI>();
-
+    public void AllBack()
+    {
+        foreach (var item in allCrews)
+        {            
+            if (!item.DirectToShip)
+            {
+                item.DirectToShip = true;
+            }
+            else
+            {
+                item.DirectToShip = false;
+                item.gameObject.SetActive(true);
+            }
+        }
+    }
     void Awake()
     {
         Instance = this;
@@ -32,6 +46,7 @@ public class ChewManager : MonoBehaviour
 
     public void AssignHarvestTask(Resource resource)
     {
+        ResourceList.Add(resource);
         if (idleCrews.Count > 0)
         {
             ChewAI crew = idleCrews.Dequeue();
@@ -39,7 +54,6 @@ public class ChewManager : MonoBehaviour
         }
         else
         {
-            ResourceList.Add(resource);
             // 显示UI提示"无可用船员"
             Debug.Log("No available crew");
         }

@@ -9,13 +9,15 @@ public class ChewAI : MonoBehaviour
     public float moveSpeed = 3.5f;
     public float harvestTime = 2f;
     public int harvestCapacity = 3;
+    public int CurHarvestAmount;
     public Transform shipDepositPoint;
     private Vector3 Target;
     
     private Resource currentResource;
     private bool isCarryingWood;
-    public  bool GoArk = false;
+    public bool OneStep = true;
     public bool FinishHarvest = false;
+    public bool DirectToShip = false;
     CircleCollider2D Collider;
     private void Awake()
     {
@@ -36,9 +38,30 @@ public class ChewAI : MonoBehaviour
 
     void Update()
     {
-        if (currentResource == null)
+        if (DirectToShip)
         {
-            transform.position = shipDepositPoint.position;
+            Debug.Log("Direct to ship");
+            transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
+            {
+                gameObject.SetActive(false);
+            }
+            return;
+        }
+        if (!isCarryingWood && (currentResource == null || currentResource.Amount <= 0))
+        {
+            transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
+            {
+                if (ChewManager.Instance.ResourceList.Count != 0)
+                {
+                    AssignTask(ChewManager.Instance.ResourceList[0]);
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
+            }
             return;
         }
         // 检测到达目标
@@ -55,7 +78,11 @@ public class ChewAI : MonoBehaviour
             }
             else
             {
-                StartCoroutine(HarvestResource());
+                if (currentResource != null && OneStep)
+                {
+                    OneStep = false;
+                    StartCoroutine(HarvestResource());
+                }
             }
         }
         
@@ -90,9 +117,14 @@ public class ChewAI : MonoBehaviour
 
         yield return new WaitForSeconds(harvestTime);
         currentResource.Amount -= harvestCapacity;
-        currentResource.IsEmpty();
-        isCarryingWood = true;   
-
+        if (!currentResource.IsEmpty())
+        {
+            CurHarvestAmount = harvestCapacity;
+        }
+        else CurHarvestAmount = 1; 
+        
+        isCarryingWood = true;
+        OneStep = true;
     }
 
     void DeliverToShip()
@@ -101,11 +133,14 @@ public class ChewAI : MonoBehaviour
         {
             Debug.Log("Deliver to ship");            
             // 将木材存入船只
-            ResourceManager.instance.AddResource(harvestCapacity, currentResource.type);
+            ResourceManager.instance.AddResource(CurHarvestAmount, currentResource.type);
+            if (currentResource.IsEmpty())
+            {
+                currentResource = null;
+            }
             isCarryingWood = false;
-            currentResource = null;
             transform.position = shipDepositPoint.position;
-            ChewManager.Instance.ReturnIdleCrew(this);  
+            ChewManager.Instance.ReturnIdleCrew(this);
             if (ChewManager.Instance.ResourceList.Count == 0)
             // 回到闲置状态
             {
@@ -116,8 +151,7 @@ public class ChewAI : MonoBehaviour
                 // 继续工作
                 if (currentResource == null)
                 {
-                    AssignTask(ChewManager.Instance.ResourceList[0]);
-                    ChewManager.Instance.ResourceList.RemoveAt(0);
+                    AssignTask(ChewManager.Instance.ResourceList[0]);                    
                     Debug.Log("Continue Task");
                 }
             }
@@ -127,20 +161,4 @@ public class ChewAI : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
         }
     }
-    //private Vector3 lastValidPosition;
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Island"))
-    //    {
-    //        lastValidPosition = gameObject.transform.position;
-    //    }
-    //}
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Island"))
-    //    {
-    //        gameObject.transform.position = lastValidPosition;
-    //    }
-    //}
-
 }

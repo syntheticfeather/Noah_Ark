@@ -11,6 +11,7 @@ public class EventController : MonoBehaviour
     public GameObject PlayerOnMap;
     public GameObject MapLight;
     public GameObject BossHealthUi;
+    public GameObject Map;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,18 @@ public class EventController : MonoBehaviour
             {
                 CloseMap();
             }
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            ChewManager.Instance.AllBack();
+        }
+        if (TimeUI.instance.WholeTime <= 1200 || Input.GetKeyDown(KeyCode.U))// 索第一次圈 // 数值待定 // 测试
+        {
+            Map.transform.localScale = new Vector3(600, 600, 600);
+        }
+        if (TimeUI.instance.WholeTime <= 600)// 索第一次圈
+        {
+            Map.transform.localScale = new Vector3(400, 400, 400);
         }
     }
 

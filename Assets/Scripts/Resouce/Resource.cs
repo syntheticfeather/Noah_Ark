@@ -45,10 +45,15 @@ public class Resource : MonoBehaviour
         // 通知船员管理器
         ChewManager.Instance.AssignHarvestTask(this);
     }    
-    public void IsEmpty()
+    public bool IsEmpty()
     {
-        gameObject.SetActive(false);
-        selectionEffect.SetActive(false);
-        ChewManager.Instance.ResourceList.Remove(this);
+        if (Amount <= 0)
+        {
+            gameObject.SetActive(false);
+            selectionEffect.SetActive(false);
+            ChewManager.Instance.ResourceList.Remove(this);
+            return true;
+        }
+        return false;
     }
 }
