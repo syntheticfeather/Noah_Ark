@@ -8,13 +8,12 @@ public class TimeUI : MonoBehaviour
 {
     public static TimeUI instance;
     public TMP_Text timerText; // 绑定的 UI Text 组件
-    public float WholeTime;
+    public float WholeTime;// 按分钟输入。
        
 
     void Start()
     {
         instance = this;
-        WholeTime = WholeTime * 60;
     }
 
     void Update()
