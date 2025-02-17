@@ -36,7 +36,7 @@ public class EventController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
-            //AllBack();
+            ChewManager.Instance.AllBack();
         }
     }
 

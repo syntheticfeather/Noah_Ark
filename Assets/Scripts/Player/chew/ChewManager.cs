@@ -14,8 +14,16 @@ public class ChewManager : MonoBehaviour
     public void AllBack()
     {
         foreach (var item in allCrews)
-        {
-            item.DirectToShip = true;
+        {            
+            if (!item.DirectToShip)
+            {
+                item.DirectToShip = true;
+            }
+            else
+            {
+                item.DirectToShip = false;
+                item.gameObject.SetActive(true);
+            }
         }
     }
     void Awake()
