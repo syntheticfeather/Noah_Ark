@@ -22,5 +22,6 @@ public class ChewButton : MonoBehaviour
     public void UpdateText(Sprite sprite)
     {
         Image.sprite = sprite;
+        Debug.Log("UpdateText");
     }
 }

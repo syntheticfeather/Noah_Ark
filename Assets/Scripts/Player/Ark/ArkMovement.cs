@@ -27,7 +27,7 @@ public class ArkMovement : MonoBehaviour
     }
     public void Movement()
     {
-        if (CameraFollow.instance.followArk && Wheel.instance.IsUsing)
+        if (CameraFollow.instance.followArk)
         {
             float moveInput = Input.GetAxis("Vertical");
             float turnInput = Input.GetAxis("Horizontal");
@@ -35,8 +35,6 @@ public class ArkMovement : MonoBehaviour
             TurnBoat(turnInput);
         }
     }
-
-
     void MoveBoat(float input)
     {
         if (input != 0)

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f06bfee0d051334999d9e0020a8c284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodAmount: 10
+  Amount: 10
   selectionEffect: {fileID: 8267375301836359944}
   type: 0
 --- !u!1 &8260644387989367120
@@ -141,6 +141,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2163606428949644716}
     m_Modifications:
+    - target: {fileID: 2805478785470870659, guid: ee35522e0cfb4b44d9db3d6aa40284e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 8371543635910034224, guid: ee35522e0cfb4b44d9db3d6aa40284e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

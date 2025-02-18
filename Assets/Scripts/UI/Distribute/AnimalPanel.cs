@@ -9,15 +9,19 @@ public class AnimalPanel : MonoBehaviour
     // 按钮列表
     public List<GameObject> AnimalButtonList = new List<GameObject>();
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         instance = this;
+    }
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void InitPanel()
@@ -25,14 +29,17 @@ public class AnimalPanel : MonoBehaviour
         int i = 0;
         foreach (var item in ChewManager.Instance.allCrews)
         {
-            if (item != null && i < ChewManager.Instance.MaxChew)
+            if (item != null && i < ChewManager.Instance.allCrews.Count)
             {
                 Debug.Log("开始添加图片");
+                Debug.Log( "第" + i);
                 AnimalButtonList[i].SetActive(true);
                 AnimalButtonList[i].GetComponent<ChewButton>().UpdateText(item.GetComponent<Chew>().sprite);
             }//其他数值,暂定
-            if (i >= ChewManager.Instance.MaxChew || item == null)
+            if (i >= ChewManager.Instance.allCrews.Count || item == null)
             {
+                Debug.Log("隐藏图片");
+
                 AnimalButtonList[i].SetActive(false);
             }
             i++;

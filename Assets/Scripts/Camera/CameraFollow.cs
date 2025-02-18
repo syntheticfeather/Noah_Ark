@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class CameraFollow : MonoBehaviour
     public static CameraFollow instance;
     public GameObject Target;
     public GameObject Light;
+    public Camera camera;
     void Start()
     {
         transform.position = Target.transform.position;
@@ -54,8 +56,9 @@ public class CameraFollow : MonoBehaviour
         //Debug.Log(transform.position);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, Target.transform.position + new Vector3(0, 0, -10), smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
-        transform.GetComponent<Camera>().orthographicSize = 20;
-        Light.transform.position = Target.transform.position;
+        transform.GetComponent<Camera>().orthographicSize = Mathf.Lerp(transform.GetComponent<Camera>().orthographicSize, 20, Time.deltaTime * 5);
+        Light.GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(Light.GetComponent<Light2D>().pointLightOuterRadius, 20, Time.deltaTime * 5); // 动物带加入
+        Light.transform.position = transform.position + new Vector3(0, 0, 10);
     }
 
     void FreeMovement()
@@ -64,7 +67,8 @@ public class CameraFollow : MonoBehaviour
         float vertical = Input.GetAxis("Vertical"); 
         TargetPosition += new Vector3(horizontal, vertical, 0) * moveSpeed * Time.deltaTime;
         transform.position = Vector3.Lerp(transform.position, TargetPosition, smoothTime);
-        transform.GetComponent<Camera>().orthographicSize = 20;
+        transform.GetComponent<Camera>().orthographicSize = Mathf.Lerp(transform.GetComponent<Camera>().orthographicSize, 30, Time.deltaTime * 5);
+        Light.GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(Light.GetComponent<Light2D>().pointLightOuterRadius, 35, Time.deltaTime * 5);
         Light.transform.position = transform.position + new Vector3(0, 0, 10);
     }
 

@@ -18,7 +18,8 @@ public class TurretAI : MonoBehaviour
     public float fireRate = 1f;
     // 计时器，用于控制攻击间隔
     private float fireCountdown = 0f;
-    
+
+    public GameObject Animal;// 动态获取不同动物
       
     void Update()
     {
@@ -42,7 +43,7 @@ public class TurretAI : MonoBehaviour
             
             var possibleTarget = hitCollider.transform;
             // 如果该碰撞体属于敌人
-            if (hitCollider.CompareTag(targetTag))
+            if (hitCollider.CompareTag(targetTag) || hitCollider.CompareTag("Boss")) 
             {               
                 // 计算距离的平方以避免开方运算
                 float distanceToTargetSqr = ((Vector2)possibleTarget.position - currentPosition).sqrMagnitude;
