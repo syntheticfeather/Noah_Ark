@@ -31,14 +31,14 @@ public class AnimalPanel : MonoBehaviour
         {
             if (item != null && i < ChewManager.Instance.allCrews.Count)
             {
-                Debug.Log("开始添加图片");
-                Debug.Log( "第" + i);
+                //Debug.Log("开始添加图片");
+                //Debug.Log( "第" + i);
                 AnimalButtonList[i].SetActive(true);
                 AnimalButtonList[i].GetComponent<ChewButton>().UpdateText(item.GetComponent<Chew>().sprite);
             }//其他数值,暂定
             if (i >= ChewManager.Instance.allCrews.Count || item == null)
             {
-                Debug.Log("隐藏图片");
+                //Debug.Log("隐藏图片");
 
                 AnimalButtonList[i].SetActive(false);
             }

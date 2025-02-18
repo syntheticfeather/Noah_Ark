@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.Progress;
 
 public class UIController : MonoBehaviour
 {
@@ -63,38 +66,54 @@ public class UIController : MonoBehaviour
             // todo打印“请选择职位”
             Debug.Log("没有string");
         }
-        //// 如果有职位被选中且该人员尚未被分配职位
-        //else if (!animalJobMapping.ContainsKey(Number))
-        //{
-        //    // 将人员分配给选定的职位
-        //    animalJobMapping[Number] = selectedJob;          
-        //    // 重置选定职位
-        //    selectedJob = "";
-        //}
-        //// 如果该人员已经被分配了职位
-        //else if (animalJobMapping.ContainsKey(Number))
-        //{   
-        //    // todo弹窗“该人物已有职位（），是否切换职位
-        //    // 将人员分配给选定的职位
-        //    animalJobMapping[Number] = selectedJob;
-        //    // 重置选定职位
-        //    selectedJob = "";            
-        //}
-        WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<PlayerWeapon>().enabled = false;
-        WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<TurretAI>().enabled = false;
+        // 该位置的按钮显示动物图像
+
+
+
+
+        GameObject targetAnimal = ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
+
+        // 定义一个Predicate来检查GameObject是否与targetAnimal相同
+        Predicate<GameObject> isTargetAnimal = (animal) => animal == targetAnimal;
+
+        if (WeaponManager.Instance.AnimalList.Exists(isTargetAnimal))
+        {
+            //关闭原有位置的脚本
+            int index = WeaponManager.Instance.AnimalList.FindIndex(isTargetAnimal);
+            WeaponManager.Instance.AnimalList[index] = null;
+            WeaponManager.Instance.WeaponList[index].GetComponent<PlayerWeapon>().enabled = false;
+            WeaponManager.Instance.WeaponList[index].GetComponent<TurretAI>().enabled = false;
+            // 位置图片删除
+            jobs[index].GetComponent<ChewButton>().UpdateText(null);
+        }        
+        Sprite i = ChewManager.Instance.allCrews[int.Parse(Number)].GetComponent<Chew>().Sprite_Pic;
+        jobs[int.Parse(selectedJob)].GetComponent<ChewButton>().UpdateText(i);       
+        
+
+
+
+
+
+
+
+        //设置脚本
         if (ChewManager.Instance.allCrews[int.Parse(Number)].name == "Noah")
         {
             //将playerweapon脚本打开
             Debug.Log("Noah启用鼠标跟踪脚本");
             WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<PlayerWeapon>().enabled = true;
-            WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<PlayerWeapon>().Animal = ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
+            WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<PlayerWeapon>().Animal =
+                ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
+            WeaponManager.Instance.AnimalList[int.Parse(selectedJob)] = ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
         }
         else
         {
             //打开AI的weapon脚本
             Debug.Log("AI启用自动跟踪脚本");
             WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<TurretAI>().enabled = true;
-            WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<TurretAI>().Animal = ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
+            WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<TurretAI>().Animal = 
+                ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
+            WeaponManager.Instance.AnimalList[int.Parse(selectedJob)] = ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
         }
     }
 

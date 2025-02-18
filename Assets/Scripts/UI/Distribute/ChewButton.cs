@@ -9,7 +9,10 @@ public class ChewButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Image.sprite = sprite;
+        if (Image.sprite == null)
+        {
+            Image.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -22,6 +25,12 @@ public class ChewButton : MonoBehaviour
     public void UpdateText(Sprite sprite)
     {
         Image.sprite = sprite;
-        Debug.Log("UpdateText");
+        if (Image.sprite == null)
+        {
+            Image.gameObject.SetActive(false);
+            return;
+        }
+        Image.gameObject.SetActive(true);
+        //Debug.Log("UpdateText");
     }
 }
