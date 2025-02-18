@@ -20,6 +20,8 @@ public class PlayerWeapon : MonoBehaviour
     public float CoolDown;
     private float CoolDownCounter = 0;
 
+    public GameObject Animal;// 动物不同种类的攻击方式不同，需要动态获取。
+
     public bool IsUsing;
     void Start()
     {

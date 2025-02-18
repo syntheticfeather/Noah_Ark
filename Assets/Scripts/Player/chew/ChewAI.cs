@@ -18,6 +18,7 @@ public class ChewAI : MonoBehaviour
     public bool OneStep = true;
     public bool FinishHarvest = false;
     public bool DirectToShip = false;
+    public bool GetToWork;
     CircleCollider2D Collider;
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class ChewAI : MonoBehaviour
 
     public void AssignTask(Resource resource)
     {
+        GetToWork = true;
         transform.position = shipDepositPoint.position;
         gameObject.SetActive(true);
         Debug.Log("Assign Task");
@@ -38,17 +40,18 @@ public class ChewAI : MonoBehaviour
 
     void Update()
     {
-        if (DirectToShip)
+        if (DirectToShip)// G键强制回船
         {
             Debug.Log("Direct to ship");
             transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
             if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
             {
+                GetToWork = false;
                 gameObject.SetActive(false);
             }
             return;
         }
-        if (!isCarryingWood && (currentResource == null || currentResource.Amount <= 0))
+        if (!isCarryingWood && (currentResource == null || currentResource.Amount <= 0))// 物资采集完提前回船。
         {
             transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
             if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
@@ -65,7 +68,7 @@ public class ChewAI : MonoBehaviour
             return;
         }
         // 检测到达目标
-        if (isCarryingWood)
+        if (isCarryingWood)// 采集逻辑
         {
             DeliverToShip();
         }
@@ -144,6 +147,7 @@ public class ChewAI : MonoBehaviour
             if (ChewManager.Instance.ResourceList.Count == 0)
             // 回到闲置状态
             {
+                GetToWork = false;
                 gameObject.SetActive(false);
             }
             else
