@@ -6,6 +6,8 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager Instance;
     public List<GameObject> WeaponList = new List<GameObject>();
+    public List<GameObject> AnimalList = new List<GameObject>();
+    // 动物与所操控的武器索引一致
     // Start is called before the first frame update
     private void Awake()
     {

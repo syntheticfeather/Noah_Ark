@@ -15,6 +15,7 @@ public class Chew : MonoBehaviour
 
     public List<ChewStats> Stats; // 用于小动物升级的列表
     public Sprite sprite;
+    public Sprite Sprite_Pic;
 
     public void UpdateData(int index, string attribute, float change)
     {
