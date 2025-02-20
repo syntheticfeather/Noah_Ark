@@ -57,7 +57,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, Target.transform.position + new Vector3(0, 0, -10), smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
         Light.GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(Light.GetComponent<Light2D>().pointLightOuterRadius, 20, Time.deltaTime * 5); // 动物带加入
-        Light.transform.position = transform.position + new Vector3(0, 0, 10);
+        Light.transform.position = PlayerHealthController.instance.transform.position;
         if (transform.GetComponent<Camera>().orthographicSize == 500)
         {
             transform.GetComponent<Camera>().orthographicSize = 20;

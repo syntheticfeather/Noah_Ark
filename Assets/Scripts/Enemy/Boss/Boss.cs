@@ -29,6 +29,10 @@ public class Boss : MonoBehaviour
     }    
     void Update()
     {        
+        if (EnemyHealthController.CurHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
         StrikeCounter -= Time.deltaTime;
         DropCounter -= Time.deltaTime;
         if (EnemyHealthController.CurHealth < (EnemyHealthController.MaxHealth * 0.8))

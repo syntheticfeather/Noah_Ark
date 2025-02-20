@@ -5,13 +5,18 @@ using UnityEngine;
 
 public class IsLandController : MonoBehaviour
 {
+    public static IsLandController instance;
     public int numberOfIsLand = 12; // 需要生成的岛屿数量
     public float radius = 1000f; // 圆的半径
     public float minDistance = 500f; // 点之间的最小距离
     private List<Vector2> points = new List<Vector2>(); // 存储生成的中心点位置
     public List<GameObject> InitIsLand_List = new List<GameObject>();
     public List<GameObject> CurIsLand_List = new List<GameObject>();
-    
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -129,6 +134,19 @@ public class IsLandController : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public void UpdateIsLand()
+    {
+        //超出岛的范围，销毁
+        for (int i = 0; i < CurIsLand_List.Count; i++)
+        {
+            if (Vector2.Distance(CurIsLand_List[i].transform.position, Vector2.zero) > EventController.instance.Map.transform.localScale.x / 2)
+            {
+                Destroy(CurIsLand_List[i]);
+                CurIsLand_List.Remove(CurIsLand_List[i]);
+            }
+        }
     }
 
     void LogPoints()
