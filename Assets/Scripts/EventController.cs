@@ -25,10 +25,10 @@ public class EventController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Vector3.Distance(PlayerHealthController.instance.transform.position,Vector3.zero) <= 40)
+    {    
+        if (Vector3.Distance(PlayerHealthController.instance.transform.position, Vector3.zero) <= 40)
         {
-            BossFight();           
+            BossFight();
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
@@ -55,6 +55,7 @@ public class EventController : MonoBehaviour
             Map.transform.localScale = new Vector3(400, 400, 400);
             IsLandController.instance.UpdateIsLand();
         }
+             
     }
 
     public void BossFight()
