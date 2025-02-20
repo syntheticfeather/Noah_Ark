@@ -36,8 +36,8 @@ public class LongDisEnemyController : MonoBehaviour
     
     void Update()
     {
-        KnockCounter -= Time.deltaTime;
-        Direction = PlayerTransform.position - transform.position;
+        KnockCounter -= Time.deltaTime;        
+        Direction = PlayerTransform.position - transform.position;       
         //朝向玩家
         float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg - 90;
         // 应用旋转

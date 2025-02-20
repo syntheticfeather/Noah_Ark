@@ -20,7 +20,7 @@ public class Bomb : MonoBehaviour
     public ParticleSystem ParticleSystem;
     public ParticleSystem BloodSystem;
 
-    void Start()
+     void Start()
     {
         LifeTimeCounter = LifeTime;
         Direction = artillery.transform.up;

@@ -37,7 +37,10 @@ public class MeleeEnemyController : MonoBehaviour
     void Update()
     {
         KnockCounter-=Time.deltaTime;
-        Direction = PlayerTransform.position - transform.position;
+        if (transform.position != null)
+        {
+            Direction = PlayerTransform.position - transform.position;
+        }
         //朝向玩家
         float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
         // 应用旋转

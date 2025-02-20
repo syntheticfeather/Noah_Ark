@@ -86,16 +86,10 @@ public class UIController : MonoBehaviour
             // 位置图片删除
             jobs[index].GetComponent<ChewButton>().UpdateText(null);
         }        
+        //左侧职位图片更新
         Sprite i = ChewManager.Instance.allCrews[int.Parse(Number)].GetComponent<Chew>().Sprite_Pic;
-        jobs[int.Parse(selectedJob)].GetComponent<ChewButton>().UpdateText(i);       
-        
-
-
-
-
-
-
-
+        jobs[int.Parse(selectedJob)].GetComponent<ChewButton>().UpdateText(i);  
+        //设置武器脚本
         //设置脚本
         if (ChewManager.Instance.allCrews[int.Parse(Number)].name == "Noah")
         {

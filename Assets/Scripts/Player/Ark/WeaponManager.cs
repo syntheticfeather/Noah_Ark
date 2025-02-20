@@ -23,4 +23,36 @@ public class WeaponManager : MonoBehaviour
     {
         
     }
+
+    public void UpdateStatus()
+    {
+        for (int i = 0; i < AnimalList.Count; i++)
+        {
+            if (AnimalList[i])
+            {
+                if (AnimalList[i].GetComponent<ChewAI>().GetToWork)// 去工作则不能攻击
+                {
+                    if (AnimalList[i].name == "Noah")
+                    {
+                        WeaponList[i].GetComponent<PlayerWeapon>().CanAtk = false;
+                    }
+                    else
+                    {
+                        WeaponList[i].GetComponent<TurretAI>().CanAtk = false;
+                    }
+                }
+                else
+                {
+                    if (AnimalList[i].name == "Noah")
+                    {
+                        WeaponList[i].GetComponent<PlayerWeapon>().CanAtk = true;
+                    }
+                    else
+                    {
+                        WeaponList[i].GetComponent<TurretAI>().CanAtk = true;
+                    }
+                }
+            }
+        }
+    }
 }

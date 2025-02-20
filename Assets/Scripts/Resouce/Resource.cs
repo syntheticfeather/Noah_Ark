@@ -13,6 +13,7 @@ public class Resource : MonoBehaviour
 
     void OnMouseDown()
     {
+        Debug.Log("µã»÷ÁË");
         if (!isMarked && !CameraFollow.instance.followArk)
         {
             Mark();
