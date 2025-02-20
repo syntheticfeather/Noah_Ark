@@ -8,21 +8,23 @@ public class ChewManager : MonoBehaviour
     public static ChewManager Instance;
 
     public List<ChewAI> allCrews = new List<ChewAI>();
-    public List<Resource> ResourceList = new List<Resource>();
-    public int MaxChew = 5;
+    public List<Resource> ResourceList = new List<Resource>();    
     private Queue<ChewAI> idleCrews = new Queue<ChewAI>();
     public void AllBack()
     {
         foreach (var item in allCrews)
         {            
-            if (!item.DirectToShip)
+            if (item != null)
             {
-                item.DirectToShip = true;
-            }
-            else
-            {
-                item.DirectToShip = false;
-                item.gameObject.SetActive(true);
+                if (!item.DirectToShip)
+                {
+                    item.DirectToShip = true;
+                }
+                else
+                {
+                    item.DirectToShip = false;
+                    item.gameObject.SetActive(true);
+                }
             }
         }
     }

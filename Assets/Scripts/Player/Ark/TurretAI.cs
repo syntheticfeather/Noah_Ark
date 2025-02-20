@@ -20,14 +20,19 @@ public class TurretAI : MonoBehaviour
     private float fireCountdown = 0f;
 
     public GameObject Animal;// 动态获取不同动物
+
+    public bool CanAtk = true; // 是否可以攻击
       
     void Update()
     {
-        if( fireCountdown >= 0)
+        if (CanAtk)
         {
-            fireCountdown -= Time.deltaTime;
+            if ( fireCountdown >= 0)
+            {
+                fireCountdown -= Time.deltaTime;
+            }
+            DetectEnemies();
         }
-        DetectEnemies();
     }
     //检测并瞄准敌人
     private void DetectEnemies()

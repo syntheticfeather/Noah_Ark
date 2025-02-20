@@ -31,6 +31,7 @@ public class ChewAI : MonoBehaviour
     public void AssignTask(Resource resource)
     {
         GetToWork = true;
+        WeaponManager.Instance.UpdateStatus();
         transform.position = shipDepositPoint.position;
         gameObject.SetActive(true);
         Debug.Log("Assign Task");
@@ -47,6 +48,7 @@ public class ChewAI : MonoBehaviour
             if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
             {
                 GetToWork = false;
+                WeaponManager.Instance.UpdateStatus();
                 gameObject.SetActive(false);
             }
             return;
@@ -62,6 +64,8 @@ public class ChewAI : MonoBehaviour
                 }
                 else
                 {
+                    GetToWork = false;
+                    WeaponManager.Instance.UpdateStatus();
                     gameObject.SetActive(false);
                 }
             }
@@ -84,6 +88,7 @@ public class ChewAI : MonoBehaviour
                 if (currentResource != null && OneStep)
                 {
                     OneStep = false;
+                    WeaponManager.Instance.UpdateStatus();
                     StartCoroutine(HarvestResource());
                 }
             }

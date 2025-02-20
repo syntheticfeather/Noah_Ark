@@ -23,6 +23,7 @@ public class PlayerWeapon : MonoBehaviour
     public GameObject Animal;// 动物不同种类的攻击方式不同，需要动态获取。
 
     public bool IsUsing;
+    public bool CanAtk = true;
     void Start()
     {
     }
@@ -30,15 +31,18 @@ public class PlayerWeapon : MonoBehaviour
 
     void Update()
     {        
-        //计时器如果小于0，表明冷却完毕，停止计时减少运算量
-        if (CoolDownCounter >= 0)
+        if (CanAtk)
         {
-            CoolDownCounter -= Time.deltaTime;
-        }
-        if (IsUsing && Time.timeScale == 1f)
-        {
-            Attack();
-            FollowMouse();
+            //计时器如果小于0，表明冷却完毕，停止计时减少运算量
+            if (CoolDownCounter >= 0)
+            {
+                CoolDownCounter -= Time.deltaTime;
+            }
+            if (IsUsing && Time.timeScale == 1f)
+            {
+                Attack();
+                FollowMouse();
+            }
         }
     }    
 
