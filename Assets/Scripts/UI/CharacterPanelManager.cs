@@ -8,6 +8,7 @@ public class CharacterPanelController : MonoBehaviour
     public GameObject characterPanel;
     public bool isPanelActive = false;
     public List<GameObject> list = new List<GameObject>();// 动物属性面板
+    public List<GameObject> Button = new List<GameObject>();//动物的六个按钮
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
@@ -54,5 +55,27 @@ public class CharacterPanelController : MonoBehaviour
             
         }                
     }
-    
+    //翻页
+    public void ChangePage()
+    {
+        //如果第一页的面板被激活，就打开第二页
+        if (Button[0].activeSelf == true)
+        {
+            Button[0].SetActive(false);
+            Button[1].SetActive(false);
+            Button[2].SetActive(false);
+            Button[3].SetActive(true);
+            Button[4].SetActive(true);
+            Button[5].SetActive(true);
+        }
+        else
+        {
+            Button[3].SetActive(false);
+            Button[4].SetActive(false);
+            Button[5].SetActive(false);
+            Button[0].SetActive(true);
+            Button[1].SetActive(true);
+            Button[2].SetActive(true);
+        }
+    }
 }
