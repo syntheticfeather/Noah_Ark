@@ -1,29 +1,28 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BouncingBomb : MonoBehaviour
+public class Bomb : MonoBehaviour
 {
+    // èŒƒå›´ä¼¤å®³
     public GameObject artillery;
     public float Speed;
     public float Decration;
-    public float ChangeRate; // ¶¯»­
-
-    public float explosionRadius = 5f; // ±¬Õ¨·¶Î§
+    public float ChangeRate; // åŠ¨ç”»
+    
+    
+    public float explosionRadius = 5f; // çˆ†ç‚¸èŒƒå›´
     public int ATK;
 
     public float LifeTime;
     private float LifeTimeCounter;
 
     private Vector3 Direction;
-    public LayerMask damageLayers; // ¿ÉÒÔÊÜµ½ÉËº¦µÄÍ¼²ã
+    public LayerMask damageLayers; // å¯ä»¥å—åˆ°ä¼¤å®³çš„å›¾å±‚
     public ParticleSystem ParticleSystem;
     public ParticleSystem BloodSystem;
 
-    public int maxBounces = 3; // ×î´ó·´µ¯´ÎÊı
-    private int bounceCount = 0; // µ±Ç°·´µ¯´ÎÊı
-
-    void Start()
+     void Start()
     {
         LifeTimeCounter = LifeTime;
         Direction = artillery.transform.up;
@@ -45,7 +44,6 @@ public class BouncingBomb : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
@@ -57,45 +55,19 @@ public class BouncingBomb : MonoBehaviour
             Boss.Instance.GetComponent<EnemyHealthController>().CurHealth -= ATK / 3;
             Instantiate(BloodSystem, transform.position, Quaternion.identity);
         }
-
-        // ¼ì²âÊÇ·ñÅöµ½±ß½ç
-        if (collision.tag == "Boundary")
-        {
-            if (bounceCount < maxBounces)
-            {
-                Bounce(collision);
-                bounceCount++;
-            }
-            else
-            {
-                // ²¥·Å±¬Õ¨ÌØĞ§»òÒôĞ§
-                PlayExplosionEffect();
-                // Ïú»ÙÅÚµ¯
-                Destroy(gameObject);
-            }
-        }
+        // æ’­æ”¾çˆ†ç‚¸ç‰¹æ•ˆæˆ–éŸ³æ•ˆ
+        PlayExplosionEffect();
+        // é”€æ¯ç‚®å¼¹
+        Destroy(gameObject);
     }
-
-    void Bounce(Collider2D collision)
-    {
-        // »ñÈ¡Åö×²±ß½çµÄ·¨Ïß
-        Vector2 normal = collision.transform.up;
-
-        // ¼ÆËã·´Éä·½Ïò
-        Direction = Vector2.Reflect(Direction, normal);
-
-        // ¸üĞÂÅÚµ¯µÄ·½Ïò
-        transform.up = Direction;
-    }
-
     void Explode()
     {
-        // ¼ì²â±¬Õ¨·¶Î§ÄÚµÄËùÓĞÎïÌå
+        // æ£€æµ‹çˆ†ç‚¸èŒƒå›´å†…çš„æ‰€æœ‰ç‰©ä½“
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, damageLayers);
 
         foreach (Collider2D hitCollider in hitColliders)
         {
-            // ¶ÔÎïÌåÓ¦ÓÃÉËº¦
+            // å¯¹ç‰©ä½“åº”ç”¨ä¼¤å®³
             EnemyHealthController health = hitCollider.GetComponent<EnemyHealthController>();
             if (health != null)
             {
@@ -106,14 +78,21 @@ public class BouncingBomb : MonoBehaviour
 
     void PlayExplosionEffect()
     {
-        // ÒôĞ§Ôİ¶¨
+
+        if (ParticleSystem != null)
         Instantiate(ParticleSystem, transform.position, Quaternion.identity);
+        // éŸ³æ•ˆæš‚å®š
     }
 
     void OnDrawGizmosSelected()
     {
-        // ÔÚ³¡¾°ÖĞ»æÖÆ±¬Õ¨·¶Î§
+        // åœ¨åœºæ™¯ä¸­ç»˜åˆ¶çˆ†ç‚¸èŒƒå›´
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+
+    public void GetArtillery(GameObject art)
+    {
+        artillery = art;
     }
 }

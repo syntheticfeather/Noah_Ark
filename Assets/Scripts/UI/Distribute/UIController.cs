@@ -99,6 +99,8 @@ public class UIController : MonoBehaviour
             WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<PlayerWeapon>().Animal =
                 ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
             WeaponManager.Instance.AnimalList[int.Parse(selectedJob)] = ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
+            WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<PlayerWeapon>().Bomb = WeaponManager.Instance.GetBulletByString(WeaponManager.Instance.AnimalList[int.Parse(selectedJob)].name);
+
         }
         else
         {
@@ -108,6 +110,8 @@ public class UIController : MonoBehaviour
             WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<TurretAI>().Animal = 
                 ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
             WeaponManager.Instance.AnimalList[int.Parse(selectedJob)] = ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
+            // 然后将对应的预制体丢到脚本中去
+            WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<TurretAI>().bulletPrefab = WeaponManager.Instance.GetBulletByString(WeaponManager.Instance.AnimalList[int.Parse(selectedJob)].name);
         }
     }
 

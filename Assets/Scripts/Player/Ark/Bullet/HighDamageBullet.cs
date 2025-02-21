@@ -1,26 +1,27 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class HighDamageBullet : MonoBehaviour
 {
     public GameObject artillery;
     public float Speed;
     public float Decration;
-    public float ChangeRate; // åŠ¨ç”»
-    
-    public float explosionRadius = 5f; // çˆ†ç‚¸èŒƒå›´
+    public float ChangeRate; // ¶¯»­
+    public float ATKRate; // ¹¥»÷ËÙ¶È
+
+    public float explosionRadius = 5f; // ±¬Õ¨·¶Î§
     public int ATK;
 
     public float LifeTime;
     private float LifeTimeCounter;
 
     private Vector3 Direction;
-    public LayerMask damageLayers; // å¯ä»¥å—åˆ°ä¼¤å®³çš„å›¾å±‚
+    public LayerMask damageLayers; // ¿ÉÒÔÊÜµ½ÉËº¦µÄÍ¼²ã
     public ParticleSystem ParticleSystem;
     public ParticleSystem BloodSystem;
 
-     void Start()
+    void Start()
     {
         LifeTimeCounter = LifeTime;
         Direction = artillery.transform.up;
@@ -46,44 +47,28 @@ public class Bomb : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            Explode();
+            collision.GetComponent<EnemyHealthController>().TakeDamage(ATK);
+            Instantiate(BloodSystem, transform.position, Quaternion.identity);
         }
         if (collision.name == "boss")
         {
             Boss.Instance.GetComponent<EnemyHealthController>().CurHealth -= ATK / 3;
             Instantiate(BloodSystem, transform.position, Quaternion.identity);
         }
-        // æ’­æ”¾çˆ†ç‚¸ç‰¹æ•ˆæˆ–éŸ³æ•ˆ
+        // ²¥·Å±¬Õ¨ÌØĞ§»òÒôĞ§
         PlayExplosionEffect();
-        // é”€æ¯ç‚®å¼¹
+        // Ïú»ÙÅÚµ¯
         Destroy(gameObject);
     }
-    void Explode()
-    {
-        // æ£€æµ‹çˆ†ç‚¸èŒƒå›´å†…çš„æ‰€æœ‰ç‰©ä½“
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, damageLayers);
-
-        foreach (Collider2D hitCollider in hitColliders)
-        {
-            // å¯¹ç‰©ä½“åº”ç”¨ä¼¤å®³
-            EnemyHealthController health = hitCollider.GetComponent<EnemyHealthController>();
-            if (health != null)
-            {
-                health.TakeDamage(ATK);
-            }
-        }
-    }
-
     void PlayExplosionEffect()
     {
-
-        // éŸ³æ•ˆæš‚å®š
+        if (ParticleSystem != null)
+        // ÒôĞ§Ôİ¶¨
         Instantiate(ParticleSystem, transform.position, Quaternion.identity);
     }
-
     void OnDrawGizmosSelected()
     {
-        // åœ¨åœºæ™¯ä¸­ç»˜åˆ¶çˆ†ç‚¸èŒƒå›´
+        // ÔÚ³¡¾°ÖĞ»æÖÆ±¬Õ¨·¶Î§
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }

@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class HomingBullet : MonoBehaviour
 {
-   
+    public GameObject artillery;
     public float Speed = 10f;               
     public float Deceleration = 0.5f;      
     public float LifeTime = 5f;            
-    public int ATK = 20;                   
+    public int ATK = 20;    
 
-    
+
     public float TrackingRadius = 10f;     
     public float RotateSpeed = 200f;       
     public float Acceleration = 2f;        
@@ -32,8 +32,6 @@ public class HomingBullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         currentSpeed = Speed;
         lifeTimeCounter = LifeTime;
-
-        
     }
 
     void Update()
@@ -58,7 +56,7 @@ public class HomingBullet : MonoBehaviour
         }
 
         // 搜索范围内最近的敌人
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, TrackingRadius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, TrackingRadius, DamageLayers);
         float closestDistance = Mathf.Infinity;
         Transform closestTarget = null;
 
@@ -116,9 +114,7 @@ public class HomingBullet : MonoBehaviour
         if (ExplosionEffect != null)
         {
             Instantiate(ExplosionEffect, transform.position, Quaternion.identity);
-        }
-
-        
+        }        
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, ExplosionRadius, DamageLayers);
         foreach (Collider2D hitCollider in hitColliders)
         {
@@ -128,9 +124,7 @@ public class HomingBullet : MonoBehaviour
             {
                 health.TakeDamage(ATK);
             }
-        }
-
-        
+        }        
         Destroy(gameObject);
     }
 

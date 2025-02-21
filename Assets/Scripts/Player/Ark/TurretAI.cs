@@ -97,6 +97,7 @@ public class TurretAI : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
+    
 }
 
 
