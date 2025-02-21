@@ -8,7 +8,7 @@ public class HighDamageBullet : MonoBehaviour
     public float Speed;
     public float Decration;
     public float ChangeRate; // ¶¯»­
-    public float ATKRate; // ¹¥»÷ËÙ¶È
+    
 
     public float explosionRadius = 5f; // ±¬Õ¨·¶Î§
     public int ATK;
