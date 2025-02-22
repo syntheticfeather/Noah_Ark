@@ -52,7 +52,8 @@ public class PlayerWeapon : MonoBehaviour
         if (CoolDownCounter < 0 && Input.GetAxisRaw("Fire1") == 1)
         {
             //根据方向，实例化炸药
-            GameObject BombToSpawn = Instantiate(Bomb, this.transform.position, Quaternion.identity);
+            GameObject BombToSpawn = Instantiate(Bomb, this.transform.position, transform.rotation);
+            BombToSpawn.GetComponent<BulletDirecion>().direction = transform.up;
             BombToSpawn.SetActive(true);           
 
             //进入冷却状态

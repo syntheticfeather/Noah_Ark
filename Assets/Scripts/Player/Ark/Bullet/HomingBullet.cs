@@ -3,41 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class HomingBullet : MonoBehaviour
+public class HomingBullet : Father
 {
-    public GameObject artillery;
-    public float Speed = 10f;               
-    public float Deceleration = 0.5f;      
-    public float LifeTime = 5f;            
-    public int ATK = 20;    
-
-
-    public float TrackingRadius = 10f;     
+    public float Speed;    
+    public float TrackingRadius = 10f;                 
+    public ParticleSystem ExplosionEffect;           
     public float RotateSpeed = 200f;       
     public float Acceleration = 2f;        
-
-   
-    public float ExplosionRadius = 3f;     // 爆炸范围
-    public LayerMask DamageLayers;         // 可伤害的图层
-    public ParticleSystem ExplosionEffect; 
-        
-
     private Transform target;              // 当前追踪目标
     private Rigidbody2D rb;
     private float currentSpeed;
-    private float lifeTimeCounter;
 
     void Start()
-    {
+    {        
         rb = GetComponent<Rigidbody2D>();
         currentSpeed = Speed;
-        lifeTimeCounter = LifeTime;
+        LifeTimeCounter = LifeTime;
     }
 
     void Update()
     {
-        lifeTimeCounter -= Time.deltaTime;
-        if (lifeTimeCounter <= 0)
+        LifeTimeCounter -= Time.deltaTime;
+        if (LifeTimeCounter <= 0)
         {
             Explode();
             return;
@@ -56,7 +43,7 @@ public class HomingBullet : MonoBehaviour
         }
 
         // 搜索范围内最近的敌人
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, TrackingRadius, DamageLayers);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, TrackingRadius, damageLayers);
         float closestDistance = Mathf.Infinity;
         Transform closestTarget = null;
 
@@ -79,10 +66,8 @@ public class HomingBullet : MonoBehaviour
     void MoveTowardsTarget()
     {
         if (target == null)
-        {
-            
+        {            
             rb.velocity = transform.up * currentSpeed;
-            currentSpeed -= Deceleration * Time.deltaTime;
             return;
         }
 
@@ -115,7 +100,7 @@ public class HomingBullet : MonoBehaviour
         {
             Instantiate(ExplosionEffect, transform.position, Quaternion.identity);
         }        
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, ExplosionRadius, DamageLayers);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, damageLayers);
         foreach (Collider2D hitCollider in hitColliders)
         {
             

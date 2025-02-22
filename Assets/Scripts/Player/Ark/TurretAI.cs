@@ -85,7 +85,9 @@ public class TurretAI : MonoBehaviour
     void FireAtTarget(Transform target)
     {
         // 在发射点位置实例化子弹预制件       
-        GameObject BombToSpawn = Instantiate(bulletPrefab, this.transform.position, Quaternion.identity);
+        GameObject BombToSpawn = Instantiate(bulletPrefab, this.transform.position, transform.rotation);
+        if (BombToSpawn.GetComponent<BulletDirecion>())
+            BombToSpawn.GetComponent<BulletDirecion>().direction = transform.up;
         BombToSpawn.SetActive(true);
         // 重置计时器，等待下次攻击
         fireCountdown = 1f / fireRate;
@@ -97,6 +99,9 @@ public class TurretAI : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
+
+
+    
     
 }
 

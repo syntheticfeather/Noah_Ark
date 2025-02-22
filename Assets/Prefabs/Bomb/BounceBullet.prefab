@@ -93,9 +93,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 160047548976670407}
-  - component: {fileID: 6380086826440656262}
   - component: {fileID: 2831289869122077202}
   - component: {fileID: 1676424697225401886}
+  - component: {fileID: -5353105472663162500}
+  - component: {fileID: -802410594061021119}
   m_Layer: 7
   m_Name: BounceBullet
   m_TagString: Untagged
@@ -119,31 +120,6 @@ Transform:
   - {fileID: 5990532695848515299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6380086826440656262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7747043599244373358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 872c7d2a6e7bdd047bf0464c3120e5ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  artillery: {fileID: 0}
-  Speed: 8
-  Decration: 0.5
-  ChangeRate: 0.125
-  explosionRadius: 1
-  ATK: 5
-  LifeTime: 7
-  damageLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  ParticleSystem: {fileID: 0}
-  BloodSystem: {fileID: 0}
-  maxBounces: 3
 --- !u!58 &2831289869122077202
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -206,3 +182,42 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-5353105472663162500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747043599244373358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872c7d2a6e7bdd047bf0464c3120e5ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChangeRate: 1
+  explosionRadius: 1
+  ATK: 6
+  LifeTime: 5
+  LifeTimeCounter: 0
+  Direction: {x: 0, y: 0, z: 0}
+  damageLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  ParticleSystem: {fileID: 0}
+  BloodSystem: {fileID: 0}
+  maxBounces: 3
+--- !u!114 &-802410594061021119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747043599244373358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f756a75cd65314b9e09a30e3c87285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  Speed: 8
+  Decration: 0.5

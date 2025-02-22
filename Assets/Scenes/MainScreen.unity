@@ -3647,7 +3647,7 @@ MonoBehaviour:
   - {fileID: 1649427525}
   - {fileID: 1126461967}
   - {fileID: 681906660}
-  - {fileID: 0}
+  - {fileID: 2092459216}
   - {fileID: 1723423533}
   - {fileID: 444843307}
   - {fileID: 1848825384}
@@ -11447,7 +11447,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

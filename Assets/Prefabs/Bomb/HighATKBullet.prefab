@@ -93,10 +93,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 160047548976670407}
-  - component: {fileID: 2640614608249259737}
   - component: {fileID: 2831289869122077202}
   - component: {fileID: 1676424697225401886}
   - component: {fileID: -1871835748552580376}
+  - component: {fileID: 683769445397107923}
   m_Layer: 7
   m_Name: HighATKBullet
   m_TagString: Untagged
@@ -120,31 +120,6 @@ Transform:
   - {fileID: 5990532695848515299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2640614608249259737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7747043599244373358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 791243d461e6ab04ea01971811bf6db9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  artillery: {fileID: 0}
-  Speed: 8
-  Decration: 1
-  ChangeRate: 0.125
-  ATKRate: 0
-  explosionRadius: 3
-  ATK: 6
-  LifeTime: 6
-  damageLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  ParticleSystem: {fileID: 7219533666000683474, guid: 3732791395d554c49a0f721478671c02, type: 3}
-  BloodSystem: {fileID: 7713143353904145913, guid: a411967e846926a4baf9ed8c74b4fe64, type: 3}
 --- !u!58 &2831289869122077202
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -219,16 +194,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47493486a2e95d4685468ebd3108b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  artillery: {fileID: 0}
-  Speed: 16
-  Decration: 0
   ChangeRate: 0.125
-  ATKSpeed: 5
   explosionRadius: 0.5
   ATK: 10
   LifeTime: 5
+  LifeTimeCounter: 0
+  Direction: {x: 0, y: 0, z: 0}
   damageLayers:
     serializedVersion: 2
     m_Bits: 256
   ParticleSystem: {fileID: 0}
   BloodSystem: {fileID: 0}
+--- !u!114 &683769445397107923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747043599244373358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f756a75cd65314b9e09a30e3c87285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  Speed: 6
+  Decration: 1

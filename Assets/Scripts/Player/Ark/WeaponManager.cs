@@ -10,8 +10,8 @@ public class StringGameObjectPair
 public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager Instance;
-    public List<GameObject> WeaponList = new List<GameObject>();
-    public List<GameObject> AnimalList = new List<GameObject>();
+    public List<GameObject> WeaponList = new List<GameObject>();// 炮管列表
+    public List<GameObject> AnimalList = new List<GameObject>();// 任职动物列表
     public List<StringGameObjectPair> BulletList = new List<StringGameObjectPair>();
 
 
@@ -77,6 +77,14 @@ public class WeaponManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            UpdateStatus();
         }
     }
 }
