@@ -21,8 +21,7 @@ public class UIController : MonoBehaviour
     // 规定 领航员为0，炮手从左到右，从上到下依次为1、2、3、4，舵手为5.
     void Start()
     {
-        Instance = this;
-        UpdateResourceUI();
+        Instance = this;       
     }
 
     
@@ -42,6 +41,8 @@ public class UIController : MonoBehaviour
                 Time.timeScale = 1f;                
             }
         }
+        //更新物资
+        UpdateResourceUI();
     }
 
 
