@@ -4,15 +4,94 @@ using UnityEngine;
 
 public class BouncingBomb : Father
 {
+    
     public int maxBounces = 3; // 最大反弹次数
-    private int bounceCount = 0; // 当前反弹次数    
+    private int bounceCount = 0; // 当前反弹次数
+
+    private Camera mainCamera;
+    private float screenLeft, screenRight, screenTop, screenBottom;
+
     void Start()
-    {        
+    {
         LifeTimeCounter = LifeTime;
+
+        // 获取主摄像机
+        mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            Debug.LogError("Main camera not found!");
+            return;
+        }
+
+        // 计算屏幕边界
+        CalculateScreenBounds();
     }
 
     void Update()
     {
+        // 移动炮弹
+        transform.Translate(Direction * Time.deltaTime * Speed);
+
+        // 检测是否碰到屏幕边缘
+        CheckScreenBounds();
+    }
+
+    void CalculateScreenBounds()
+    {
+        
+        Vector3 bottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.nearClipPlane));
+        Vector3 topRight = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, mainCamera.nearClipPlane));
+
+        // 获取屏幕的左右上下边界
+        screenLeft = bottomLeft.x;
+        screenRight = topRight.x;
+        screenBottom = bottomLeft.y;
+        screenTop = topRight.y;
+
+        Debug.Log($"Screen Bounds: Left={screenLeft}, Right={screenRight}, Bottom={screenBottom}, Top={screenTop}");
+    }
+
+    void CheckScreenBounds()
+    {
+        // 检测是否碰到左右边缘
+        if (transform.position.x <= screenLeft || transform.position.x >= screenRight)
+        {
+            HandleBounce();
+        }
+
+        // 检测是否碰到上下边缘
+        if (transform.position.y <= screenBottom || transform.position.y >= screenTop)
+        {
+            HandleBounce();
+        }
+    }
+
+    void HandleBounce()
+    {
+        if (bounceCount < maxBounces)
+        {
+            // 反弹逻辑
+            if (transform.position.x <= screenLeft || transform.position.x >= screenRight)
+            {
+                Debug.Log("Bouncing on X axis");
+                // 反转 x 方向（左右反弹）
+                Direction = new Vector2(-Direction.x, Direction.y);
+            }
+            else if (transform.position.y <= screenBottom || transform.position.y >= screenTop)
+            {
+                Debug.Log("Bouncing on Y axis");
+                // 反转 y 方向（上下反弹）
+                Direction = new Vector2(Direction.x, -Direction.y);
+            }
+
+            bounceCount++; // 增加反弹次数
+        }
+        else
+        {
+            // 达到最大反弹次数，销毁炮弹
+            Debug.Log("Max bounces reached. Destroying bomb.");
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,37 +104,13 @@ public class BouncingBomb : Father
         {
             Boss.Instance.GetComponent<EnemyHealthController>().CurHealth -= ATK / 3;
             if (BloodSystem)
-            Instantiate(BloodSystem, transform.position, Quaternion.identity);
+                Instantiate(BloodSystem, transform.position, Quaternion.identity);
         }
 
-        // 检测是否碰到边界
-        if (collision.tag == "Boundary")
-        {
-            if (bounceCount < maxBounces)
-            {
-                Bounce(collision);
-                bounceCount++;
-            }
-            else
-            {
-                // 播放爆炸特效或音效
-                PlayExplosionEffect();
-                // 销毁炮弹
-                Destroy(gameObject);
-            }
-        }
-    }
-
-    void Bounce(Collider2D collision)
-    {
-        // 获取碰撞边界的法线
-        Vector2 normal = collision.transform.up;
-
-        // 计算反射方向
-        Direction = Vector2.Reflect(Direction, normal);
-
-        // 更新炮弹的方向
-        transform.up = Direction;
+        // 播放爆炸特效或音效
+        PlayExplosionEffect();
+        // 销毁炮弹
+        Destroy(gameObject);
     }
 
     void Explode()
@@ -73,6 +128,9 @@ public class BouncingBomb : Father
             }
         }
     }
+
+    
+
     void OnDrawGizmosSelected()
     {
         // 在场景中绘制爆炸范围

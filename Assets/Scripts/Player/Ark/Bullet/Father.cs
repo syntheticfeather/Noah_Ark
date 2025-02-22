@@ -15,6 +15,7 @@ public class Father : MonoBehaviour
     public LayerMask damageLayers; // 可以受到伤害的图层
     public ParticleSystem ParticleSystem;
     public ParticleSystem BloodSystem;
+    public float Speed;
     // Start is called before the first frame update
     public void PlayExplosionEffect()
     {
