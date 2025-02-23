@@ -204,9 +204,14 @@ MonoBehaviour:
     m_Bits: 256
   ParticleSystem: {fileID: 0}
   BloodSystem: {fileID: 0}
+<<<<<<< Updated upstream
   Speed: 2
   ATKSpeed: 0.8
   TrackingRadius: 10
   ExplosionEffect: {fileID: 0}
+=======
+  Speed: 5
+  TrackingRadius: 20
+>>>>>>> Stashed changes
   RotateSpeed: 200
   Acceleration: 2
