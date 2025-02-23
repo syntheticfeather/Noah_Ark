@@ -21,7 +21,7 @@ public class Chew : MonoBehaviour
     {
         var stat = Stats[index];
         switch (attribute.ToLower())
-        {
+        { 
             case "damage":
                 stat.Damage += change;
                 break;
