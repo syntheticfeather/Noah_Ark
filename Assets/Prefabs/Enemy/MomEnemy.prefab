@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
-  Radius: 20
+  Radius: 8
   NumOfGuard: 3
   KnockTime: 5
   NumToSpawn: 3
