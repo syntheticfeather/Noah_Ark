@@ -16,6 +16,7 @@ public class Father : MonoBehaviour
     public ParticleSystem ParticleSystem;
     public ParticleSystem BloodSystem;
     public float Speed;
+    public float ATKSpeed;
     // Start is called before the first frame update
     public void PlayExplosionEffect()
     {

@@ -14,7 +14,7 @@ public class TurretAI : MonoBehaviour
     public Transform firePoint;
     // 子弹预制件，用于实例化子弹
     public GameObject bulletPrefab;
-    // 攻击频率（秒/次）
+    // 冷却时间
     public float fireRate = 1f;
     // 计时器，用于控制攻击间隔
     private float fireCountdown = 0f;
@@ -25,6 +25,12 @@ public class TurretAI : MonoBehaviour
       
     void Update()
     {
+        if (bulletPrefab)
+        {
+            fireRate = bulletPrefab.GetComponent<Father>().ATKSpeed;
+            Debug.Log("" + fireRate);            
+        }
+        
         if (CanAtk)
         {
             if ( fireCountdown >= 0)
@@ -90,7 +96,7 @@ public class TurretAI : MonoBehaviour
             BombToSpawn.GetComponent<BulletDirecion>().direction = transform.up;
         BombToSpawn.SetActive(true);
         // 重置计时器，等待下次攻击
-        fireCountdown = 1f / fireRate;
+        fireCountdown = fireRate;
       
     }
     // 可选：可视化检测范围
@@ -98,6 +104,9 @@ public class TurretAI : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+        
+
+
     }
 
 

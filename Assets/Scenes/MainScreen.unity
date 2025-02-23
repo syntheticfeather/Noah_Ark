@@ -2246,7 +2246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stats: []
   sprite: {fileID: 21300000, guid: 2b52c802e1d449c4988150f7c877cd3a, type: 3}
-  Sprite_Pic: {fileID: 21300000, guid: da5052957c1a0454eb850fda014cb9f2, type: 3}
+  Sprite_Pic: {fileID: -1985914951, guid: da5052957c1a0454eb850fda014cb9f2, type: 3}
 --- !u!58 &186794268
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -30520,7 +30520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stats: []
   sprite: {fileID: 21300000, guid: 31197343c8054524c90361bf45114b43, type: 3}
-  Sprite_Pic: {fileID: 21300000, guid: c62552dbfbd5eb845be570ff758d9b1a, type: 3}
+  Sprite_Pic: {fileID: -1786262319, guid: c62552dbfbd5eb845be570ff758d9b1a, type: 3}
 --- !u!58 &1224327860
 CircleCollider2D:
   m_ObjectHideFlags: 0

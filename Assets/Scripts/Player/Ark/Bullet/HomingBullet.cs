@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class HomingBullet : Father
 {
-    public float Speed;    
     public float TrackingRadius = 10f;                 
     public ParticleSystem ExplosionEffect;           
     public float RotateSpeed = 200f;       

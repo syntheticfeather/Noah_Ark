@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 2831289869122077202}
   - component: {fileID: 1676424697225401886}
   - component: {fileID: -4594342786427970485}
-  - component: {fileID: 2893786086260756827}
   m_Layer: 7
   m_Name: HomingBullet
   m_TagString: Untagged
@@ -205,23 +204,9 @@ MonoBehaviour:
     m_Bits: 256
   ParticleSystem: {fileID: 0}
   BloodSystem: {fileID: 0}
-  Speed: 12
+  Speed: 2
+  ATKSpeed: 0.8
   TrackingRadius: 10
   ExplosionEffect: {fileID: 0}
   RotateSpeed: 200
   Acceleration: 2
---- !u!114 &2893786086260756827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7747043599244373358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f756a75cd65314b9e09a30e3c87285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
-  Speed: 6
-  Decration: 1

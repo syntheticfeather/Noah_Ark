@@ -205,6 +205,8 @@ MonoBehaviour:
     m_Bits: 256
   ParticleSystem: {fileID: 0}
   BloodSystem: {fileID: 0}
+  Speed: 0
+  ATKSpeed: 1.5
   maxBounces: 3
 --- !u!114 &-802410594061021119
 MonoBehaviour:

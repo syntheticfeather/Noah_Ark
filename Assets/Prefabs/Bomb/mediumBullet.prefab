@@ -205,6 +205,8 @@ MonoBehaviour:
     m_Bits: 256
   ParticleSystem: {fileID: 0}
   BloodSystem: {fileID: 0}
+  Speed: 0
+  ATKSpeed: 1
 --- !u!114 &-5500378251584550837
 MonoBehaviour:
   m_ObjectHideFlags: 0
