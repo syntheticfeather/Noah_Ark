@@ -2,45 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class Bomb : Father
 {
-    public GameObject artillery;
-    public float Speed;
-    public float Decration;
-    public float ChangeRate; // 动画
     
-    public float explosionRadius = 5f; // 爆炸范围
-    public int ATK;
-
-    public float LifeTime;
-    private float LifeTimeCounter;
-
-    private Vector3 Direction;
-    public LayerMask damageLayers; // 可以受到伤害的图层
-    public ParticleSystem ParticleSystem;
-    public ParticleSystem BloodSystem;
-
      void Start()
-    {
+    {        
+        
         LifeTimeCounter = LifeTime;
-        Direction = artillery.transform.up;
     }
 
     void Update()
     {
-        transform.position += Direction * Speed * Time.deltaTime;
-        if (Speed > 0)
-        {
-            Speed -= Time.deltaTime * Decration;
-        }
-        if (Speed <= 0)
-        {
-            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, ChangeRate);
-            if (transform.localScale == Vector3.zero)
-            {
-                Destroy(gameObject);
-            }
-        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -74,12 +47,6 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    void PlayExplosionEffect()
-    {
-
-        // 音效暂定
-        Instantiate(ParticleSystem, transform.position, Quaternion.identity);
-    }
 
     void OnDrawGizmosSelected()
     {
@@ -87,4 +54,5 @@ public class Bomb : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
+
 }

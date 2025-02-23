@@ -39,9 +39,9 @@ public class InternalUpgrade : MonoBehaviour
 
         int woodCost = (int)(percent * 10);
         int stoneCost = (int)(percent * 5);
-        if (resourceManager.UseResource(woodCost, stoneCost))
+        if (ResourceManager.instance.UseResource(woodCost, stoneCost))
         {
-            healthController.Repair(percent);
+            PlayerHealthController.instance.Repair(percent);
         }
     }
 }

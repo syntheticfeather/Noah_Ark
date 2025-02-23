@@ -43,8 +43,11 @@ public class PlayerHealthController : MonoBehaviour
     public void Repair(float percent)
     {
         float healing =percent * MaxHealth;
-
-        if (Health > 0)
+        if (Health == MaxHealth)
+        {
+            Debug.Log("ÉúÃüÖµÒÑÂú");
+        }
+        if (Health > 0 && Health != MaxHealth)
         {
             if ((healing + Health) >= MaxHealth)
             {

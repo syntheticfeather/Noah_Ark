@@ -13,8 +13,14 @@ public class SettingPanelManager : MonoBehaviour
     public Slider slider2; //音效大小进度条
     public Text text1; //音量大小文本显示
     public Text text2; //音效大小文本显示
-  
-    // Update is called once per frame
+
+    
+    private void Start()
+    {
+        //读取设置的数据
+        slider1.value = PlayerPrefs.GetFloat("slider1", 50);
+        slider2.value = PlayerPrefs.GetFloat("slider2", 50);
+    }
     void Update()
     {
         SoundControl();
@@ -49,5 +55,9 @@ public class SettingPanelManager : MonoBehaviour
     {
         settingPanel.SetActive(false);
         PausePanelManager.instance.IsSetting = false;
+        //保存数据
+        PlayerPrefs.SetFloat("slider1", slider1.value);
+        PlayerPrefs.SetFloat("slider2", slider2.value);
+        PlayerPrefs.Save();
     }
 }
