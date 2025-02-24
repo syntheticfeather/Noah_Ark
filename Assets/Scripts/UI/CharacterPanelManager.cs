@@ -78,4 +78,14 @@ public class CharacterPanelController : MonoBehaviour
             Button[2].SetActive(true);
         }
     }
+    //¡Á¼üÍË³ö
+    public void Exit()
+    {
+        if (isPanelActive == true)
+        {            
+            characterPanel.SetActive(false);
+            isPanelActive = false;
+            Time.timeScale = 1;
+        }
+    }
 }

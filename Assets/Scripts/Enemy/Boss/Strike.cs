@@ -18,7 +18,7 @@ public class Strike : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("ÓÐÅö×²");
+        //Debug.Log("ÓÐÅö×²");
         if (collision.transform.tag == "Player" && OneATK == false)
         {
             OneATK = true;

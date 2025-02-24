@@ -28,7 +28,7 @@ public class TurretAI : MonoBehaviour
         if (bulletPrefab)
         {
             fireRate = bulletPrefab.GetComponent<Father>().ATKSpeed;
-            Debug.Log("" + fireRate);            
+            //Debug.Log("" + fireRate);            
         }
         
         if (CanAtk)

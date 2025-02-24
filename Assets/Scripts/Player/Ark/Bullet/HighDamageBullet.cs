@@ -30,7 +30,7 @@ public class HighDamageBullet : Father
         PlayExplosionEffect();
         // 销毁炮弹
         Destroy(gameObject);
-        Debug.Log("因碰撞而销毁");
+        //Debug.Log("因碰撞而销毁");
     }
     void OnDrawGizmosSelected()
     {
