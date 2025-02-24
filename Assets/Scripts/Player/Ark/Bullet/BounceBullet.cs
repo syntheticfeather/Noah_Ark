@@ -48,7 +48,7 @@ public class BouncingBomb : Father
         screenBottom = bottomLeft.y;
         screenTop = topRight.y;
 
-        //Debug.Log($"Screen Bounds: Left={screenLeft}, Right={screenRight}, Bottom={screenBottom}, Top={screenTop}");
+        Debug.Log($"Screen Bounds: Left={screenLeft}, Right={screenRight}, Bottom={screenBottom}, Top={screenTop}");
     }
 
     void CheckScreenBounds()

@@ -107,7 +107,8 @@ public class BabyEnemy : MonoBehaviour
     IEnumerator StaggerCoroutine()
     {
         // 进入僵直状态
-        isStaggered = true;        
+        isStaggered = true;
+        Debug.Log("Monster is staggered!");
 
         rb.velocity = Vector2.zero;
 
@@ -115,7 +116,8 @@ public class BabyEnemy : MonoBehaviour
         yield return new WaitForSeconds(staggerDuration);
 
         // 结束僵直状态
-        isStaggered = false;        
+        isStaggered = false;
+        Debug.Log("Monster is no longer staggered!");
 
     }
 

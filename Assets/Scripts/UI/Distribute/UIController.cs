@@ -52,7 +52,7 @@ public class UIController : MonoBehaviour
         selectedJob = Number; 
         ChewPanel.SetActive(true);
         AnimalPanel.instance.InitPanel();
-        //Debug.Log("ShowChew:" + Number);
+        Debug.Log("ShowChew:" + Number);
     }
 
 
@@ -60,12 +60,12 @@ public class UIController : MonoBehaviour
     public void OnDuty(string Number)// number是在动物列表中的位置
     {
         // select是炮中的位置
-        //Debug.Log("OnDuty:" + Number);
+        Debug.Log("OnDuty:" + Number);
         // 如果没有职位被选中
         if (string.IsNullOrEmpty(selectedJob))
         {
             // todo打印“请选择职位”
-            //Debug.Log("没有string");
+            Debug.Log("没有string");
         }
         // 该位置的按钮显示动物图像
 
@@ -95,7 +95,7 @@ public class UIController : MonoBehaviour
         if (ChewManager.Instance.allCrews[int.Parse(Number)].name == "Noah")
         {
             //将playerweapon脚本打开
-            //Debug.Log("Noah启用鼠标跟踪脚本");
+            Debug.Log("Noah启用鼠标跟踪脚本");
             WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<PlayerWeapon>().enabled = true;
             WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<PlayerWeapon>().Animal =
                 ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;
@@ -107,7 +107,7 @@ public class UIController : MonoBehaviour
         else
         {
             //打开AI的weapon脚本
-            //Debug.Log("AI启用自动跟踪脚本");
+            Debug.Log("AI启用自动跟踪脚本");
             WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<TurretAI>().enabled = true;
             WeaponManager.Instance.WeaponList[int.Parse(selectedJob)].GetComponent<TurretAI>().Animal = 
                 ChewManager.Instance.allCrews[int.Parse(Number)].gameObject;

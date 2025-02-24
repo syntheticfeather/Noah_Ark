@@ -90,7 +90,8 @@ public class HealEnemy : MonoBehaviour
     public void Heal()
     {
         
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, HealRadius, Enemy);        
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, HealRadius, Enemy);
+        Debug.Log(hitColliders.Length);
         foreach (Collider2D hitCollider in hitColliders)
         {            
             EnemyHealthController health = hitCollider.GetComponent<EnemyHealthController>();
