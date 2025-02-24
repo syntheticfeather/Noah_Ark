@@ -29,6 +29,8 @@ public class EventController : MonoBehaviour
         if (Vector3.Distance(PlayerHealthController.instance.transform.position, Vector3.zero) <= 40)
         {
             BossFight();
+            SFXManager.instance.PlaySFX(SFXManager.instance.BossSound, 0);
+            // 从中心进入地图
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
@@ -55,17 +57,17 @@ public class EventController : MonoBehaviour
             Map.transform.localScale = new Vector3(400, 400, 400);
             IsLandController.instance.UpdateIsLand();
         }
-             
     }
 
     public void BossFight()
     {
         PlayerHealthController.instance.transform.position = new Vector3(1600, -8, 0);
-        Light.transform.position = new Vector3(1600, -8, 0);
-        Light.SetActive(true);
+        Light.transform.position = new Vector3(1600, -8, 0);        
         CameraFollow.instance.BossFight = true;
         boss.SetActive(true);
         BossHealthUi.SetActive(true);
+        SFXManager.instance.PlaySFX(SFXManager.instance.BossSound, 0);
+
     }
     public void OpenMap()
     {
@@ -83,5 +85,10 @@ public class EventController : MonoBehaviour
         PlayerOnMap.SetActive(false);
         MapLight.SetActive(false);
         Camera.transform.position = PlayerOnMap.transform.position;
+    }
+    public void End()
+    {
+        Debug.Log("end");
+        SFXManager.instance.PlaysfxPitch(SFXManager.instance.BossSound, 4);
     }
 }

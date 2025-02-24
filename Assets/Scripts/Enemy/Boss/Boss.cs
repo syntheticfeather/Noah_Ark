@@ -27,26 +27,36 @@ public class Boss : MonoBehaviour
 
         
     }    
+    public int soundindex = 0;
     void Update()
     {        
-        if (EnemyHealthController.CurHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
         StrikeCounter -= Time.deltaTime;
         DropCounter -= Time.deltaTime;
         if (EnemyHealthController.CurHealth < (EnemyHealthController.MaxHealth * 0.8))
         {            
-            SweepCounter -= Time.deltaTime;  
+            SweepCounter -= Time.deltaTime;
+            soundindex = 1;
         }
         if (EnemyHealthController.CurHealth < (EnemyHealthController.MaxHealth * 0.5))
         {
-            VortexCounter -= Time.deltaTime;   
+            VortexCounter -= Time.deltaTime;
+            soundindex = 2;
         }
         if (EnemyHealthController.CurHealth < (EnemyHealthController.MaxHealth * 0.4))
         {            
-            LaserCounter -= Time.deltaTime;
+            LaserCounter -= Time.deltaTime;           
+        }        
+        if (EnemyHealthController.CurHealth < (EnemyHealthController.MaxHealth * 0.3))
+        {                        
+            soundindex = 3;
         }
+        if (EnemyHealthController.CurHealth <= 0)
+        {
+            soundindex = 4;
+            EventController.instance.End();
+            Destroy(gameObject);
+        }
+        SFXManager.instance.PlaysfxPitch(SFXManager.instance.BossSound, soundindex);
         if (StrikeCounter < 0)
         {
             StartCoroutine(DelayStrike());
