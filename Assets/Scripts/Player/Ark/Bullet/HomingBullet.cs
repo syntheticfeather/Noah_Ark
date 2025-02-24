@@ -4,31 +4,14 @@ using UnityEngine;
 
 public class HomingBullet : Father
 {
-<<<<<<< Updated upstream
-    public float TrackingRadius = 10f;                 
-    public ParticleSystem ExplosionEffect;           
-    public float RotateSpeed = 200f;       
-    public float Acceleration = 2f;        
-    private Transform target;              // µ±Ç°×·×ÙÄ¿±ê
-    private Rigidbody2D rb;
-    private float currentSpeed;
-
-    void Start()
-    {        
-        rb = GetComponent<Rigidbody2D>();
-        currentSpeed = Speed;
-        LifeTimeCounter = LifeTime;
-    }
-=======
-    public Transform target; // ×·×ÙÄ¿±ê
->>>>>>> Stashed changes
+    public Transform target; // ×·ï¿½ï¿½Ä¿ï¿½ï¿½
 
     // Update is called once per frame
     void Update()
     {
         if (target == null)
         {
-            // ²éÕÒ¾ßÓĞ "Enemy" ±êÇ©µÄ¶ÔÏó
+            // ï¿½ï¿½ï¿½Ò¾ï¿½ï¿½ï¿½ "Enemy" ï¿½ï¿½Ç©ï¿½Ä¶ï¿½ï¿½ï¿½
             GameObject enemy = GameObject.FindWithTag("Enemy");
             if (enemy != null)
             {
@@ -38,22 +21,22 @@ public class HomingBullet : Father
 
         if (target != null)
         {
-            // ¼ÆËã³¯ÏòÄ¿±êµÄ·½Ïò
+            // ï¿½ï¿½ï¿½ã³¯ï¿½ï¿½Ä¿ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
             Direction = (target.position - transform.position).normalized;
-            // ÒÆ¶¯×·×Ùµ¯
+            // ï¿½Æ¶ï¿½×·ï¿½Ùµï¿½
             transform.position += Direction * Speed * Time.deltaTime;
         }
         else
         {
-            // Èç¹ûÃ»ÓĞÄ¿±ê£¬¼ÌĞøÑØµ±Ç°·½ÏòÒÆ¶¯
+            // ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ä¿ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
             transform.position += Direction * Speed * Time.deltaTime;
         }
 
-        // ¸üĞÂÉúÃüÖÜÆÚ¼ÆÊıÆ÷
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½
         LifeTimeCounter += Time.deltaTime;
         if (LifeTimeCounter >= LifeTime)
         {
-            // Èç¹ûÉúÃüÖÜÆÚ½áÊø£¬²¥·Å±¬Õ¨Ğ§¹û²¢Ïú»Ù¶ÔÏó
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½Õ¨Ğ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½
             PlayExplosionEffect();
             Destroy(gameObject);
         }
@@ -61,10 +44,10 @@ public class HomingBullet : Father
 
     private void OnTriggerEnter(Collider other)
     {
-        // ¼ì²éÅö×²¶ÔÏóÊÇ·ñÔÚÉËº¦Í¼²ãÖĞ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ëºï¿½Í¼ï¿½ï¿½ï¿½ï¿½
         if (((1 << other.gameObject.layer) & damageLayers) != 0)
         {
-            // ¶ÔÄ¿±êÔì³ÉÉËº¦
+            // ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½
             
             PlayExplosionEffect();
             Destroy(gameObject);
