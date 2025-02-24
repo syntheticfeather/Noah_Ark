@@ -614,7 +614,7 @@ MonoBehaviour:
   - {fileID: 0}
   BulletList:
   - key: Noah
-    value: {fileID: 7747043599244373358, guid: 0d53873118659b64aa527804f752564a, type: 3}
+    value: {fileID: 7747043599244373358, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
   - key: Dog
     value: {fileID: 7747043599244373358, guid: 924cc87a174490b4585793d61f44f232, type: 3}
   - key: Cat
@@ -9650,6 +9650,63 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &372106862
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 160047548976670407, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160047548976670407, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160047548976670407, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160047548976670407, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 160047548976670407, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160047548976670407, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160047548976670407, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160047548976670407, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160047548976670407, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 160047548976670407, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747043599244373358, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
+      propertyPath: m_Name
+      value: HomingBullet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c4a826eda1380447ade9dce5e2ba6a6, type: 3}
 --- !u!1 &381103992
 GameObject:
   m_ObjectHideFlags: 0
@@ -45044,7 +45101,7 @@ GameObject:
   - component: {fileID: 1947894930}
   m_Layer: 8
   m_Name: bossToShow
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47490,3 +47547,4 @@ SceneRoots:
   - {fileID: 1967915061}
   - {fileID: 963627771}
   - {fileID: 1482425270}
+  - {fileID: 372106862}
