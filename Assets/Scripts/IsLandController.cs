@@ -91,7 +91,7 @@ public class IsLandController : MonoBehaviour
             if (IsPointValid(newPoint))
             {
                 points.Add(newPoint);
-                GameObject NewLand = Instantiate(InitIsLand_List[Random.Range(0, 12)]);
+                GameObject NewLand = Instantiate(InitIsLand_List[Random.Range(0, 6)]);
                 NewLand.transform.position = newPoint;
                 CurIsLand_List.Add(NewLand);
             }
