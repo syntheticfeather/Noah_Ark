@@ -30,7 +30,7 @@ public class WeaponManager : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Duplicate key found: {pair.key}");
+                //Debug.LogWarning($"Duplicate key found: {pair.key}");
             }
         }
     }

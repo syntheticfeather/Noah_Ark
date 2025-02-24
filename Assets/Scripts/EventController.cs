@@ -60,12 +60,15 @@ public class EventController : MonoBehaviour
 
     public void BossFight()
     {
+        Debug.Log("BossFight");
         PlayerHealthController.instance.transform.position = new Vector3(1600, -8, 0);
         Light.transform.position = new Vector3(1600, -8, 0);
         Light.SetActive(true);
         CameraFollow.instance.BossFight = true;
         boss.SetActive(true);
         BossHealthUi.SetActive(true);
+        SFXManager.instance.PlaySFX(SFXManager.instance.BossSound, 0);
+
     }
     public void OpenMap()
     {
@@ -83,5 +86,10 @@ public class EventController : MonoBehaviour
         PlayerOnMap.SetActive(false);
         MapLight.SetActive(false);
         Camera.transform.position = PlayerOnMap.transform.position;
+    }
+    public void End()
+    {
+        Debug.Log("end");
+        SFXManager.instance.PlaysfxPitch(SFXManager.instance.BossSound, 4);
     }
 }

@@ -12,16 +12,37 @@ public class SFXManager : MonoBehaviour
     }
 
     public AudioSource[] soundEffects;
+    public AudioSource[] BossSound;
+    public int Bosssoundindex = -1;
 
-    public void PlaySFX(int sfxT)
+    public void PlaysfxPitch(AudioSource[] SFXList, int index) 
     {
-        soundEffects[sfxT].Stop();
-        soundEffects[sfxT].Play();
+        Debug.Log("playsfx函数调用");
+        PlaySFX(SFXList, index);
     }
 
-    public void PlaysfxPitch(int sfxToplay)
+    public void PlaySFX(AudioSource[] SFXList, int index)
     {
-        soundEffects[sfxToplay].pitch = Random.Range(.8f, 1.2f);
-        PlaySFX(sfxToplay);
+        Debug.Log("SFX函数调用");
+        if (BossSound == SFXList)
+        {
+            Debug.Log("播放音乐");
+
+            if (Bosssoundindex != index)
+            {
+              
+                if (Bosssoundindex != -1)
+                {
+                    SFXList[Bosssoundindex].Stop();
+                }
+                SFXList[index].Play();
+                Bosssoundindex = index; 
+            }
+        }
+        else
+        {
+            SFXList[index].Stop();
+            SFXList[index].Play();
+        }
     }
 }
