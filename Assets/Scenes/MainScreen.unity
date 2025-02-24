@@ -10960,7 +10960,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 1
   m_Points:
   - {x: -8.811646, y: 1.3821229}
   - {x: -8.8041, y: -0.9763336}
@@ -20900,7 +20900,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 1
   m_Points:
   - {x: -8.184913, y: 3.816443}
   - {x: -8.0010805, y: 1.5366954}
@@ -23138,7 +23138,7 @@ Transform:
   m_GameObject: {fileID: 963627769}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1389.4, y: -209.3, z: 0}
+  m_LocalPosition: {x: 1428.5, y: -236.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30927,11 +30927,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2163606428949644716, guid: e0fafd88d446e8d4385670f505546386, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.669998
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2163606428949644716, guid: e0fafd88d446e8d4385670f505546386, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.480011
+      value: 12.3
       objectReference: {fileID: 0}
     - target: {fileID: 2163606428949644716, guid: e0fafd88d446e8d4385670f505546386, type: 3}
       propertyPath: m_LocalPosition.z
@@ -43598,11 +43598,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8507447104566248950, guid: 5050933d9c355ec41b376a0534142d63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.049973
+      value: -13.78
       objectReference: {fileID: 0}
     - target: {fileID: 8507447104566248950, guid: 5050933d9c355ec41b376a0534142d63, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.26001
+      value: 4.55
       objectReference: {fileID: 0}
     - target: {fileID: 8507447104566248950, guid: 5050933d9c355ec41b376a0534142d63, type: 3}
       propertyPath: m_LocalPosition.z
