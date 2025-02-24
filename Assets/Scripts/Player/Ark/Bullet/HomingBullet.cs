@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class HomingBullet : Father
 {
+<<<<<<< Updated upstream
     public float TrackingRadius = 10f;                 
     public ParticleSystem ExplosionEffect;           
     public float RotateSpeed = 200f;       
@@ -19,98 +19,55 @@ public class HomingBullet : Father
         currentSpeed = Speed;
         LifeTimeCounter = LifeTime;
     }
+=======
+    public Transform target; // 追踪目标
+>>>>>>> Stashed changes
 
+    // Update is called once per frame
     void Update()
     {
-        LifeTimeCounter -= Time.deltaTime;
-        if (LifeTimeCounter <= 0)
-        {
-            Explode();
-            return;
-        }
-
-        FindTarget();
-        MoveTowardsTarget();
-    }
-
-    void FindTarget()
-    {
-        // 如果已经有目标且目标在范围内，则保持追踪
-        if (target != null && Vector2.Distance(transform.position, target.position) <= TrackingRadius)
-        {
-            return;
-        }
-
-        // 搜索范围内最近的敌人
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, TrackingRadius, damageLayers);
-        float closestDistance = Mathf.Infinity;
-        Transform closestTarget = null;
-
-        foreach (var hit in hits)
-        {
-            if (hit.CompareTag("Enemy"))
-            {
-                float distance = Vector2.Distance(transform.position, hit.transform.position);
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestTarget = hit.transform;
-                }
-            }
-        }
-
-        target = closestTarget;
-    }
-
-    void MoveTowardsTarget()
-    {
         if (target == null)
-        {            
-            rb.velocity = transform.up * currentSpeed;
-            return;
-        }
-
-        
-        Vector2 direction = (target.position - transform.position).normalized;
-
-        
-        float rotateAmount = Vector3.Cross(direction, transform.up).z;
-
-        
-        rb.angularVelocity = -rotateAmount * RotateSpeed;
-
-        
-        currentSpeed += Acceleration * Time.deltaTime;
-        rb.velocity = transform.up * currentSpeed;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
         {
-            Explode();
-        }
-    }
-
-    void Explode()
-    {
-        // 播放爆炸特效
-        if (ExplosionEffect != null)
-        {
-            Instantiate(ExplosionEffect, transform.position, Quaternion.identity);
-        }        
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, damageLayers);
-        foreach (Collider2D hitCollider in hitColliders)
-        {
-            
-            EnemyHealthController health = hitCollider.GetComponent<EnemyHealthController>();
-            if (health != null)
+            // 查找具有 "Enemy" 标签的对象
+            GameObject enemy = GameObject.FindWithTag("Enemy");
+            if (enemy != null)
             {
-                health.TakeDamage(ATK);
+                target = enemy.transform;
             }
-        }        
-        Destroy(gameObject);
+        }
+
+        if (target != null)
+        {
+            // 计算朝向目标的方向
+            Direction = (target.position - transform.position).normalized;
+            // 移动追踪弹
+            transform.position += Direction * Speed * Time.deltaTime;
+        }
+        else
+        {
+            // 如果没有目标，继续沿当前方向移动
+            transform.position += Direction * Speed * Time.deltaTime;
+        }
+
+        // 更新生命周期计数器
+        LifeTimeCounter += Time.deltaTime;
+        if (LifeTimeCounter >= LifeTime)
+        {
+            // 如果生命周期结束，播放爆炸效果并销毁对象
+            PlayExplosionEffect();
+            Destroy(gameObject);
+        }
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        // 检查碰撞对象是否在伤害图层中
+        if (((1 << other.gameObject.layer) & damageLayers) != 0)
+        {
+            // 对目标造成伤害
+            
+            PlayExplosionEffect();
+            Destroy(gameObject);
+        }
+    }
 }
