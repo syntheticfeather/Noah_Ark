@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Chew : MonoBehaviour
 {
+    public static Chew instance;
     [System.Serializable]
     public class ChewStats
     {
@@ -29,10 +30,10 @@ public class Chew : MonoBehaviour
                 stat.Range += change;
                 break;
             case "timebetweenattacks":
-                stat.TimeBetweenAttacks += change;
+                stat.TimeBetweenAttacks -= change;
                 break;
             case "duration":
-                stat.Duration += change;
+                stat.Duration -= change;
                 break;
             case "labor":
                 stat.Labor += change;
@@ -144,9 +145,17 @@ public class Chew : MonoBehaviour
             stats = initialStats;
         }
 
-        public void LevelUp()
+        public void LevelUp(int index)
         {
             Level++;
+            //属性提升
+            Chew.instance.UpdateData(index, "Damage", 0.5f);
+            Chew.instance.UpdateData(index, "Range", 2.0f);
+            Chew.instance.UpdateData(index, "TimeBetweenAttacks", 0.05f);
+            Chew.instance.UpdateData(index, "Duration", 0.1f);
+            Chew.instance.UpdateData(index, "Labor", 1.0f);
+            Chew.instance.UpdateData(index, "Cost", 1.0f);
+
             List<Talent> randomTalents = talentSystem.GetRandomTalents(Level);
             if (randomTalents != null)
             {
