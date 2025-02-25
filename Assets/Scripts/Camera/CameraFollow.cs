@@ -56,11 +56,11 @@ public class CameraFollow : MonoBehaviour
         //Debug.Log(transform.position);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, Target.transform.position + new Vector3(0, 0, -10), smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
-        Light.GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(Light.GetComponent<Light2D>().pointLightOuterRadius, 20, Time.deltaTime * 5); // 动物带加入
+        Light.GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(Light.GetComponent<Light2D>().pointLightOuterRadius, 30, Time.deltaTime * 5); // 动物带加入
         Light.transform.position = PlayerHealthController.instance.transform.position;
         if (transform.GetComponent<Camera>().orthographicSize == 500)
         {
-            transform.GetComponent<Camera>().orthographicSize = 20;
+            transform.GetComponent<Camera>().orthographicSize = 30;
         }
         transform.GetComponent<Camera>().orthographicSize = Mathf.Lerp(transform.GetComponent<Camera>().orthographicSize, 20, Time.deltaTime * 3);
 
@@ -74,7 +74,7 @@ public class CameraFollow : MonoBehaviour
         TargetPosition += new Vector3(horizontal, vertical, 0) * moveSpeed * Time.deltaTime;
         transform.position = Vector3.Lerp(transform.position, TargetPosition, smoothTime);
         transform.GetComponent<Camera>().orthographicSize = Mathf.Lerp(transform.GetComponent<Camera>().orthographicSize, 30, Time.deltaTime * 5);
-        Light.GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(Light.GetComponent<Light2D>().pointLightOuterRadius, 35, Time.deltaTime * 5);
+        Light.GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(Light.GetComponent<Light2D>().pointLightOuterRadius, 40, Time.deltaTime * 5);
         Light.transform.position = transform.position + new Vector3(0, 0, 10);
     }
 

@@ -18,6 +18,10 @@ public class Father : MonoBehaviour
     public float Speed;
     public float ATKSpeed;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        Direction = transform.forward;
+    }
     public void PlayExplosionEffect()
     {
 

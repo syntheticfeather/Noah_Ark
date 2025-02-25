@@ -195,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChangeRate: 0
   explosionRadius: 5
-  ATK: 3
+  ATK: 5
   LifeTime: 6
   LifeTimeCounter: 0
   Direction: {x: 0, y: 0, z: 0}
@@ -204,14 +204,6 @@ MonoBehaviour:
     m_Bits: 256
   ParticleSystem: {fileID: 0}
   BloodSystem: {fileID: 0}
-<<<<<<< Updated upstream
-  Speed: 2
-  ATKSpeed: 0.8
-  TrackingRadius: 10
-  ExplosionEffect: {fileID: 0}
-=======
   Speed: 5
-  TrackingRadius: 20
->>>>>>> Stashed changes
-  RotateSpeed: 200
-  Acceleration: 2
+  ATKSpeed: 0
+  target: {fileID: 0}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class HomingBullet : Father
 {
 
+
     public float TrackingRadius = 10f;                 
     public ParticleSystem ExplosionEffect;           
     public float RotateSpeed = 200f;       
@@ -21,12 +22,13 @@ public class HomingBullet : Father
     }
 
 
+
     // Update is called once per frame
     void Update()
     {
         if (target == null)
         {
-            // 查找具有 "Enemy" 标签的对象
+            // 锟斤拷锟揭撅拷锟斤拷 "Enemy" 锟斤拷签锟侥讹拷锟斤拷
             GameObject enemy = GameObject.FindWithTag("Enemy");
             if (enemy != null)
             {
@@ -36,22 +38,22 @@ public class HomingBullet : Father
 
         if (target != null)
         {
-            // 计算朝向目标的方向
+            // 锟斤拷锟姐朝锟斤拷目锟斤拷姆锟斤拷锟?
             Direction = (target.position - transform.position).normalized;
-            // 移动追踪弹
+            // 锟狡讹拷追锟劫碉拷
             transform.position += Direction * Speed * Time.deltaTime;
         }
         else
         {
-            // 如果没有目标，继续沿当前方向移动
+            // 锟斤拷锟矫伙拷锟侥匡拷辏拷锟斤拷锟斤拷氐锟角帮拷锟斤拷锟斤拷贫锟?
             transform.position += Direction * Speed * Time.deltaTime;
         }
 
-        // 更新生命周期计数器
+        // 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟节硷拷锟斤拷锟斤拷
         LifeTimeCounter += Time.deltaTime;
         if (LifeTimeCounter >= LifeTime)
         {
-            // 如果生命周期结束，播放爆炸效果并销毁对象
+            // 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷诮锟斤拷锟斤拷锟斤拷锟斤拷疟锟秸ㄐэ拷锟斤拷锟斤拷锟斤拷俣锟斤拷锟?
             PlayExplosionEffect();
             Destroy(gameObject);
         }
@@ -59,10 +61,10 @@ public class HomingBullet : Father
 
     private void OnTriggerEnter(Collider other)
     {
-        // 检查碰撞对象是否在伤害图层中
+        // 锟斤拷锟斤拷锟阶诧拷锟斤拷锟斤拷欠锟斤拷锟斤拷撕锟酵硷拷锟斤拷锟?
         if (((1 << other.gameObject.layer) & damageLayers) != 0)
         {
-            // 对目标造成伤害
+            // 锟斤拷目锟斤拷锟斤拷锟斤拷撕锟?
             
             PlayExplosionEffect();
             Destroy(gameObject);
