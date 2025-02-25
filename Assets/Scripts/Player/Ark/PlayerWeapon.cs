@@ -61,6 +61,7 @@ public class PlayerWeapon : MonoBehaviour
 
             //进入冷却状态
             CoolDownCounter = CoolDown;
+            SFXManager.instance.PlaySFX(SFXManager.instance.soundEffects, Random.Range(1, 4));
         }
     }
 

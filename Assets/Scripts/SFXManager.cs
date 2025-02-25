@@ -9,11 +9,29 @@ public class SFXManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        BKCounter = BKTime;
     }
-
-    public AudioSource[] soundEffects;
+    public void Update()
+    {
+        BKCounter -= Time.deltaTime;
+        if (BKCounter <= 0)
+        {
+            PlayerBK();
+            BKCounter = BKTime;
+        }
+    }
+    public AudioSource[] soundEffects;// 0 Îª±³¾°ÒôÀÖ
     public AudioSource[] BossSound;
     public int Bosssoundindex = -1;
+    public int BKindex = 0;
+
+    public float BKTime;
+    private float BKCounter;
+
+    public void PlayerBK()
+    {
+        PlaySFX(soundEffects, BKindex);
+    }
 
     public void PlaysfxPitch(AudioSource[] SFXList, int index) 
     {
