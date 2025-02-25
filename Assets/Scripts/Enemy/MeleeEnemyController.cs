@@ -111,8 +111,8 @@ public class MeleeEnemyController : MonoBehaviour
         // 计算新位置
         float x = PlayerTransform.position.x + (Radius + Random.Range(0, 1)) * Mathf.Cos(Angle);
         float y = PlayerTransform.position.y + (Radius + Random.Range(0, 1)) * Mathf.Sin(Angle);
-
+        
         // 更新敌人位置        
-        transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, transform.position.z), 0.5f);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, transform.position.z), Time.deltaTime * .5f);
     }
 }
