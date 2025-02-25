@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HomingBullet : Father
 {
-<<<<<<< Updated upstream
+
     public float TrackingRadius = 10f;                 
     public ParticleSystem ExplosionEffect;           
     public float RotateSpeed = 200f;       
@@ -19,9 +19,7 @@ public class HomingBullet : Father
         currentSpeed = Speed;
         LifeTimeCounter = LifeTime;
     }
-=======
-    public Transform target; // ×·×ÙÄ¿±ê
->>>>>>> Stashed changes
+
 
     // Update is called once per frame
     void Update()
