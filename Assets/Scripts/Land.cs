@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Land : MonoBehaviour
 {
-    public bool CanLand;    
+    public bool CanLand;
+    public int type;
+
     // Start is called before the first frame update
     void Start()
     {

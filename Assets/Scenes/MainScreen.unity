@@ -959,6 +959,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1584766041}
+        m_TargetAssemblyTypeName: SaveLoadManager, Assembly-CSharp
+        m_MethodName: SaveGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &65594685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2935,6 +2947,13 @@ MonoBehaviour:
   Stats: []
   sprite: {fileID: 21300000, guid: 2b52c802e1d449c4988150f7c877cd3a, type: 3}
   Sprite_Pic: {fileID: -1985914951, guid: da5052957c1a0454eb850fda014cb9f2, type: 3}
+  damage: {fileID: 0}
+  range: {fileID: 0}
+  timeBetweenAttacks: {fileID: 0}
+  duration: {fileID: 0}
+  labor: {fileID: 0}
+  cost: {fileID: 0}
+  level: {fileID: 0}
 --- !u!58 &186794268
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -11973,6 +11992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanLand: 0
+  type: 0
 --- !u!58 &444843311
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -17580,6 +17600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanLand: 0
+  type: 0
 --- !u!58 &681906663
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -34505,6 +34526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanLand: 0
+  type: 0
 --- !u!58 &1126461971
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -35795,6 +35817,13 @@ MonoBehaviour:
   Stats: []
   sprite: {fileID: 21300000, guid: 845857ff2c62616469e146fa78b25ded, type: 3}
   Sprite_Pic: {fileID: 21300000, guid: 845857ff2c62616469e146fa78b25ded, type: 3}
+  damage: {fileID: 0}
+  range: {fileID: 0}
+  timeBetweenAttacks: {fileID: 0}
+  duration: {fileID: 0}
+  labor: {fileID: 0}
+  cost: {fileID: 0}
+  level: {fileID: 0}
 --- !u!114 &1216891570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35919,6 +35948,13 @@ MonoBehaviour:
   Stats: []
   sprite: {fileID: 21300000, guid: 31197343c8054524c90361bf45114b43, type: 3}
   Sprite_Pic: {fileID: -1786262319, guid: c62552dbfbd5eb845be570ff758d9b1a, type: 3}
+  damage: {fileID: 0}
+  range: {fileID: 0}
+  timeBetweenAttacks: {fileID: 0}
+  duration: {fileID: 0}
+  labor: {fileID: 0}
+  cost: {fileID: 0}
+  level: {fileID: 0}
 --- !u!58 &1224327860
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -41882,13 +41918,14 @@ GameObject:
   - component: {fileID: 1584766038}
   - component: {fileID: 1584766040}
   - component: {fileID: 1584766039}
+  - component: {fileID: 1584766041}
   m_Layer: 0
   m_Name: PausePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1584766038
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41951,6 +41988,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584766037}
   m_CullTransparentMesh: 1
+--- !u!114 &1584766041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584766037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce7460ea1c1d38a478006b0b2552d7d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1584912820
 GameObject:
   m_ObjectHideFlags: 0
@@ -42992,6 +43041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanLand: 0
+  type: 0
 --- !u!1 &1652112691
 GameObject:
   m_ObjectHideFlags: 0
@@ -44389,6 +44439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanLand: 0
+  type: 0
 --- !u!58 &1723423537
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -53029,6 +53080,13 @@ MonoBehaviour:
   Stats: []
   sprite: {fileID: 21300000, guid: 6d0f3fa101764684f84035a33c26bf0b, type: 3}
   Sprite_Pic: {fileID: -1935698547, guid: 53c72700281569b43bb197e2afc5ba59, type: 3}
+  damage: {fileID: 0}
+  range: {fileID: 0}
+  timeBetweenAttacks: {fileID: 0}
+  duration: {fileID: 0}
+  labor: {fileID: 0}
+  cost: {fileID: 0}
+  level: {fileID: 0}
 --- !u!58 &1938550302
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -55683,6 +55741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanLand: 0
+  type: 0
 --- !u!58 &2092459219
 CircleCollider2D:
   m_ObjectHideFlags: 0
