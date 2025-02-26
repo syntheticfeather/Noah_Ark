@@ -9,7 +9,6 @@ public class SFXManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        BKCounter = BKTime;
     }
     public void Update()
     {
