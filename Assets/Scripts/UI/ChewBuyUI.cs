@@ -27,6 +27,6 @@ public class ChewBuyUI : MonoBehaviour
 
     public void ShowData()
     {
-        Chewdata.text = "Name:" + ChewManager.Instance.CrewsToBuy[CurChewindex].GetComponent<Chew>().cost.ToString() + "\n" + "Cost:" + ChewManager.Instance.CrewsToBuy[CurChewindex].GetComponent<Chew>().cost.ToString();
+        Chewdata.text = "Name:" + ChewManager.Instance.CrewsToBuy[CurChewindex].name + "\n" + "Cost:" + ChewManager.Instance.CrewsToBuy[CurChewindex].GetComponent<Chew>().cost.ToString();
     }
 }
