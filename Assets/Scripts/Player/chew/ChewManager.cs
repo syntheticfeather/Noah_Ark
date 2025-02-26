@@ -8,6 +8,7 @@ public class ChewManager : MonoBehaviour
     public static ChewManager Instance;
 
     public List<ChewAI> allCrews = new List<ChewAI>();
+    public List<ChewAI> CrewsToBuy = new List<ChewAI>();
     public List<Resource> ResourceList = new List<Resource>();    
     public Queue<ChewAI> idleCrews = new Queue<ChewAI>();
     public void AllBack()
@@ -42,7 +43,10 @@ public class ChewManager : MonoBehaviour
     {
         foreach (var crew in allCrews)
         {
-            idleCrews.Enqueue(crew);
+            if (!idleCrews.Contains(crew))
+            {
+                idleCrews.Enqueue(crew);
+            }
         }
     }
 
@@ -72,19 +76,15 @@ public class ChewManager : MonoBehaviour
             idleCrews.Enqueue(crew);
         }
     }
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.G))
-    //    {
-    //        AllBackToShip();
-    //    }
-    //}
-
-    //public void AllBackToShip()
-    //{
-    //    foreach (var crew in allCrews)
-    //    {
-    //        crew.GoArk = true;
-    //    }
-    //}
+    public GameObject chewbuyPanel;
+    public void tryBuyCrew()// button调用
+    {
+        // 显示UI提示"购买船员"// 点击船员时
+        //显示其数据，价格，以及资源消耗。
+        // 调用资源系统的资源，对比是否可以。
+        
+        //若可以，将其添加至。allCrews中，并初始化。
+        //若不可以，显示UI提示"资源不足"
+        // 按esc退出？或者再按一次退出？
+    }
 }
