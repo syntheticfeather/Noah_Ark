@@ -9,7 +9,7 @@ public class ChewManager : MonoBehaviour
 
     public List<ChewAI> allCrews = new List<ChewAI>();
     public List<Resource> ResourceList = new List<Resource>();    
-    private Queue<ChewAI> idleCrews = new Queue<ChewAI>();
+    public Queue<ChewAI> idleCrews = new Queue<ChewAI>();
     public void AllBack()
     {
         foreach (var item in allCrews)
@@ -52,7 +52,11 @@ public class ChewManager : MonoBehaviour
         if (idleCrews.Count > 0)
         {
             ChewAI crew = idleCrews.Dequeue();
-            crew.AssignTask(resource);
+            if (crew != null)
+            {
+                Debug.Log(idleCrews.Count);
+                crew.AssignTask(resource);
+            }
         }
         else
         {
@@ -63,7 +67,10 @@ public class ChewManager : MonoBehaviour
 
     public void ReturnIdleCrew(ChewAI crew)
     {
-        idleCrews.Enqueue(crew);
+        if (!idleCrews.Contains(crew))
+        {
+            idleCrews.Enqueue(crew);
+        }
     }
     //private void Update()
     //{

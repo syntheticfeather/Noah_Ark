@@ -49,7 +49,9 @@ public class ChewAI : MonoBehaviour
             {
                 GetToWork = false;
                 WeaponManager.Instance.UpdateStatus();
+                ChewManager.Instance.ReturnIdleCrew(this);
                 gameObject.SetActive(false);
+                Debug.Log(ChewManager.Instance.idleCrews.Count);
             }
             return;
         }
@@ -67,6 +69,8 @@ public class ChewAI : MonoBehaviour
                     GetToWork = false;
                     WeaponManager.Instance.UpdateStatus();
                     gameObject.SetActive(false);
+                    ChewManager.Instance.ReturnIdleCrew(this);
+                    Debug.Log(ChewManager.Instance.idleCrews.Count);
                 }
             }
             return;
@@ -143,6 +147,8 @@ public class ChewAI : MonoBehaviour
             {
                 GetToWork = false;
                 gameObject.SetActive(false);
+                ChewManager.Instance.ReturnIdleCrew(this);
+                Debug.Log(ChewManager.Instance.idleCrews.Count);
             }
             else
             {
