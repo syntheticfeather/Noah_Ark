@@ -110,6 +110,7 @@ public class ChewAI : MonoBehaviour
         // ²¥·Å¿³·¥¶¯»­
         //GetComponent<Animator>().SetTrigger("Chop");
         SFXManager.instance.soundEffects[3 + currentResource.type].Play();
+        Debug.Log("Harvest Music`");
         yield return new WaitForSeconds(harvestTime);
         SFXManager.instance.soundEffects[3 + currentResource.type].Stop();
         currentResource.Amount -= harvestCapacity;

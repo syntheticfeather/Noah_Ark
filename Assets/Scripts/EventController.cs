@@ -60,7 +60,7 @@ public class EventController : MonoBehaviour
 
     public void BossFight()
     {
-        Debug.Log("BossFight");
+        //Debug.Log("BossFight");
         PlayerHealthController.instance.transform.position = new Vector3(1600, -8, 0);
         Light.transform.position = new Vector3(1600, -8, 0);
         Light.SetActive(true);

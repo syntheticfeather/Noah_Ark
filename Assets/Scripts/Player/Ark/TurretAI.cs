@@ -97,7 +97,7 @@ public class TurretAI : MonoBehaviour
         BombToSpawn.SetActive(true);
         // 重置计时器，等待下次攻击
         fireCountdown = fireRate;
-        SFXManager.instance.PlaySFX(SFXManager.instance.soundEffects,Random.Range(1,4));
+        SFXManager.instance.PlaySFX(SFXManager.instance.soundEffects,Random.Range(0,3));
     }
     // 可选：可视化检测范围
     void OnDrawGizmosSelected()
