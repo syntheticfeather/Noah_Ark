@@ -38,6 +38,7 @@ public class ChewAI : MonoBehaviour
         else
         {
             ChewBuyUI.instance.gameObject.SetActive(true);
+            ChewBuyUI.instance.ShowData();
         }
     }
     public void AssignTask(Resource resource)

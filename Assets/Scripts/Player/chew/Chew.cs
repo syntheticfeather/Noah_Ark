@@ -21,7 +21,7 @@ public class Chew : MonoBehaviour
     public Text duration;
     public Text labor;
     public Text cost;
-    public Text level;
+    public Text level;    
     private void Start()
     {
         //初始化

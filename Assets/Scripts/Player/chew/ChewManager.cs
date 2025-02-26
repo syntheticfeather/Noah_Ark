@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -76,9 +78,21 @@ public class ChewManager : MonoBehaviour
             idleCrews.Enqueue(crew);
         }
     }
-    public GameObject chewbuyPanel;
+
+    public TMP_Text text;
     public void tryBuyCrew()// button调用
     {
+        if (ResourceManager.instance.Resource[2] >= ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats[0].Cost)
+        {
+            // 可以购买
+            ResourceManager.instance.Resource[2] -= Mathf.FloorToInt(ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats[0].Cost);
+            //丢进去
+            ChewManager.Instance.allCrews.Add( ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex]);
+        }
+        else
+        {
+            text.text = "资源不足";
+        }
         // 显示UI提示"购买船员"// 点击船员时
         //显示其数据，价格，以及资源消耗。
         // 调用资源系统的资源，对比是否可以。
