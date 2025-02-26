@@ -47,7 +47,7 @@ public class EnemySpawnController : MonoBehaviour
                 // 等待波次间隔后开始下一波          
                 if (Counter > waves[currentWaveIndex].waveInterval)
                 {
-                    Debug.Log("continue" + (currentWaveIndex) + "波次");
+                    //Debug.Log("continue" + (currentWaveIndex) + "波次");
                     StartNextWave();
                     Counter = 0;
                 }

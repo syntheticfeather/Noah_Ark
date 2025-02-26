@@ -37,7 +37,7 @@ public class EnemyHealthController : MonoBehaviour
         {
             ResourceManager.instance.AddResource(Random.Range(1, 5), 3);// 随机掉落资源
             Destroy(gameObject);
-            Debug.Log("enemy dead");
+            //Debug.Log("enemy dead");
         }
 
     }

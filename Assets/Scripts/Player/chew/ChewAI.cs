@@ -56,7 +56,7 @@ public class ChewAI : MonoBehaviour
         if (!isCarryingWood && (currentResource == null || currentResource.Amount <= 0))// 物资采集完提前回船。
         {
             transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
+            if (Vector3.Distance(transform.position, shipDepositPoint.position) < 5f)
             {
                 if (ChewManager.Instance.ResourceList.Count != 0)
                 {
@@ -103,19 +103,6 @@ public class ChewAI : MonoBehaviour
         {
             Collider.isTrigger = true;
         }
-
-        //else
-        //{
-        //    transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
-        //    if (Vector3.Distance(transform.position, shipDepositPoint.position) < 0.5f)
-        //    {
-        //        transform.position = shipDepositPoint.position;
-        //        gameObject.SetActive(false);
-        //    }
-        //}
-
-
-
     }
 
     IEnumerator HarvestResource()
@@ -140,7 +127,7 @@ public class ChewAI : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
         {
-            Debug.Log("Deliver to ship");            
+            //Debug.Log("Deliver to ship");            
             // 将木材存入船只
             ResourceManager.instance.AddResource(CurHarvestAmount, currentResource.type);
             if (currentResource.IsEmpty())
@@ -162,7 +149,7 @@ public class ChewAI : MonoBehaviour
                 if (currentResource == null)
                 {
                     AssignTask(ChewManager.Instance.ResourceList[0]);                    
-                    Debug.Log("Continue Task");
+                    //Debug.Log("Continue Task");
                 }
             }
         }

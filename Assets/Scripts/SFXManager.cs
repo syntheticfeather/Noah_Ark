@@ -22,16 +22,16 @@ public class SFXManager : MonoBehaviour
 
     public void PlaysfxPitch(AudioSource[] SFXList, int index) 
     {
-        Debug.Log("playsfx函数调用");
+        //Debug.Log("playsfx函数调用");
         PlaySFX(SFXList, index);
     }
 
     public void PlaySFX(AudioSource[] SFXList, int index)
     {
-        Debug.Log("SFX函数调用");
+        //Debug.Log("SFX函数调用");
         if (BossSound == SFXList)
         {
-            Debug.Log("播放音乐");
+            //Debug.Log("播放音乐");
 
             if (Bosssoundindex != index)
             {

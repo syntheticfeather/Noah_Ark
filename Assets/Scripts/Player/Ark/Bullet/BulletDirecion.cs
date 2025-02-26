@@ -27,7 +27,7 @@ public class BulletDirecion : MonoBehaviour
             if (transform.localScale == Vector3.zero)
             {
                 Destroy(gameObject);
-                Debug.Log("因速度为0而销毁");
+                //Debug.Log("因速度为0而销毁");
             }
         }
     }
