@@ -6,9 +6,11 @@ public class Strike : MonoBehaviour
 {
     public int ATK;
     public bool OneATK = false;
+    public Animator animator;
     void Start()
-    {        
-        Destroy(gameObject, 2);
+    {
+        animator.Play("attack");
+        Destroy(gameObject, 1.5f);
     }
 
     // Update is called once per frame

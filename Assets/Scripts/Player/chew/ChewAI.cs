@@ -28,6 +28,18 @@ public class ChewAI : MonoBehaviour
     {
     }
 
+    private void OnMouseDown()// 传递其标识符
+    {
+        ChewBuyUI.instance.CurChewindex = ChewManager.Instance.CrewsToBuy.IndexOf(this);// 传递表示符
+        if (ChewBuyUI.instance.gameObject.activeSelf) //显示其UI。
+        {
+            ChewBuyUI.instance.gameObject.SetActive(false);
+        }
+        else
+        {
+            ChewBuyUI.instance.gameObject.SetActive(true);
+        }
+    }
     public void AssignTask(Resource resource)
     {
         GetToWork = true;
@@ -49,14 +61,16 @@ public class ChewAI : MonoBehaviour
             {
                 GetToWork = false;
                 WeaponManager.Instance.UpdateStatus();
+                ChewManager.Instance.ReturnIdleCrew(this);
                 gameObject.SetActive(false);
+                Debug.Log(ChewManager.Instance.idleCrews.Count);
             }
             return;
         }
         if (!isCarryingWood && (currentResource == null || currentResource.Amount <= 0))// 物资采集完提前回船。
         {
             transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
+            if (Vector3.Distance(transform.position, shipDepositPoint.position) < 5f)
             {
                 if (ChewManager.Instance.ResourceList.Count != 0)
                 {
@@ -67,6 +81,8 @@ public class ChewAI : MonoBehaviour
                     GetToWork = false;
                     WeaponManager.Instance.UpdateStatus();
                     gameObject.SetActive(false);
+                    ChewManager.Instance.ReturnIdleCrew(this);
+                    Debug.Log(ChewManager.Instance.idleCrews.Count);
                 }
             }
             return;
@@ -103,27 +119,16 @@ public class ChewAI : MonoBehaviour
         {
             Collider.isTrigger = true;
         }
-
-        //else
-        //{
-        //    transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
-        //    if (Vector3.Distance(transform.position, shipDepositPoint.position) < 0.5f)
-        //    {
-        //        transform.position = shipDepositPoint.position;
-        //        gameObject.SetActive(false);
-        //    }
-        //}
-
-
-
     }
 
     IEnumerator HarvestResource()
     {
         // 播放砍伐动画
         //GetComponent<Animator>().SetTrigger("Chop");
-
+        SFXManager.instance.soundEffects[3 + currentResource.type].Play();
+        Debug.Log("Harvest Music`");
         yield return new WaitForSeconds(harvestTime);
+        SFXManager.instance.soundEffects[3 + currentResource.type].Stop();
         currentResource.Amount -= harvestCapacity;
         if (!currentResource.IsEmpty())
         {
@@ -139,7 +144,7 @@ public class ChewAI : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
         {
-            Debug.Log("Deliver to ship");            
+            //Debug.Log("Deliver to ship");            
             // 将木材存入船只
             ResourceManager.instance.AddResource(CurHarvestAmount, currentResource.type);
             if (currentResource.IsEmpty())
@@ -154,6 +159,8 @@ public class ChewAI : MonoBehaviour
             {
                 GetToWork = false;
                 gameObject.SetActive(false);
+                ChewManager.Instance.ReturnIdleCrew(this);
+                Debug.Log(ChewManager.Instance.idleCrews.Count);
             }
             else
             {
@@ -161,7 +168,7 @@ public class ChewAI : MonoBehaviour
                 if (currentResource == null)
                 {
                     AssignTask(ChewManager.Instance.ResourceList[0]);                    
-                    Debug.Log("Continue Task");
+                    //Debug.Log("Continue Task");
                 }
             }
         }

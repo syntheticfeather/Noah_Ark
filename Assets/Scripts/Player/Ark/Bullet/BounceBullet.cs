@@ -48,7 +48,7 @@ public class BouncingBomb : Father
         screenBottom = bottomLeft.y;
         screenTop = topRight.y;
 
-        Debug.Log($"Screen Bounds: Left={screenLeft}, Right={screenRight}, Bottom={screenBottom}, Top={screenTop}");
+        //Debug.Log($"Screen Bounds: Left={screenLeft}, Right={screenRight}, Bottom={screenBottom}, Top={screenTop}");
     }
 
     void CheckScreenBounds()
@@ -73,13 +73,13 @@ public class BouncingBomb : Father
             // 反弹逻辑
             if (transform.position.x <= screenLeft || transform.position.x >= screenRight)
             {
-                Debug.Log("Bouncing on X axis");
+                //Debug.Log("Bouncing on X axis");
                 // 反转 x 方向（左右反弹）
                 Direction = new Vector2(-Direction.x, Direction.y);
             }
             else if (transform.position.y <= screenBottom || transform.position.y >= screenTop)
             {
-                Debug.Log("Bouncing on Y axis");
+                //Debug.Log("Bouncing on Y axis");
                 // 反转 y 方向（上下反弹）
                 Direction = new Vector2(Direction.x, -Direction.y);
             }
@@ -89,7 +89,7 @@ public class BouncingBomb : Father
         else
         {
             // 达到最大反弹次数，销毁炮弹
-            Debug.Log("Max bounces reached. Destroying bomb.");
+            //Debug.Log("Max bounces reached. Destroying bomb.");
             Destroy(gameObject);
         }
     }

@@ -40,15 +40,18 @@ public class Boss : MonoBehaviour
         {
             SweepCounter -= Time.deltaTime;
             soundindex = 1;
+            SFXManager.instance.PlaySFX(SFXManager.instance.BossSound, 5);
         }
         if (EnemyHealthController.CurHealth < (EnemyHealthController.MaxHealth * 0.5))
         {
             VortexCounter -= Time.deltaTime;
             soundindex = 2;
+            SFXManager.instance.PlaySFX(SFXManager.instance.BossSound, 5);
         }
         if (EnemyHealthController.CurHealth < (EnemyHealthController.MaxHealth * 0.4))
         {
             LaserCounter -= Time.deltaTime;
+            SFXManager.instance.PlaySFX(SFXManager.instance.BossSound, 5);
         }
         if (EnemyHealthController.CurHealth < (EnemyHealthController.MaxHealth * 0.3))
         {
