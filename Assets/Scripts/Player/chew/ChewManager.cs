@@ -82,6 +82,7 @@ public class ChewManager : MonoBehaviour
     public TMP_Text text;
     public void tryBuyCrew()// button调用
     {
+        Debug.Log("tryBuyCrew");
         if (ResourceManager.instance.Resource[2] >= ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats[0].Cost)
         {
             // 可以购买

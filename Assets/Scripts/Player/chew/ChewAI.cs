@@ -19,6 +19,7 @@ public class ChewAI : MonoBehaviour
     public bool FinishHarvest = false;
     public bool DirectToShip = false;
     public bool GetToWork;
+    public bool IsBought;
     CircleCollider2D Collider;
     private void Awake()
     {
@@ -30,6 +31,13 @@ public class ChewAI : MonoBehaviour
 
     private void OnMouseDown()// 传递其标识符
     {
+        if (ChewManager.Instance == null) Debug.Log("ChewManager.Instance is null");
+        if (ChewBuyUI.instance == null) Debug.Log("ChewBuyUI.instance is null");
+        if (ChewManager.Instance.CrewsToBuy == null) Debug.Log("CrewsToBuy is null");
+        if (ChewManager.Instance.CrewsToBuy.Count <= ChewBuyUI.instance.CurChewindex) Debug.Log("CurChewindex is out of range");
+        if (ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex] == null) Debug.Log("Current CrewsToBuy item is null");
+        ChewAI chew = ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex];
+        if (chew.GetComponent<Chew>() == null) Debug.Log("Chew component is null on the current crew item");
         ChewBuyUI.instance.CurChewindex = ChewManager.Instance.CrewsToBuy.IndexOf(this);// 传递表示符
         if (ChewBuyUI.instance.gameObject.activeSelf) //显示其UI。
         {
@@ -39,6 +47,10 @@ public class ChewAI : MonoBehaviour
         {
             ChewBuyUI.instance.gameObject.SetActive(true);
             ChewBuyUI.instance.ShowData();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.T))
+        {
+            ChewBuyUI.instance.gameObject.SetActive(false);
         }
     }
     public void AssignTask(Resource resource)
@@ -54,6 +66,11 @@ public class ChewAI : MonoBehaviour
 
     void Update()
     {
+        if (!IsBought)
+        {
+            gameObject.SetActive(true);
+            return;
+        }
         if (DirectToShip)// G键强制回船
         {
             Debug.Log("Direct to ship");
