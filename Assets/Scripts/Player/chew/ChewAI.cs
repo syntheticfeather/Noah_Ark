@@ -33,18 +33,18 @@ public class ChewAI : MonoBehaviour
     private void OnMouseDown()// 传递其标识符
     {
         ChewBuyUI.instance.CurChewindex = ChewManager.Instance.CrewsToBuy.IndexOf(this);// 传递表示符
-        if (ChewBuyUI.instance.gameObject.activeSelf) //显示其UI。
+        if (ChewBuyUI.instance.BuyUI.activeSelf) //显示其UI。
         {
-            ChewBuyUI.instance.gameObject.SetActive(false);
+            ChewBuyUI.instance.BuyUI.SetActive(false);
         }
         else
         {
-            ChewBuyUI.instance.gameObject.SetActive(true);
+            ChewBuyUI.instance.BuyUI.SetActive(true);
             ChewBuyUI.instance.ShowData();
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            ChewBuyUI.instance.gameObject.SetActive(false);
+            ChewBuyUI.instance.BuyUI.SetActive(false);
         }
     }
     public void AssignTask(Resource resource)

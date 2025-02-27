@@ -8,15 +8,15 @@ public class Father : MonoBehaviour
 
     public float ChangeRate; // 动画
     public float explosionRadius = 5f; // 爆炸范围
-    public int ATK;
+    public int ATK;//攻击伤害
+    public float Speed;// 移动速度
+    public float ATKSpeed; // 攻击速度
     public float LifeTime;
     public float LifeTimeCounter;
     public Vector3 Direction;
     public LayerMask damageLayers; // 可以受到伤害的图层
     public ParticleSystem ParticleSystem;
     public ParticleSystem BloodSystem;
-    public float Speed;
-    public float ATKSpeed;
     // Start is called before the first frame update
     private void Awake()
     {

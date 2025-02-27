@@ -10,8 +10,7 @@ public class LevelUp : MonoBehaviour
         Damage = 1f,         // 示例数值，根据实际情况调整
         Range = 15f,           // 示例数值，根据实际情况调整
         TimeBetweenAttacks = 1.5f, // 示例数值，根据实际情况调整
-        Duration = 10f,       // 示例数值，根据实际情况调整
-        Labor = 10f,          // 示例数值，根据实际情况调整
+        Duration = 10f,       // 示例数值，根据实际情况调整        
         Cost = 10f,          // 示例数值，根据实际情况调整
         Level = 1f,           // 示例数值，根据实际情况调整
         Maxtake = 3,         // 示例数值，根据实际情况调整

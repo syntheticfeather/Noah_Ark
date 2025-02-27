@@ -78,10 +78,14 @@ public class ChewManager : MonoBehaviour
             idleCrews.Enqueue(crew);
         }
     }
-
-    public TMP_Text text;
     public void tryBuyCrew()// button调用
     {
+        if (ChewManager.Instance.allCrews.Contains(ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex]))
+        {
+            ChewBuyUI.instance.DebugText.text = "already bought";
+            ChewBuyUI.instance.DebugText.gameObject.SetActive(true);
+            return;
+        }
         Debug.Log("tryBuyCrew");
         if (ResourceManager.instance.Resource[2] >= ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats.Cost)
         {
@@ -89,10 +93,14 @@ public class ChewManager : MonoBehaviour
             ResourceManager.instance.Resource[2] -= Mathf.FloorToInt(ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats.Cost);
             //丢进去
             ChewManager.Instance.allCrews.Add( ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex]);
+            ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].gameObject.SetActive(false);
+            Debug.Log("Buy crew");
         }
         else
         {
-            text.text = "资源不足";
+            ChewBuyUI.instance.DebugText.text = "not enough food";
+            ChewBuyUI.instance.DebugText.gameObject.SetActive(true);
+            Debug.Log("not enough food");
         }
         // 显示UI提示"购买船员"// 点击船员时
         //显示其数据，价格，以及资源消耗。

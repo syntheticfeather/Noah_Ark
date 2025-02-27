@@ -17,8 +17,7 @@ public class Chew : MonoBehaviour
     public Text damage;
     public Text range;
     public Text timeBetweenAttacks;
-    public Text duration;
-    public Text labor;
+    public Text duration;    
     public Text cost;
     public Text level;    
     private void Start()
@@ -41,9 +40,6 @@ public class Chew : MonoBehaviour
             case "duration":
                 Stats.Duration -= change;
                 break;
-            case "labor":
-                Stats.Labor += change;
-                break;
             case "cost":
                 Stats.Cost += change;
                 break;
@@ -60,8 +56,7 @@ public class Chew : MonoBehaviour
         damage.text = Stats.Damage.ToString();
         range.text = Stats.Range.ToString();
         timeBetweenAttacks.text = Stats.TimeBetweenAttacks.ToString();
-        duration.text = Stats.Duration.ToString();
-        labor.text = Stats.Labor.ToString();
+        duration.text = Stats.Duration.ToString();        
         cost.text = Stats.Cost.ToString();
         level.text = Stats.Level.ToString();
     }
