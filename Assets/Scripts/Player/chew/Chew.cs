@@ -64,8 +64,8 @@ public class Chew : MonoBehaviour
     }
     public void ApplyToBullet()
     {
-        father.ATK = Stats.Damage;
-        father.ATKSpeed = Stats.TimeBetweenAttacks;
-        father.explosionRadius = Stats.Range;
+        father.ATK += Stats.Damage;
+        father.ATKSpeed += Stats.TimeBetweenAttacks;
+        father.explosionRadius += Stats.Range;
     }
 }
