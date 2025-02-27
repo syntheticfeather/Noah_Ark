@@ -221,7 +221,7 @@ MonoBehaviour:
   Speed: 0.6
   CircleSpeed: 0.1
   Radius: 9
-  HealRadius: 7
+  HealRadius: 15
   KnockTime: 5
   rb: {fileID: 0}
   Enemy:
