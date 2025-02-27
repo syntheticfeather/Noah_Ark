@@ -94,6 +94,8 @@ public class ChewManager : MonoBehaviour
             //丢进去
             ChewManager.Instance.allCrews.Add( ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex]);
             ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].gameObject.SetActive(false);
+            idleCrews.Enqueue(ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex]);
+            ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].IsBought = true;
             Debug.Log("Buy crew");
         }
         else

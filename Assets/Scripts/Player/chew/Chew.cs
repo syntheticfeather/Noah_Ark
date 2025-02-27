@@ -5,12 +5,14 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine.UI;
 using UnityEngine;
 using static Chew;
+using UnityEditor.Timeline.Actions;
 
 
 public class Chew : MonoBehaviour
 {
 
     public ChewStats Stats; // 用于小动物升级的列表
+    public Father father;// 对应的子弹的预制体父类
     public Sprite sprite;
     public Sprite Sprite_Pic;
     //文本显示
@@ -59,5 +61,11 @@ public class Chew : MonoBehaviour
         duration.text = Stats.Duration.ToString();        
         cost.text = Stats.Cost.ToString();
         level.text = Stats.Level.ToString();
+    }
+    public void ApplyToBullet()
+    {
+        father.ATK = Stats.Damage;
+        father.ATKSpeed = Stats.TimeBetweenAttacks;
+        father.explosionRadius = Stats.Range;
     }
 }

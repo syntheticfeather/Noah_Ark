@@ -14,7 +14,7 @@ public class ResourceManager : MonoBehaviour
     {
         instance = this;
         Resource[3] = PlayerPrefs.GetInt("CrystalCount", 0);// 读写局外crystal数据。
-        InitialResource(5, 1, 5);
+        InitialResource(5, 1, 50);
     }
     public void InitialResource(int initialWood, int initialStone, int initialFood)
     {

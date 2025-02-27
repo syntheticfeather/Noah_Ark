@@ -8,7 +8,7 @@ public class Father : MonoBehaviour
 
     public float ChangeRate; // ¶¯»­
     public float explosionRadius = 5f; // ±¬Õ¨·¶Î§
-    public int ATK;//¹¥»÷ÉËº¦
+    public float ATK;//¹¥»÷ÉËº¦
     public float Speed;// ÒÆ¶¯ËÙ¶È
     public float ATKSpeed; // ¹¥»÷ËÙ¶È
     public float LifeTime;

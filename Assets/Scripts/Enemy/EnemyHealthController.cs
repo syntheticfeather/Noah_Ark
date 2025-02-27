@@ -28,7 +28,7 @@ public class EnemyHealthController : MonoBehaviour
         
     }
 
-    public void TakeDamage(int Damage)
+    public void TakeDamage(float Damage)
     {
         StartCoroutine(FlashRed());
         CurHealth -= Damage;

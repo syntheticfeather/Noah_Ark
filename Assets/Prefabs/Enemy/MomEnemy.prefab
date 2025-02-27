@@ -136,7 +136,7 @@ MonoBehaviour:
   Speed: 1
   Radius: 8
   NumOfGuard: 3
-  KnockTime: 5
+  KnockTime: 10
   NumToSpawn: 3
   Direction: {x: 0, y: 0}
   rb: {fileID: 1052595296437939283}
