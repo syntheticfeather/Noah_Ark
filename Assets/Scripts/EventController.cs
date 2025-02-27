@@ -16,13 +16,19 @@ public class EventController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        instance = this;
+        instance = this;        
     }
 
     void Start()
-    {
-    }
+    {        
+            Map.GetComponent<SpriteRenderer>().color = color0;
 
+
+    }
+    public Color color0 = new Color(110f / 255f, 194f / 255f, 215f / 255f, 255f / 255f);
+    public Color color1 = new Color(65f / 255f, 158f / 255f, 228f / 255f, 255f / 255f);
+    public Color color2 = new Color(10f / 255f, 103f / 255f, 152f / 255f, 255f / 255f);
+    public SpriteRenderer MapSpriteRenderer;
     // Update is called once per frame
     void Update()
     {    
@@ -45,14 +51,17 @@ public class EventController : MonoBehaviour
         {
             ChewManager.Instance.AllBack();
         }
-        if (TimeUI.instance.WholeTime <= 1200 || Input.GetKeyDown(KeyCode.U))// 索第一次圈 // 数值待定 // 测试
+
+        if (TimeUI.instance.WholeTime <= 1200)// 索第一次圈 // 数值待定 // 测试
         {
             Map.transform.localScale = new Vector3(600, 600, 600);
+            Map.GetComponent<SpriteRenderer>().color = color1;
             IsLandController.instance.UpdateIsLand();
         }
         if (TimeUI.instance.WholeTime <= 600)// 索第一次圈
         {
             Map.transform.localScale = new Vector3(400, 400, 400);
+            Map.GetComponent<SpriteRenderer>().color = color2;
             IsLandController.instance.UpdateIsLand();
         }
              
