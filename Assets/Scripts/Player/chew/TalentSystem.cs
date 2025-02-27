@@ -17,7 +17,7 @@ public class TalentSystem : MonoBehaviour
                 new Talent("初级攻速", "提高10%攻击速度", stats => stats.TimeBetweenAttacks *= 0.9f),
                 new Talent("初级劳动", "提高30%采集速度", stats => stats.Labor *= 1.3f),
                 new Talent("快速学习", "减少30%升级花费", stats => stats.Cost *= 0.7f),
-                new Talent("初级负重", "提高50%采集上限", stats => stats.Maxtake *= 1.5f),
+                new Talent("初级负重", "提高50%采集上限", stats => stats.Maxtake *= (int)1.5f),
             };
 
         MidLevelTalents = new List<Talent>
@@ -27,7 +27,7 @@ public class TalentSystem : MonoBehaviour
                 new Talent("高级劳动", "增加60%采集速度", stats => stats.Labor *= 1.6f),
                 new Talent("高级射程", "提高20%移动速度", stats => stats.Range *= 1.2f),
                 new Talent("高级攻速", "提高20%攻击速度", stats => stats.TimeBetweenAttacks *= 0.8f),
-                new Talent("高级负重", "提高100%采集上限", stats => stats.Maxtake *= 2.0f),
+                new Talent("高级负重", "提高100%采集上限", stats => stats.Maxtake *= (int)2.0f),
             };
 
         HighLevelTalents = new List<Talent>

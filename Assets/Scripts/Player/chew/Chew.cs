@@ -9,9 +9,8 @@ using static Chew;
 
 public class Chew : MonoBehaviour
 {
-    public static Chew instance;
 
-    public List<ChewStats> Stats; // 用于小动物升级的列表
+    public ChewStats Stats; // 用于小动物升级的列表
     public Sprite sprite;
     public Sprite Sprite_Pic;
     //文本显示
@@ -24,49 +23,46 @@ public class Chew : MonoBehaviour
     public Text level;    
     private void Start()
     {
-        //初始化
-        for (int i = 0; i < 6; i++)
-        {
-            UpdateUI(i);
-        }
+               
     }
     public void UpdateData(int index, string attribute, float change)
     {
-        var stat = Stats[index];
         switch (attribute.ToLower())
         {
             case "damage":
-                stat.Damage += change;
+                Stats.Damage += change;
                 break;
             case "range":
-                stat.Range += change;
+                Stats.Range += change;
                 break;
             case "timebetweenattacks":
-                stat.TimeBetweenAttacks -= change;
+                Stats.TimeBetweenAttacks -= change;
                 break;
             case "duration":
-                stat.Duration -= change;
+                Stats.Duration -= change;
                 break;
             case "labor":
-                stat.Labor += change;
+                Stats.Labor += change;
                 break;
             case "cost":
-                stat.Cost += change;
+                Stats.Cost += change;
                 break;
             default:
                 break;
         }
-        UpdateUI(index);
+        UpdateUI();
     }
-    public void UpdateUI(int index)
+    public void UpdateUI()
     {
+        ChewAI chewAI = GetComponent<ChewAI>();
+        int index = ChewManager.Instance.allCrews.IndexOf(chewAI);
         //文本实时显示
-        damage.text = Chew.instance.Stats[index].Damage.ToString();
-        range.text = Chew.instance.Stats[index].Range.ToString();
-        timeBetweenAttacks.text = Chew.instance.Stats[index].TimeBetweenAttacks.ToString();
-        duration.text = Chew.instance.Stats[index].Duration.ToString();
-        labor.text = Chew.instance.Stats[index].Labor.ToString();
-        cost.text = Chew.instance.Stats[index].Cost.ToString();
-        level.text = Chew.instance.Stats[index].Level.ToString();
+        damage.text = Stats.Damage.ToString();
+        range.text = Stats.Range.ToString();
+        timeBetweenAttacks.text = Stats.TimeBetweenAttacks.ToString();
+        duration.text = Stats.Duration.ToString();
+        labor.text = Stats.Labor.ToString();
+        cost.text = Stats.Cost.ToString();
+        level.text = Stats.Level.ToString();
     }
 }

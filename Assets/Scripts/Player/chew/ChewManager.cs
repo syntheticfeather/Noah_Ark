@@ -83,10 +83,10 @@ public class ChewManager : MonoBehaviour
     public void tryBuyCrew()// button调用
     {
         Debug.Log("tryBuyCrew");
-        if (ResourceManager.instance.Resource[2] >= ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats[0].Cost)
+        if (ResourceManager.instance.Resource[2] >= ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats.Cost)
         {
             // 可以购买
-            ResourceManager.instance.Resource[2] -= Mathf.FloorToInt(ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats[0].Cost);
+            ResourceManager.instance.Resource[2] -= Mathf.FloorToInt(ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats.Cost);
             //丢进去
             ChewManager.Instance.allCrews.Add( ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex]);
         }

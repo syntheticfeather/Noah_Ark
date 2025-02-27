@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class ChewStats : MonoBehaviour
 {
-    public float Damage, Range, TimeBetweenAttacks, Duration, Labor, Cost, Level, Maxtake;
+    public float Damage, Range, TimeBetweenAttacks, Duration, Labor, Cost, Level;
+    public int Maxtake;
     public bool Leader, DoubleProjectile, AutoRepair;
     
 }

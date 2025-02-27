@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class EnemyHealthController : MonoBehaviour
 {
     public static EnemyHealthController Instance;
-    public int CurHealth;
+    public float CurHealth;
     public int MaxHealth;
     public SpriteRenderer renderer2D; // 物体的渲染组件
     private Color originalColor; // 记录原始颜色

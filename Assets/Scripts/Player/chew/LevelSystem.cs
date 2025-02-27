@@ -18,13 +18,15 @@ public class LevelSystem : MonoBehaviour
     public void LevelUp(int index)
     {
         Level++;
+        ChewAI chewAI = GetComponent<ChewAI>();
+        int Index = ChewManager.Instance.allCrews.IndexOf(chewAI);
         // Ù–‘Ã·…˝
-        Chew.instance.UpdateData(index, "Damage", 0.5f);
-        Chew.instance.UpdateData(index, "Range", 2.0f);
-        Chew.instance.UpdateData(index, "TimeBetweenAttacks", 0.1f);
-        Chew.instance.UpdateData(index, "Duration", 0.1f);
-        Chew.instance.UpdateData(index, "Labor", 1.0f);
-        Chew.instance.UpdateData(index, "Cost", 1.0f);
+        //Chew.instance.UpdateData(index, "Damage", 0.5f);
+        //Chew.instance.UpdateData(index, "Range", 2.0f);
+        //Chew.instance.UpdateData(index, "TimeBetweenAttacks", 0.1f);
+        //Chew.instance.UpdateData(index, "Duration", 0.1f);
+        //Chew.instance.UpdateData(index, "Labor", 1.0f);
+        //Chew.instance.UpdateData(index, "Cost", 1.0f);
 
 
         List<Talent> randomTalents = talentSystem.GetRandomTalents(Level);

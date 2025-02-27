@@ -27,17 +27,11 @@ public class ChewAI : MonoBehaviour
     }
     void Start()
     {
+        harvestCapacity = (int)GetComponent<Chew>().Stats.Maxtake;
     }
 
     private void OnMouseDown()// 传递其标识符
     {
-        if (ChewManager.Instance == null) Debug.Log("ChewManager.Instance is null");
-        if (ChewBuyUI.instance == null) Debug.Log("ChewBuyUI.instance is null");
-        if (ChewManager.Instance.CrewsToBuy == null) Debug.Log("CrewsToBuy is null");
-        if (ChewManager.Instance.CrewsToBuy.Count <= ChewBuyUI.instance.CurChewindex) Debug.Log("CurChewindex is out of range");
-        if (ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex] == null) Debug.Log("Current CrewsToBuy item is null");
-        ChewAI chew = ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex];
-        if (chew.GetComponent<Chew>() == null) Debug.Log("Chew component is null on the current crew item");
         ChewBuyUI.instance.CurChewindex = ChewManager.Instance.CrewsToBuy.IndexOf(this);// 传递表示符
         if (ChewBuyUI.instance.gameObject.activeSelf) //显示其UI。
         {
@@ -48,7 +42,7 @@ public class ChewAI : MonoBehaviour
             ChewBuyUI.instance.gameObject.SetActive(true);
             ChewBuyUI.instance.ShowData();
         }
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             ChewBuyUI.instance.gameObject.SetActive(false);
         }

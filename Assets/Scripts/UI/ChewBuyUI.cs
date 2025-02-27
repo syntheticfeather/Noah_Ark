@@ -9,6 +9,8 @@ public class ChewBuyUI : MonoBehaviour
     public static ChewBuyUI instance;
     public int CurChewindex;
     public TMP_Text Chewdata;
+    public TMP_Text Name;
+    public Image ChewImage;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -27,6 +29,9 @@ public class ChewBuyUI : MonoBehaviour
 
     public void ShowData()
     {
-        Chewdata.text = "Name:" + ChewManager.Instance.CrewsToBuy[CurChewindex].name + "\n" + "Cost:" + ChewManager.Instance.CrewsToBuy[CurChewindex].GetComponent<Chew>().cost.ToString();
+        Name.text = "Name:" + ChewManager.Instance.CrewsToBuy[CurChewindex].name;
+            
+            
+            //"\n" + "Cost:" + ChewManager.Instance.CrewsToBuy[CurChewindex].GetComponent<Chew>().cost.ToString();
     }
 }

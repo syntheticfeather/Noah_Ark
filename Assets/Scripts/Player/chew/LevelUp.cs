@@ -14,7 +14,7 @@ public class LevelUp : MonoBehaviour
         Labor = 10f,          // 示例数值，根据实际情况调整
         Cost = 10f,          // 示例数值，根据实际情况调整
         Level = 1f,           // 示例数值，根据实际情况调整
-        Maxtake = 3f,         // 示例数值，根据实际情况调整
+        Maxtake = 3,         // 示例数值，根据实际情况调整
         Leader = false,       // 示例布尔值，根据实际情况调整
         DoubleProjectile = false, // 示例布尔值，根据实际情况调整
         AutoRepair = false     // 示例布尔值，根据实际情况调整
