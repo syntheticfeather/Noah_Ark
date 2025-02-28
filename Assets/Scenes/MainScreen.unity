@@ -2339,10 +2339,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 122821506}
-  moveSpeed: 10
+  baseMoveSpeed: 5
+  baseMaxSpeed: 10
   turnSpeed: 60
-  maxSpeed: 15
   deceleration: 2
+  dashMultiplier: 3
+  dashDuration: 1
+  dashCooldown: 20
+  externalUpgrade: {fileID: 546900106}
 --- !u!114 &122821509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2358,6 +2362,7 @@ MonoBehaviour:
   Health: 10
   MaxHealth: 10
   Shield: 10
+  externalUpgrade: {fileID: 546900106}
 --- !u!95 &122821510
 Animator:
   serializedVersion: 5
@@ -15498,6 +15503,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546779671}
   m_CullTransparentMesh: 1
+--- !u!1 &546900105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 546900107}
+  - component: {fileID: 546900106}
+  m_Layer: 0
+  m_Name: UpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &546900106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546900105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384920018c2c06849969a7a69ae46034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &546900107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546900105}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -56.984802, y: -140.20308, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &548334603
 GameObject:
   m_ObjectHideFlags: 0
@@ -46657,6 +46706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Resource: 00000000000000000000000000000000
+  externalUpgrade: {fileID: 546900106}
 --- !u!4 &1626945205
 Transform:
   m_ObjectHideFlags: 0
@@ -61148,6 +61198,7 @@ SceneRoots:
   - {fileID: 1735660722}
   - {fileID: 431405107}
   - {fileID: 1967915061}
+  - {fileID: 546900107}
   - {fileID: 963627771}
   - {fileID: 998879780}
   - {fileID: 139746307}
