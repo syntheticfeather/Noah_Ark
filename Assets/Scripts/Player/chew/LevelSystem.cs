@@ -1,21 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
-{
-    public int Level { get; private set; }
+{   
     private TalentSystem talentSystem;
-    private ChewStats stats;
-
-    public LevelSystem(ChewStats initialStats)
-    {
-        Level = 1;
-        talentSystem = new TalentSystem();
-        stats = initialStats;
-    }
-
+    private ChewStats stats;   
     public Button button;
     private void Start()
     {
@@ -35,20 +27,23 @@ public class LevelSystem : MonoBehaviour
         chew.UpdateData("Cost", 1.0f);
         chew.UpdateData("Level", 1f);
 
-
-        List<Talent> randomTalents = talentSystem.GetRandomTalents((int)(chew.Stats.Level));
+        talentSystem = new TalentSystem();      
+        List<Talent> randomTalents = talentSystem.GetRandomTalents((int)chew.Stats.Level);
+        Debug.Log("randomTalent" + randomTalents[0].Name);
         if (randomTalents != null)
-        {
-            //展示升级UI
+        {            
             for (int i = 0; i < randomTalents.Count; i++)
             {
+                chew.talent[i].text = randomTalents[1].Name 
+                    + randomTalents[i].Description;
+
 
             }
 
 
             //选择天赋
-            int choice = 0;
-            randomTalents[choice].ApplyEffect(stats);
+            //int choice = 0;
+            //randomTalents[choice].ApplyEffect(stats);
 
         }
     }

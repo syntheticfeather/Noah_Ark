@@ -23,7 +23,9 @@ public class Chew : MonoBehaviour
     public Text timeBetweenAttacks;
     public Text duration;    
     public Text cost;
-    public Text level;    
+    public Text level;
+    public List<Text> talent;
+   
     private void Start()
     {
         UpdateUI();
@@ -66,7 +68,7 @@ public class Chew : MonoBehaviour
         timeBetweenAttacks.text = (Math.Round(Stats.TimeBetweenAttacks, 1)).ToString();
         duration.text = (Math.Round(Stats.Duration, 1)).ToString();        
         cost.text = (Math.Round(Stats.Cost, 1)).ToString();
-        level.text = (Math.Round(Stats.Level, 1)).ToString();
+        level.text = (Math.Round(Stats.Level, 1)).ToString();       
     }
     public void ApplyToBullet()
     {

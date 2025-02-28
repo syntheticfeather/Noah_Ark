@@ -3654,6 +3654,7 @@ MonoBehaviour:
   duration: {fileID: 1048843248}
   cost: {fileID: 467478050}
   level: {fileID: 730164135}
+  talent: []
 --- !u!58 &186794268
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -38681,6 +38682,7 @@ MonoBehaviour:
   duration: {fileID: 1696757208}
   cost: {fileID: 1501713821}
   level: {fileID: 1207474398}
+  talent: []
 --- !u!114 &1216891570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38852,6 +38854,7 @@ MonoBehaviour:
   duration: {fileID: 1036941682}
   cost: {fileID: 623310438}
   level: {fileID: 446581853}
+  talent: []
 --- !u!58 &1224327860
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -56427,6 +56430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1894118907}
   - component: {fileID: 1894118908}
+  - component: {fileID: 1894118909}
   m_Layer: 0
   m_Name: ChewController
   m_TagString: Untagged
@@ -56472,6 +56476,18 @@ MonoBehaviour:
   - {fileID: 186794266}
   - {fileID: 1938550300}
   ResourceList: []
+--- !u!114 &1894118909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894118906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76a46d75ebefa24ba67c97ead012d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1894745588
 GameObject:
   m_ObjectHideFlags: 0
@@ -57105,6 +57121,7 @@ MonoBehaviour:
   duration: {fileID: 1225688215}
   cost: {fileID: 1384763806}
   level: {fileID: 487094353}
+  talent: []
 --- !u!58 &1938550302
 CircleCollider2D:
   m_ObjectHideFlags: 0
