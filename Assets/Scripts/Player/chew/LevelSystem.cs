@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
 {
@@ -15,21 +16,27 @@ public class LevelSystem : MonoBehaviour
         stats = initialStats;
     }
 
-    public void LevelUp(int index)
+    public Button button;
+    private void Start()
     {
-        Level++;
+        button.onClick.AddListener(LevelUp);
+    }
+
+    public void LevelUp()
+    {    
+        Chew chew = GetComponent<Chew>();
         ChewAI chewAI = GetComponent<ChewAI>();
         int Index = ChewManager.Instance.allCrews.IndexOf(chewAI);
         //属性提升
-        //Chew.instance.UpdateData(index, "Damage", 0.5f);
-        //Chew.instance.UpdateData(index, "Range", 2.0f);
-        //Chew.instance.UpdateData(index, "TimeBetweenAttacks", 0.1f);
-        //Chew.instance.UpdateData(index, "Duration", 0.1f);
-        //Chew.instance.UpdateData(index, "Labor", 1.0f);
-        //Chew.instance.UpdateData(index, "Cost", 1.0f);
+        chew.UpdateData("Damage", 0.5f);
+        chew.UpdateData("Range", 2.0f);
+        chew.UpdateData("TimeBetweenAttacks", 0.1f);
+        chew.UpdateData("Duration", 0.1f);        
+        chew.UpdateData("Cost", 1.0f);
+        chew.UpdateData("Level", 1f);
 
 
-        List<Talent> randomTalents = talentSystem.GetRandomTalents(Level);
+        List<Talent> randomTalents = talentSystem.GetRandomTalents((int)(chew.Stats.Level));
         if (randomTalents != null)
         {
             //展示升级UI

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine.UI;
 using UnityEngine;
-using static Chew;
 using UnityEditor.Timeline.Actions;
 
 
@@ -15,6 +14,8 @@ public class Chew : MonoBehaviour
     public Father father;// 对应的子弹的预制体父类
     public Sprite sprite;
     public Sprite Sprite_Pic;
+    public GameObject mygameObject;
+    
     //文本显示
     public Text damage;
     public Text range;
@@ -26,10 +27,13 @@ public class Chew : MonoBehaviour
     {
                
     }
-    public void UpdateData(int index, string attribute, float change)
+    public void UpdateData(string attribute, float change)
     {
         switch (attribute.ToLower())
         {
+            case "level":
+                Stats.Level += change;
+                break;
             case "damage":
                 Stats.Damage += change;
                 break;
@@ -52,7 +56,7 @@ public class Chew : MonoBehaviour
     }
     public void UpdateUI()
     {
-        ChewAI chewAI = GetComponent<ChewAI>();
+        ChewAI chewAI = mygameObject.GetComponent<ChewAI>();
         int index = ChewManager.Instance.allCrews.IndexOf(chewAI);
         //文本实时显示
         damage.text = Stats.Damage.ToString();
