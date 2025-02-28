@@ -24,7 +24,7 @@ public class TalentSystem : MonoBehaviour
             {
                 new Talent("二连发", "10%概率二连发", stats => stats.DoubleProjectile=true),
                 new Talent("高级攻击", "增加20%攻击力", stats => stats.Damage *= 1.2f),                
-                new Talent("高级射程", "提高20%移动速度", stats => stats.Range *= 1.2f),
+                new Talent("高级射程", "提高20%攻击距离", stats => stats.Range *= 1.2f),
                 new Talent("高级攻速", "提高20%攻击速度", stats => stats.TimeBetweenAttacks *= 0.8f),
                 new Talent("高级负重", "提高100%采集上限", stats => stats.Duration *= (int)2.0f),
             };

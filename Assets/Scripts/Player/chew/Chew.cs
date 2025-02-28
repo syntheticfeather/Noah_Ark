@@ -47,7 +47,7 @@ public class Chew : MonoBehaviour
                 Stats.TimeBetweenAttacks -= change;
                 break;
             case "duration":
-                Stats.Duration -= change;
+                Stats.Duration += change;
                 break;
             case "cost":
                 Stats.Cost += change;

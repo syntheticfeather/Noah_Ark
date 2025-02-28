@@ -8,6 +8,8 @@ TagManager:
   - Island
   - Boss
   - Boundary
+  - Undefined
+  - Chew
   layers:
   - Default
   - TransparentFX

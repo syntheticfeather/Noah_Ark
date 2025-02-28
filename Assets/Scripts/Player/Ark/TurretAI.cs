@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class TurretAI : MonoBehaviour
@@ -16,6 +17,7 @@ public class TurretAI : MonoBehaviour
     public GameObject bulletPrefab;
     // 冷却时间
     public float fireRate = 1f;
+    public UnityEvent whatHappenWhenShoot;
     // 计时器，用于控制攻击间隔
     private float fireCountdown = 0f;
 
@@ -38,7 +40,7 @@ public class TurretAI : MonoBehaviour
                 fireCountdown -= Time.deltaTime;
             }
             DetectEnemies();
-        }
+        }       
     }
     //检测并瞄准敌人
     private void DetectEnemies()
@@ -95,6 +97,7 @@ public class TurretAI : MonoBehaviour
         if (BombToSpawn.GetComponent<BulletDirecion>())
             BombToSpawn.GetComponent<BulletDirecion>().direction = transform.up;
         BombToSpawn.SetActive(true);
+        whatHappenWhenShoot?.Invoke();
         // 重置计时器，等待下次攻击
         fireCountdown = fireRate;
         SFXManager.instance.PlaySFX(SFXManager.instance.soundEffects,Random.Range(0,3));
@@ -105,10 +108,16 @@ public class TurretAI : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
         
-
-
     }
-
+    //二连击
+    public void DoubleShoot()
+    {
+        // 在发射点位置实例化子弹预制件       
+        GameObject BombToSpawn = Instantiate(bulletPrefab, this.transform.position, transform.rotation);
+        if (BombToSpawn.GetComponent<BulletDirecion>())
+            BombToSpawn.GetComponent<BulletDirecion>().direction = transform.up;
+        BombToSpawn.SetActive(true);
+    }
 
     
     
