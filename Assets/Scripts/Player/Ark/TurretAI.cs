@@ -40,7 +40,11 @@ public class TurretAI : MonoBehaviour
                 fireCountdown -= Time.deltaTime;
             }
             DetectEnemies();
-        }       
+        }
+        if (Animal.GetComponent<Chew>().Stats.DoubleProjectile == true)
+        {
+            whatHappenWhenShoot.AddListener(DoubleShoot);
+        }
     }
     //检测并瞄准敌人
     private void DetectEnemies()
@@ -97,10 +101,11 @@ public class TurretAI : MonoBehaviour
         if (BombToSpawn.GetComponent<BulletDirecion>())
             BombToSpawn.GetComponent<BulletDirecion>().direction = transform.up;
         BombToSpawn.SetActive(true);
-        whatHappenWhenShoot?.Invoke();
+        Invoke(nameof(EventInvoke), 0.2f);//0.2s后二连击
         // 重置计时器，等待下次攻击
         fireCountdown = fireRate;
-        SFXManager.instance.PlaySFX(SFXManager.instance.soundEffects,Random.Range(0,3));
+        SFXManager.instance.PlaySFX(SFXManager.instance.soundEffects, Random.Range(0, 3));
+
     }
     // 可选：可视化检测范围
     void OnDrawGizmosSelected()
@@ -112,15 +117,21 @@ public class TurretAI : MonoBehaviour
     //二连击
     public void DoubleShoot()
     {
-        // 在发射点位置实例化子弹预制件       
-        GameObject BombToSpawn = Instantiate(bulletPrefab, this.transform.position, transform.rotation);
-        if (BombToSpawn.GetComponent<BulletDirecion>())
-            BombToSpawn.GetComponent<BulletDirecion>().direction = transform.up;
-        BombToSpawn.SetActive(true);
-    }
+        int a = Random.Range(0, 11);
+        if (a == 0)
+        {
+            // 在发射点位置实例化子弹预制件       
+            GameObject BombToSpawn = Instantiate(bulletPrefab, this.transform.position, transform.rotation);
+            if (BombToSpawn.GetComponent<BulletDirecion>())
+                BombToSpawn.GetComponent<BulletDirecion>().direction = transform.up;
+            BombToSpawn.SetActive(true);
+        }
 
-    
-    
+    }
+    private void EventInvoke()
+    {
+        whatHappenWhenShoot?.Invoke();
+    }
 }
 
 

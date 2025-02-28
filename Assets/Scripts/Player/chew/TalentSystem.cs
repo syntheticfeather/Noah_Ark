@@ -57,8 +57,7 @@ public class TalentSystem : MonoBehaviour
 
         if (availableTalents != null)
         {
-            List<Talent> randomTalents = new List<Talent>();
-            System.Random rand = new System.Random();            
+            List<Talent> randomTalents = new List<Talent>();            
             while (randomTalents.Count < 1)
             {              
                 Talent talent = availableTalents[Random.Range(0, availableTalents.Count)];
