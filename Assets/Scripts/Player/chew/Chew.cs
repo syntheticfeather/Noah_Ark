@@ -5,6 +5,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEditor.Timeline.Actions;
+using Unity.Mathematics;
 
 
 public class Chew : MonoBehaviour
@@ -25,7 +26,7 @@ public class Chew : MonoBehaviour
     public Text level;    
     private void Start()
     {
-               
+        UpdateUI();
     }
     public void UpdateData(string attribute, float change)
     {
@@ -59,12 +60,13 @@ public class Chew : MonoBehaviour
         ChewAI chewAI = mygameObject.GetComponent<ChewAI>();
         int index = ChewManager.Instance.allCrews.IndexOf(chewAI);
         //文本实时显示
-        damage.text = Stats.Damage.ToString();
-        range.text = Stats.Range.ToString();
-        timeBetweenAttacks.text = Stats.TimeBetweenAttacks.ToString();
-        duration.text = Stats.Duration.ToString();        
-        cost.text = Stats.Cost.ToString();
-        level.text = Stats.Level.ToString();
+        
+        damage.text = (Math.Round(Stats.Damage,1)).ToString();
+        range.text = (Math.Round(Stats.Range,1)).ToString();
+        timeBetweenAttacks.text = (Math.Round(Stats.TimeBetweenAttacks, 1)).ToString();
+        duration.text = (Math.Round(Stats.Duration, 1)).ToString();        
+        cost.text = (Math.Round(Stats.Cost, 1)).ToString();
+        level.text = (Math.Round(Stats.Level, 1)).ToString();
     }
     public void ApplyToBullet()
     {

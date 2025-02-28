@@ -38670,7 +38670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a39ac4494dc9dc4bbfe63ee690dd52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stats: {fileID: 186794271}
+  Stats: {fileID: 1216891571}
   father: {fileID: -2350791673397784815, guid: 0d53873118659b64aa527804f752564a, type: 3}
   sprite: {fileID: 21300000, guid: 845857ff2c62616469e146fa78b25ded, type: 3}
   Sprite_Pic: {fileID: 21300000, guid: 845857ff2c62616469e146fa78b25ded, type: 3}
@@ -38841,7 +38841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a39ac4494dc9dc4bbfe63ee690dd52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stats: {fileID: 186794271}
+  Stats: {fileID: 1224327864}
   father: {fileID: -1871835748552580376, guid: 924cc87a174490b4585793d61f44f232, type: 3}
   sprite: {fileID: 21300000, guid: 31197343c8054524c90361bf45114b43, type: 3}
   Sprite_Pic: {fileID: -1786262319, guid: c62552dbfbd5eb845be570ff758d9b1a, type: 3}
