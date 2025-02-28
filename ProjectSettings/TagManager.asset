@@ -12,7 +12,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - UI1
   - Water
   - UI
   - Player
@@ -21,7 +21,7 @@ TagManager:
   - projectile
   - Island
   - Chew
-  - 
+  - UI2
   - 
   - 
   - 

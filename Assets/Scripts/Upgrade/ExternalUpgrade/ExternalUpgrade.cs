@@ -36,7 +36,7 @@ public class ExternalUpgrade : MonoBehaviour
         };
     }
 
-    public bool UnlockSkill(string skillName)
+    public void UnlockSkill(string skillName)
     {
         int crystal = 0;
         if (resourceManager_ != null)
@@ -71,18 +71,10 @@ public class ExternalUpgrade : MonoBehaviour
 
             // 保存技能解锁状态
             SaveSkills();
-            return true;
-        }
-        else if (skill != null && skill.isUnlocked)
-        {
             
-            return false;
         }
-        else
-        {
-            
-            return false;
-        }
+       
+       
     }
 
     public void Unlock(string name)
