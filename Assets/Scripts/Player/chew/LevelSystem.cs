@@ -36,17 +36,17 @@ public class LevelSystem : MonoBehaviour
         {
             if ((int)chew.Stats.Level == 4)
             {
-                chew.talent[0].text = randomTalents[0].Name
+                chew.talent[0].text = randomTalents[0].Name+ "\n"
                     + randomTalents[0].Description;
             }
             if ((int)chew.Stats.Level == 7)
             {
-                chew.talent[1].text = randomTalents[0].Name
+                chew.talent[1].text = randomTalents[0].Name+ "\n"
                     + randomTalents[0].Description;
             }
             if ((int)chew.Stats.Level == 10)
             {
-                chew.talent[2].text = randomTalents[0].Name
+                chew.talent[2].text = randomTalents[0].Name+ "\n"
                     + randomTalents[0].Description;
             }
             randomTalents[0].ApplyEffect(chew.Stats);
