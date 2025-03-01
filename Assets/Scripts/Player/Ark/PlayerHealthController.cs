@@ -15,23 +15,24 @@ public class PlayerHealthController : MonoBehaviour
 
     void Start()
     {
-        // 确保 ExternalUpgrade 脚本已赋值
-        if (externalUpgrade == null)
-        {
-            return;
-        }
+        int speedLevel = SkillLevelLoader.Instance.GetSkillLevel("Speed");
 
-        // 检查 Shield 技能是否解锁
-        bool isShieldUnlocked = externalUpgrade.IsSkillUnlocked("Shield");
-
-        // 根据解锁情况执行调试逻辑
-        if (isShieldUnlocked)
+        switch (speedLevel)
         {
-            Shield = 30f;
-        }
-        else
-        {
-            Shield = 10f;
+            case 0:
+                Shield = 0f;
+                break;
+            case 1:
+                Shield = 10f;
+                break;
+            case 2:
+                Shield = 30f;
+                break;
+            case 3:
+                Shield = 50f;
+                break;
+            default:
+                break;
         }
     }
     void Awake()

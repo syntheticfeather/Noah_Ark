@@ -17,9 +17,9 @@ public class ArkMovement : MonoBehaviour
     private float maxSpeed;              // 实际最大速度
 
     // Dash 技能相关参数
-    public float dashMultiplier = 3f;    // Dash 速度倍率
-    public float dashDuration = 1f;      // Dash 持续时间
-    public float dashCooldown = 20f;     // Dash 冷却时间
+    public float dashMultiplier ;    // Dash 速度倍率
+    public float dashDuration ;      // Dash 持续时间
+    public float dashCooldown ;     // Dash 冷却时间
     private bool isDashing = false;      
     private float dashTimer = 0f;        
     private float cooldownTimer = 0f;    // 冷却计时器
@@ -35,6 +35,7 @@ public class ArkMovement : MonoBehaviour
 
         // 初始化速度
         InitializeSpeed();
+        InitializeDash();
     }
 
     void InitializeSpeed()
@@ -43,15 +44,61 @@ public class ArkMovement : MonoBehaviour
         moveSpeed = baseMoveSpeed;
         maxSpeed = baseMaxSpeed;
 
-        // 检查 Speed 技能是否解锁
-        if (externalUpgrade != null && externalUpgrade.IsSkillUnlocked("Speed"))
+        // 获取 Speed 技能的等级
+        int speedLevel = SkillLevelLoader.Instance.GetSkillLevel("Speed");
+
+        switch (speedLevel)
         {
-            // 如果 Speed 技能已解锁，增加速度
-            moveSpeed *= 1.3f; 
-            maxSpeed *= 1.3f;
-            
+            case 0:
+                moveSpeed = baseMoveSpeed;
+                maxSpeed = baseMaxSpeed;
+                break;
+            case 1:
+                moveSpeed = baseMoveSpeed*1.1f;
+                maxSpeed = baseMaxSpeed*1.1f;
+                break;
+            case 2:
+                moveSpeed = baseMoveSpeed * 1.3f;
+                maxSpeed = baseMaxSpeed * 1.3f;
+                break;
+            case 3:
+                moveSpeed = baseMoveSpeed * 1.5f;
+                maxSpeed = baseMaxSpeed * 1.5f;
+                break;
+            default:
+                break;
         }
-        
+    }
+
+    void InitializeDash()
+    {
+        int DashLevel = SkillLevelLoader.Instance.GetSkillLevel("Dash");
+        switch (DashLevel)
+        {
+            case 0:
+             dashMultiplier = 1f;    
+             dashDuration = 0f;      
+             dashCooldown = 30f; 
+             break;
+            case 1:
+                dashMultiplier = 3f;
+                dashDuration = 1f;
+                dashCooldown = 30f;
+                break;
+            case 2:
+                dashMultiplier = 5f;
+                dashDuration = 1f;
+                dashCooldown = 25f;
+                break;
+            case 3:
+                dashMultiplier = 5f;
+                dashDuration = 1.5f;
+                dashCooldown = 20f;
+                break;
+            default:
+                break;
+        }
+
     }
 
     void Update()
@@ -98,7 +145,7 @@ public class ArkMovement : MonoBehaviour
         // 增加速度
         moveSpeed *= dashMultiplier;
         maxSpeed *= dashMultiplier;
-        Debug.Log("Dash 技能触发，速度大幅提升");
+        
     }
 
     void EndDash()
@@ -119,7 +166,7 @@ public class ArkMovement : MonoBehaviour
         // 启动冷却计时
         isOnCooldown = true;
         cooldownTimer = dashCooldown;
-        Debug.Log("Dash 技能结束，进入冷却状态");
+        
     }
 
     public void Movement()
