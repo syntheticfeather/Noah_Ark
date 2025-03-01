@@ -22,8 +22,6 @@ public class EventController : MonoBehaviour
     void Start()
     {        
             Map.GetComponent<SpriteRenderer>().color = color0;
-
-
     }
     public Color color0 = new Color(110f / 255f, 194f / 255f, 215f / 255f, 255f / 255f);
     public Color color1 = new Color(65f / 255f, 158f / 255f, 228f / 255f, 255f / 255f);

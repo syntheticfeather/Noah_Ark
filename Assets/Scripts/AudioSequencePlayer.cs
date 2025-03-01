@@ -29,7 +29,6 @@ public class AudioSequencePlayer : MonoBehaviour
     {
    
         InitializeQueue();
-        StartPlayback();
     }
 
     void InitializeQueue()
@@ -54,7 +53,7 @@ public class AudioSequencePlayer : MonoBehaviour
         }
     }
 
-    void StartPlayback()
+    public void StartPlayback()
     {
         if (playRoutine != null) StopCoroutine(playRoutine);
         playRoutine = StartCoroutine(PlaySequence());

@@ -20,7 +20,6 @@ public class StartSceneManager : MonoBehaviour
     //退出游戏按钮点击
     public void OnExitGame()
     {
-        PlayerPrefs.SetInt("CrystalCount", ResourceManager.instance.Resource[3]);
         PlayerPrefs.Save();
         Application.Quit();
     }
