@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ExternalUpgrade : MonoBehaviour
 {
-    public List<Skill> skills;
-    private GameObject resourceManager_;
+    // 强制初始化+序列化双重保障
+    public List<Skill> skills = new List<Skill>();
+    
     private InternalUpgrade internalUpgrade;
 
     // 文件路径
@@ -13,65 +14,34 @@ public class ExternalUpgrade : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        // 加载技能解锁状态
+        LoadSkills();
+
     }
     void Start()
     {
         // 初始化文件路径
         saveFilePath = Path.Combine(Application.persistentDataPath, "skills_data.json");
 
-        // 初始化技能系统
-        InitializeSkills();
         internalUpgrade = GetComponent<InternalUpgrade>();
 
-        // 加载技能解锁状态
-        LoadSkills();
-    }
-
-    void InitializeSkills()
-    {
-        // 添加技能
-        skills = new List<Skill>
-        {
-            new Skill("Shield", 20),
-            new Skill("Speed", 20),
-            new Skill("Extra Bed", 20),
-            new Skill("Dash", 20)
-        };
     }
 
     public void UnlockSkill(string skillName)
     {
         int crystal = 0;
-        if (resourceManager_ != null)
-        {
-            ResourceManager resourceManager = resourceManager_.GetComponent<ResourceManager>();
-            if (resourceManager != null)
-            {
-                crystal = resourceManager.Resource[3]; // 获取水晶数量
-            }
-        }
-
+        ResourceManager resourceManager = ResourceManager.instance;
+        crystal = resourceManager.Resource[3]; // 获取水晶数量                    
         Skill skill = skills.Find(s => s.name == skillName);
         if (skill != null && skill.CanUnlock(crystal))
         {
             // 扣除水晶
-            if (resourceManager_ != null)
-            {
-                ResourceManager resourceManager = resourceManager_.GetComponent<ResourceManager>();
-                if (resourceManager != null)
-                {
-                    resourceManager.Resource[3] -= skill.cost; // 扣除水晶
-                    
-                }
-            }
-
-            // 解锁技能
-            skill.UnLock();
-            
-
+            resourceManager.Resource[3] -= skill.Cost[skill.level]; // 扣除水晶
+            skill.level++;
+                                                                    // 解锁技能
+            skill.UnLock();           
             // 执行技能解锁后的逻辑
             Unlock(skill.name);
-
             // 保存技能解锁状态
             SaveSkills();
             
@@ -151,25 +121,19 @@ public class ExternalUpgrade : MonoBehaviour
         return false;
     }
 }
-
+[System.Serializable]
 // 技能类
 public class Skill
 {
+    public int level = 0;
     public string name;
-    public int cost;
+    public List<int> Cost;
     public bool isUnlocked;
-
-    public Skill(string name, int cost)
-    {
-        this.name = name;
-        this.cost = cost;
-        this.isUnlocked = false;
-    }
 
     public bool CanUnlock(int crystal)
     {
         // 检查水晶是否足够且技能未解锁
-        return !isUnlocked && crystal >= cost;
+        return !isUnlocked && crystal >= Cost[level];
     }
 
     public void UnLock()
