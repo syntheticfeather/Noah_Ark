@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class AudioSequencePlayer : MonoBehaviour
 {
+    public static AudioSequencePlayer instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
     [Header("“Ù∆µ≈‰÷√")]
     public AudioSource audioSource;
     public List<AudioClip> clipList = new List<AudioClip>();
@@ -45,7 +51,11 @@ public class AudioSequencePlayer : MonoBehaviour
         if (playRoutine != null) StopCoroutine(playRoutine);
         playRoutine = StartCoroutine(PlaySequence());
     }
-
+    public void stopPlayback()
+    {
+        audioSource.Stop();
+        StopCoroutine(playRoutine);
+    }
     IEnumerator PlaySequence()
     {
         while (clipQueue.Count > 0)

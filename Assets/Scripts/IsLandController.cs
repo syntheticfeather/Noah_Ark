@@ -194,7 +194,8 @@ public class IsLandController : MonoBehaviour
     {
         // 检查是否离中心太近
         float distance1 = Vector2.Distance(newPoint, Vector2.zero);
-        if (distance1 < 100)
+        float distance2 = Vector2.Distance(newPoint, PlayerHealthController.instance.transform.position);
+        if (distance1 < 100 || distance2 < 50)
         {
             return false;
         }

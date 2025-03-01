@@ -23,11 +23,11 @@ public class LevelSystem : MonoBehaviour
         ChewAI chewAI = GetComponent<ChewAI>();
         int Index = ChewManager.Instance.allCrews.IndexOf(chewAI);
         // Ù–‘Ã·…˝
-        chew.UpdateData("Damage", 0.5f);
-        chew.UpdateData("Range", 2.0f);
+        chew.UpdateData("Damage", .5f);
+        chew.UpdateData("Range", .2f);
         chew.UpdateData("TimeBetweenAttacks", 0.1f);
         chew.UpdateData("Duration", 0.1f);        
-        chew.UpdateData("Cost", 1.0f);
+        chew.UpdateData("Cost", 2f);
         chew.UpdateData("Level", 1f);
 
         talentSystem = new TalentSystem();      

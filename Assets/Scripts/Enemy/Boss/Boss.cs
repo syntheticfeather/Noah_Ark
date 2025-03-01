@@ -145,7 +145,7 @@ public class Boss : MonoBehaviour
     }
     public void Drop()
     {        
-        Instantiate(DropATK, CurDropArea.transform.position, Quaternion.Euler(0, 0, Angle - 90)).SetActive(true);
+        Instantiate(DropATK, CurDropArea.transform.position + new Vector3(0, 4, 0), Quaternion.Euler(0, 0, Angle - 90)).SetActive(true);
         Destroy(CurDropArea);
     }
 
@@ -168,7 +168,7 @@ public class Boss : MonoBehaviour
     }   
     public void Laser()
     {
-        GameObject Laser = Instantiate(LaserATK, transform.position, Quaternion.Euler(0, 0, Angle));
+        GameObject Laser = Instantiate(LaserATK, transform.position + new Vector3(0, 23 ,0), Quaternion.Euler(0, 0, Angle));
         Laser.SetActive(true);
         Laser.GetComponent<Laser>().Line1.SetPosition(1, CurLaserArea.transform.position);
         Laser.GetComponent<Laser>().Line2.SetPosition(1, CurLaserArea.transform.position);

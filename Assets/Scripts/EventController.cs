@@ -66,9 +66,11 @@ public class EventController : MonoBehaviour
         }
              
     }
-
+    public GameObject TImerui;
     public void BossFight()
     {
+        AudioSequencePlayer.instance.stopPlayback();
+        TImerui.SetActive(false);
         //Debug.Log("BossFight");
         PlayerHealthController.instance.transform.position = new Vector3(1600, -8, 0);
         Light.transform.position = new Vector3(1600, -8, 0);

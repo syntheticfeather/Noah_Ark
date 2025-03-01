@@ -42,8 +42,7 @@ public class TalentSystem : MonoBehaviour
         List<Talent> availableTalents = new List<Talent>();       
         if (level == 4)
         {
-            availableTalents = LowLevelTalents;
-            
+            availableTalents = LowLevelTalents;            
         }
         else if (level == 7)
         {
@@ -53,19 +52,18 @@ public class TalentSystem : MonoBehaviour
         {
             availableTalents = HighLevelTalents;
         }
-
+        
 
         if (availableTalents != null)
         {
-            List<Talent> randomTalents = new List<Talent>();            
+            List<Talent> randomTalents = new List<Talent>();                   
             while (randomTalents.Count < 1)
-            {              
+            {                
                 Talent talent = availableTalents[Random.Range(0, availableTalents.Count)];
                 if (!randomTalents.Contains(talent))
                 {
                     randomTalents.Add(talent);
-                }
-                
+                }                
             }
             return randomTalents;
         }
