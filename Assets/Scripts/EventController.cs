@@ -30,7 +30,7 @@ public class EventController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {    
-        if (Vector3.Distance(PlayerHealthController.instance.transform.position, Vector3.zero) <= 40)
+        if (Vector3.Distance(PlayerHealthController.instance.transform.position, Vector3.zero) <= 40 || TimeUI.instance.WholeTime <= 0)
         {
             BossFight();
         }
