@@ -29,7 +29,7 @@ public class TurretAI : MonoBehaviour
     {
         if (bulletPrefab)
         {
-            fireRate = bulletPrefab.GetComponent<Father>().ATKSpeed;
+            fireRate = bulletPrefab.GetComponent<Father>().ATKSpeed - Animal.GetComponent<ChewStats>().TimeBetweenAttacks;// 以减法计算攻速
             //Debug.Log("" + fireRate);            
         }
         
@@ -98,6 +98,7 @@ public class TurretAI : MonoBehaviour
     {
         // 在发射点位置实例化子弹预制件       
         GameObject BombToSpawn = Instantiate(bulletPrefab, this.transform.position, transform.rotation);
+        BombToSpawn.GetComponent<Father>().ATK += Animal.GetComponent<ChewStats>().Damage;
         if (BombToSpawn.GetComponent<BulletDirecion>())
             BombToSpawn.GetComponent<BulletDirecion>().direction = transform.up;
         BombToSpawn.SetActive(true);

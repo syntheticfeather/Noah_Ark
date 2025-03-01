@@ -53,6 +53,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             //根据方向，实例化炸药
             GameObject BombToSpawn = Instantiate(Bomb, this.transform.position, transform.rotation);
+            BombToSpawn.GetComponent<Father>().ATK += Animal.GetComponent<ChewStats>().Damage;
             if (BombToSpawn.GetComponent<BulletDirecion>())
             {
                 BombToSpawn.GetComponent<BulletDirecion>().direction = transform.up;

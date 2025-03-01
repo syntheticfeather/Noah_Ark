@@ -136,7 +136,7 @@ MonoBehaviour:
   explosionRadius: 3
   ATK: 6
   Speed: 0
-  ATKSpeed: 2
+  ATKSpeed: 3
   LifeTime: 6
   LifeTimeCounter: 0
   Direction: {x: 0, y: 0, z: 0}
