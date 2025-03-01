@@ -145,7 +145,7 @@ public class Boss : MonoBehaviour
     }
     public void Drop()
     {        
-        Instantiate(DropATK, CurDropArea.transform.position + new Vector3(0, 4, 0), Quaternion.Euler(0, 0, Angle - 90)).SetActive(true);
+        Instantiate(DropATK, CurDropArea.transform.position, Quaternion.Euler(0, 0, Angle - 90)).SetActive(true);
         Destroy(CurDropArea);
     }
 

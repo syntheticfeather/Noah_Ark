@@ -205,8 +205,8 @@ MonoBehaviour:
   damageLayers:
     serializedVersion: 2
     m_Bits: 256
-  ParticleSystem: {fileID: 0}
-  BloodSystem: {fileID: 0}
+  ParticleSystem: {fileID: 7219533666000683474, guid: 3732791395d554c49a0f721478671c02, type: 3}
+  BloodSystem: {fileID: 7713143353904145913, guid: a411967e846926a4baf9ed8c74b4fe64, type: 3}
 --- !u!114 &683769445397107923
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioSequencePlayer : MonoBehaviour
 {
     public static AudioSequencePlayer instance;
-
+    public Slider slider;
+    public Slider slider2;
     void Awake()
     {
         instance = this;
+        slider.value = PlayerPrefs.GetFloat("BKVolumn", 1);
+        slider2.value = PlayerPrefs.GetFloat("BKVolumn2", 1);
     }
     [Header("“Ù∆µ≈‰÷√")]
     public AudioSource audioSource;
@@ -17,9 +21,13 @@ public class AudioSequencePlayer : MonoBehaviour
 
     private Queue<AudioClip> clipQueue = new Queue<AudioClip>();
     private Coroutine playRoutine;
-
+    private void Update()
+    {
+        audioSource.volume = slider.value;
+    }
     void Start()
     {
+   
         InitializeQueue();
         StartPlayback();
     }
