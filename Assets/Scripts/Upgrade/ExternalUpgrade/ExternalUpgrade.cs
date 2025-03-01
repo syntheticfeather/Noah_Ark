@@ -30,24 +30,20 @@ public class ExternalUpgrade : MonoBehaviour
     public void UnlockSkill(string skillName)
     {
         int crystal = 0;
-        ResourceManager resourceManager = ResourceManager.instance;
-        crystal = resourceManager.Resource[3]; // 获取水晶数量                    
+        crystal = PlayerPrefs.GetInt("CrystalCount", 0);// 读写局外crystal数据                
         Skill skill = skills.Find(s => s.name == skillName);
         if (skill != null && skill.CanUnlock(crystal))
         {
             // 扣除水晶
-            resourceManager.Resource[3] -= skill.Cost[skill.level]; // 扣除水晶
-            skill.level++;
-                                                                    // 解锁技能
+            crystal -= skill.Cost[skill.level]; // 扣除水晶
+            skill.level++;                                                                   // 解锁技能
             skill.UnLock();           
             // 执行技能解锁后的逻辑
             Unlock(skill.name);
             // 保存技能解锁状态
             SaveSkills();
-            
-        }
-       
-       
+            PlayerPrefs.SetInt("CrystalCount", crystal);
+        }              
     }
 
     public void Unlock(string name)
@@ -71,7 +67,6 @@ public class ExternalUpgrade : MonoBehaviour
                 break;
         }
     }
-
     // 保存技能解锁状态到文件
     private void SaveSkills()
     {
@@ -85,7 +80,6 @@ public class ExternalUpgrade : MonoBehaviour
         File.WriteAllText(saveFilePath, json);
         
     }
-
     // 从文件加载技能解锁状态
     private void LoadSkills()
     {
