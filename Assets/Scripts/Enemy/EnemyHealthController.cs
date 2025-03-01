@@ -35,7 +35,8 @@ public class EnemyHealthController : MonoBehaviour
 
         if (CurHealth <= 0)
         {
-            ResourceManager.instance.AddResource(Random.Range(1, 5), 3);// 随机掉落资源
+            ResourceManager.instance.AddCrystal();
+
             Destroy(gameObject);
             //Debug.Log("enemy dead");
         }
