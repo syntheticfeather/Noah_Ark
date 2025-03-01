@@ -10,7 +10,10 @@ public class ExternalUpgrade : MonoBehaviour
 
     // 文件路径
     private string saveFilePath;
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     void Start()
     {
         // 初始化文件路径

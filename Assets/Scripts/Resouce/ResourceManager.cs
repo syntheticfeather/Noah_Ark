@@ -13,7 +13,7 @@ public class ResourceManager : MonoBehaviour
     // 引用 ExternalUpgrade 脚本
     public ExternalUpgrade externalUpgrade;
     // 水晶数量的键名
-    private const string CrystalCountKey = "CrystalCount";
+    public static string CrystalCountKey = "CrystalCount";
 
     void Start()
     {
@@ -51,6 +51,13 @@ public class ResourceManager : MonoBehaviour
     {
         Resource[type] += amount;
         UIController.Instance.UpdateResourceUI();
+    }
+
+    public void AddCrystal()
+    {
+        AddResource(UnityEngine.Random.Range(1, 5), 3);// 随机掉落资源
+        PlayerPrefs.SetInt(CrystalCountKey, Resource[3]); // 默认水晶数量
+        PlayerPrefs.Save(); // 保存数据
     }
 
     public bool UseCrystal(int amount)

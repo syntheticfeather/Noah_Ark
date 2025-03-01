@@ -7,6 +7,11 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class StartSceneManager : MonoBehaviour
 {
+    
+    public void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     //游戏开始按钮点击
     public void OnStartGame()
     {
