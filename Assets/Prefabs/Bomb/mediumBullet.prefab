@@ -198,7 +198,7 @@ MonoBehaviour:
   explosionRadius: 0.5
   ATK: 3
   Speed: 0
-  ATKSpeed: 1
+  ATKSpeed: 2
   LifeTime: 5
   LifeTimeCounter: 0
   Direction: {x: 0, y: 0, z: 0}

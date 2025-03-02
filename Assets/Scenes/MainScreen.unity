@@ -3009,7 +3009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 4
   Range: 0.1
-  TimeBetweenAttacks: 0.5
+  TimeBetweenAttacks: 0.2
   Duration: 3
   Cost: 10
   Level: 1
@@ -12836,7 +12836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 4
   Range: 0.1
-  TimeBetweenAttacks: 0.5
+  TimeBetweenAttacks: 0.2
   Duration: 3
   Cost: 10
   Level: 1
@@ -37340,7 +37340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 4
   Range: 0.1
-  TimeBetweenAttacks: 0.5
+  TimeBetweenAttacks: 0.2
   Duration: 3
   Cost: 10
   Level: 1
@@ -37702,7 +37702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 4
   Range: 0.1
-  TimeBetweenAttacks: 0.5
+  TimeBetweenAttacks: 0.2
   Duration: 3
   Cost: 10
   Level: 1
@@ -55541,7 +55541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 4
   Range: 0.1
-  TimeBetweenAttacks: 0.5
+  TimeBetweenAttacks: 0.2
   Duration: 3
   Cost: 10
   Level: 1

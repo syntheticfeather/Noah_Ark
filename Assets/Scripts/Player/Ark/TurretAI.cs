@@ -103,6 +103,7 @@ public class TurretAI : MonoBehaviour
         // 在发射点位置实例化子弹预制件       
         GameObject BombToSpawn = Instantiate(bulletPrefab, this.transform.position, transform.rotation);
         BombToSpawn.GetComponent<Father>().ATK += Animal.GetComponent<ChewStats>().Damage;
+        BombToSpawn.GetComponent<Father>().explosionRadius += Animal.GetComponent<ChewStats>().Range;
         if (BombToSpawn.GetComponent<BulletDirecion>())
             BombToSpawn.GetComponent<BulletDirecion>().direction = transform.up;
         BombToSpawn.SetActive(true);

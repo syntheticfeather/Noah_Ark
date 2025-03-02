@@ -33,8 +33,8 @@ public class LevelSystem : MonoBehaviour
         chew = GetComponent<Chew>();
         // Ù–‘Ã·…˝
         chew.UpdateData("Damage", UnityEngine.Random.Range(.2f, .7f));
-        chew.UpdateData("Range", UnityEngine.Random.Range(.1f, .3f));
-        chew.UpdateData("TimeBetweenAttacks", UnityEngine.Random.Range(.1f, .2f));
+        chew.UpdateData("Range", .1f);
+        chew.UpdateData("TimeBetweenAttacks", .1f);
         chew.UpdateData("Duration", 0.1f);        
         chew.UpdateData("Cost", UnityEngine.Random.Range(2f, 5f));
         chew.UpdateData("Level", 1f);

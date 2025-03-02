@@ -147,7 +147,7 @@ public class ChewAI : MonoBehaviour
         {
             CurHarvestAmount = harvestCapacity;
         }
-        else CurHarvestAmount = 1; 
+        else CurHarvestAmount = harvestCapacity + currentResource.Amount; 
         
         isCarryingWood = true;
         OneStep = true;
