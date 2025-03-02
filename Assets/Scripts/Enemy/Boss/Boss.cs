@@ -120,7 +120,7 @@ public class Boss : MonoBehaviour
     }
     public void Sweep()
     {
-        Instantiate(SweepATK, CurSweepArea.transform.position + new Vector3(0, 9f, 0), Quaternion.identity).SetActive(true);
+        Instantiate(SweepATK, CurSweepArea.transform.position + new Vector3(0, 13f, 0), Quaternion.identity).SetActive(true);
         Destroy(CurSweepArea);
     }
     public float DropDelayTime;
@@ -137,8 +137,8 @@ public class Boss : MonoBehaviour
         Direction = Player.transform.position - transform.position;
         Angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
         DropCounter = DropBetTime + DropDelayTime;
-        CurDropArea = Instantiate(DropArea, transform.position + new Vector3(DropArea.transform.lossyScale.y / 2 * Mathf.Cos(Mathf.Atan2(Direction.y, Direction.x)) ,
-            DropArea.transform.lossyScale.y / 2 * Mathf.Sin(Mathf.Atan2(Direction.y, Direction.x)), 0), Quaternion.Euler(0, 0, Angle - 90));
+        CurDropArea = Instantiate(DropArea, transform.position + new Vector3(DropArea.transform.lossyScale.y * Mathf.Cos(Mathf.Atan2(Direction.y, Direction.x)) ,
+            DropArea.transform.lossyScale.y * Mathf.Sin(Mathf.Atan2(Direction.y, Direction.x)), 0), Quaternion.Euler(0, 0, Angle - 90));
         CurDropArea.SetActive(true);
         yield return new WaitForSeconds(DropDelayTime);
         Drop();

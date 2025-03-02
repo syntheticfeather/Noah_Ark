@@ -66,7 +66,7 @@ public class HealEnemy : MonoBehaviour
         float x = PlayerTransform.position.x + Radius * Mathf.Cos(Angle);
         float y = PlayerTransform.position.y + Radius * Mathf.Sin(Angle);
         // 更新敌人位置        
-        transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, transform.position.z), .5f * Time.deltaTime);      
+        transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, transform.position.z),  Time.deltaTime);      
     }
     public void ToOrbit()
     {

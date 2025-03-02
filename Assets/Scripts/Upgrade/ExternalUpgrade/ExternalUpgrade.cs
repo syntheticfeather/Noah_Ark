@@ -25,7 +25,15 @@ public class ExternalUpgrade : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         DontDestroyOnLoad(this);
         // 初始化文件路径
         saveFilePath = Path.Combine(Application.persistentDataPath, "skills_data.json");
@@ -41,10 +49,6 @@ public class ExternalUpgrade : MonoBehaviour
                 if (buttonText != null)
                 {
                     buttonText.text = "Max Level";
-                }
-                if (skill.level == skill.maxLevel)
-                {
-                    skillPic.SkillCost.text = "Max Level";
                 }
                 else
                 {

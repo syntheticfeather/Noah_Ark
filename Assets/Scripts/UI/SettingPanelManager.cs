@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SettingPanelManager : MonoBehaviour
 {    
-    
+    public static SettingPanelManager instance; //单例
     public GameObject settingPanel; //设置界面
     // public List<AudioSource> audioSources1 = new List<AudioSource>(); //游戏音频文件list
     // public List<AudioSource> audioSources2 = new List<AudioSource>(); //游戏音效文件list 
@@ -14,7 +14,18 @@ public class SettingPanelManager : MonoBehaviour
     public Text text1; //音量大小文本显示
     public Text text2; //音效大小文本显示
 
-    
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         //读取设置的数据

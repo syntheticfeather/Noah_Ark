@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EventController : MonoBehaviour
 {    
@@ -100,5 +101,16 @@ public class EventController : MonoBehaviour
     {
         Debug.Log("end");
         SFXManager.instance.PlaysfxPitch(SFXManager.instance.BossSound, 4);
+        PlayerPrefs.SetFloat("CrystalCount", ResourceManager.instance.Resource[3]);
+        PlayerPrefs.Save();
+        Invoke("LoadStartScene", 5f);
+    }        
+    public void LoadStartScene()
+    {
+        var canvas = GameObject.Find("MenuCanvas");
+        canvas.GetComponent<ActivateChildren>().ActivateAllChildren();
+        SceneManager.LoadScene("StartScene");
+        SFXManager.instance.BossSound[0].Stop();
+        AudioSequencePlayer.instance.audioSource.Stop();
     }
 }

@@ -7,10 +7,18 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class StartSceneManager : MonoBehaviour
 {
-    
+    public static StartSceneManager Instance;
     public void Awake()
     {
-        DontDestroyOnLoad(this);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     //游戏开始按钮点击
     public void OnStartGame()

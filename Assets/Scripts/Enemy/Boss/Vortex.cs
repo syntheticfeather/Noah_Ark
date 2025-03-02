@@ -27,7 +27,6 @@ public class Vortex : MonoBehaviour
         // 计算玩家与漩涡中心的距离
         Vector3 direction = PlayerCenter.position - transform.position;
         float distance = direction.magnitude;
-
         // 如果玩家在漩涡范围内
         if (distance <= vortexRadius)
         {

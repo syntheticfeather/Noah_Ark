@@ -16,6 +16,7 @@ public class BossHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Bosshealth)
         health.value = Bosshealth.CurHealth;
     }
 }

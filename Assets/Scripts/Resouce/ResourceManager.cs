@@ -22,6 +22,7 @@ public class ResourceManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
         // 初始化水晶数量数据（如果不存在）
         if (!PlayerPrefs.HasKey(CrystalCountKey))
         {

@@ -10,7 +10,15 @@ public class AudioSequencePlayer : MonoBehaviour
     public Slider slider2;
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         slider.value = PlayerPrefs.GetFloat("BKVolumn", 1);
         slider2.value = PlayerPrefs.GetFloat("BKVolumn2", 1);
     }
@@ -23,8 +31,17 @@ public class AudioSequencePlayer : MonoBehaviour
     private Coroutine playRoutine;
     private void Update()
     {
-        audioSource.volume = slider.value;
+        // 添加空值检查
+        if (audioSource != null && slider != null)
+        {
+            audioSource.volume = slider.value;
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource或Slider未正确初始化！");
+        }
     }
+
     void Start()
     {
    
