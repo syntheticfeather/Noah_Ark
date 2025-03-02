@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
     public static CameraFollow instance;
     public GameObject Target;
     public GameObject Light;
-    public Camera camera;
+    public Camera camera_;
     void Start()
     {
         transform.position = Target.transform.position;

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,18 +46,24 @@ public class ExternalUpgrade : MonoBehaviour
         LoadSkills();
         foreach (var skill in skills)
         {
-            if (skill != null && skill.level == skill.maxLevel)
+            if (skill != null)
             {
                 Text buttonText = GameObject.Find(skill.name + "Button")?.GetComponentInChildren<Text>();
                 SkillPic skillPic = GameObject.Find(skill.name)?.GetComponent<SkillPic>();
-                if (buttonText != null)
+                if (skill.level == skill.maxLevel)
                 {
-                    buttonText.text = "Max Level";
+                    if (buttonText != null)
+                    {
+                        buttonText.text = "Max Level";
+                    }
+                    skillPic.SkillCost.text = "Max Level";
                 }
                 else
                 {
+                    buttonText.text = "Lock";
                     skillPic.SkillCost.text = "Cost:" + skill.Cost[skill.level].ToString();
                 }
+
             }
         }
 #if UNITY_EDITOR
