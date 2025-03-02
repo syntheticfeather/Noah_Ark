@@ -47,7 +47,7 @@ public class ResourceManager : MonoBehaviour
         Resource[1] = initialStone;
         Resource[2] = initialFood;
     }
-    public void AddResource(int amount, int type)// 依据索引来添加资源
+    public void AddResource(float amount, int type)// 依据索引来添加资源
     {
         Resource[type] += amount;
         UIController.Instance.UpdateResourceUI();

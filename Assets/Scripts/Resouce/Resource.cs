@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Resource : MonoBehaviour
 {
-    public int Amount = 10; // 单棵树木材量
+    public float Amount = 10; // 单棵树木材量
     public GameObject selectionEffect; // 选中特效
     public int type;
     private bool isMarked;

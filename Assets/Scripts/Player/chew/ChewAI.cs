@@ -8,8 +8,8 @@ public class ChewAI : MonoBehaviour
 {
     public float moveSpeed = 3.5f;
     public float harvestTime = 2f;
-    public int harvestCapacity = 3;
-    public int CurHarvestAmount;
+    public float harvestCapacity = 3;
+    public float CurHarvestAmount;
     public Transform shipDepositPoint;
     private Vector3 Target;
     
@@ -27,7 +27,7 @@ public class ChewAI : MonoBehaviour
     }
     void Start()
     {
-        harvestCapacity = (int)GetComponent<Chew>().Stats.Maxtake;
+        harvestCapacity = GetComponent<Chew>().Stats.Maxtake;
     }
 
     private void OnMouseDown()// 传递其标识符

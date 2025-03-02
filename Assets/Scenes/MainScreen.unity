@@ -26738,7 +26738,7 @@ MonoBehaviour:
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
-      count: 0
+      count: 2
     - monsterPrefab: {fileID: 5939811088646145120, guid: 4c2b38abbe4a3564484ddc87df2fb95b, type: 3}
       count: 0
     - monsterPrefab: {fileID: 4485669409662654673, guid: 8e3000bbea3d30f4e81a4db382ef066e, type: 3}
@@ -26771,7 +26771,7 @@ MonoBehaviour:
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
-      count: 8
+      count: 10
     - monsterPrefab: {fileID: 5939811088646145120, guid: 4c2b38abbe4a3564484ddc87df2fb95b, type: 3}
       count: 0
     - monsterPrefab: {fileID: 4485669409662654673, guid: 8e3000bbea3d30f4e81a4db382ef066e, type: 3}
