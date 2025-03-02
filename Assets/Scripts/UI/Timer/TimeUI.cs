@@ -9,7 +9,18 @@ public class TimeUI : MonoBehaviour
     public static TimeUI instance;
     public TMP_Text timerText; // 绑定的 UI Text 组件
     public float WholeTime;//
-       
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {

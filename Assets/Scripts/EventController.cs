@@ -31,7 +31,7 @@ public class EventController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {    
-        if (Vector3.Distance(PlayerHealthController.instance.transform.position, Vector3.zero) <= 40 || TimeUI.instance.WholeTime <= 0)
+        if (TimeUI.instance != null && PlayerHealthController.instance != null &&Vector3.Distance(PlayerHealthController.instance.transform.position, Vector3.zero) <= 40 || TimeUI.instance.WholeTime <= 0)
         {
             BossFight();
         }
@@ -65,19 +65,30 @@ public class EventController : MonoBehaviour
         }
              
     }
-    public GameObject Timerui;
     public void BossFight()
     {
         AudioSequencePlayer.instance.stopPlayback();
-        Timerui.SetActive(false);
+        if (TimeUI.instance != null)
+        {
+            TimeUI.instance.gameObject.SetActive(false);
+        }
         //Debug.Log("BossFight");
         PlayerHealthController.instance.transform.position = new Vector3(1600, -8, 0);
-        Light.transform.position = new Vector3(1600, -8, 0);
-        Light.SetActive(true);
-        CameraFollow.instance.BossFight = true;
+        // 添加空引用检查
+        if (Light != null)
+        {
+            Light.transform.position = new Vector3(1600, -8, 0);
+            Light.SetActive(true);
+        }        
+        if (CameraFollow.instance != null)
+        {
+            CameraFollow.instance.BossFight = true;
+        }
+        if (boss != null)
         boss.SetActive(true);
+        if (BossHealthUi != null)
         BossHealthUi.SetActive(true);
-        SFXManager.instance.PlaySFX(SFXManager.instance.BossSound, 0);
+
 
     }
     public void OpenMap()
@@ -99,10 +110,11 @@ public class EventController : MonoBehaviour
     }
     public void End()
     {
-        Debug.Log("end");
         SFXManager.instance.PlaysfxPitch(SFXManager.instance.BossSound, 4);
         PlayerPrefs.SetFloat("CrystalCount", ResourceManager.instance.Resource[3]);
         PlayerPrefs.Save();
+        var sss = GameObject.Find("ExternUpgrade");
+        sss.GetComponent<ExternalUpgrade>().Upgrade();
         Invoke("LoadStartScene", 5f);
     }        
     public void LoadStartScene()

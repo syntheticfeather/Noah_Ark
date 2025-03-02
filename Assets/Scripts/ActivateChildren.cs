@@ -15,6 +15,10 @@ public class ActivateChildren : MonoBehaviour
         // 遍历直接子物体
         foreach (Transform child in parent)
         {
+            if (child.name == "Setting")
+            {
+                continue;
+            }
             // 激活当前子物体
             child.gameObject.SetActive(true);
 

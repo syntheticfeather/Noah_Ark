@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ExternalUpgrade : MonoBehaviour
 {
     public static ExternalUpgrade Instance;
-    
+
     // 强制初始化+序列化双重保障
     public List<Skill> skills = new List<Skill>
     {
@@ -22,7 +22,11 @@ public class ExternalUpgrade : MonoBehaviour
     public TMP_Text crystalText;
     // 文件路径
     private string saveFilePath;
-
+    public void Upgrade()
+    {
+        if (crystalText != null)
+            crystalText.text = "Crystal:" + crystal;
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -69,8 +73,8 @@ public class ExternalUpgrade : MonoBehaviour
     void Start()
     {
         crystal = PlayerPrefs.GetFloat("CrystalCount", 0); // 读写局外crystal数据
-        if (crystalText!= null)
-        crystalText.text = "Crystal:" + crystal.ToString();
+        if (crystalText != null)
+            crystalText.text = "Crystal:" + crystal.ToString();
         internalUpgrade = GetComponent<InternalUpgrade>();
     }
 
@@ -86,7 +90,7 @@ public class ExternalUpgrade : MonoBehaviour
             PlayerPrefs.SetFloat("CrystalCount", crystal);
             // 解锁技能
             skill.UnlockNextLevel();
-             // 更高效地获取技能图标组件
+            // 更高效地获取技能图标组件
             SkillPic skillPic = GameObject.Find(skillName)?.GetComponent<SkillPic>();
             if (skillPic != null)
             {
@@ -99,7 +103,7 @@ public class ExternalUpgrade : MonoBehaviour
                 {
                     skillPic.SkillCost.text = "Cost:" + skill.Cost[skill.level].ToString();
                 }
-            }            
+            }
 
             // 执行技能解锁后的逻辑
             Unlock(skill.name, skill.level);
@@ -109,7 +113,7 @@ public class ExternalUpgrade : MonoBehaviour
             SaveSkills();
             crystalText.text = "Crystal:" + crystal.ToString();
         }
-        if ( skill != null && skill.level == skill.maxLevel)
+        if (skill != null && skill.level == skill.maxLevel)
         {
             Text buttonText = GameObject.Find(skillName + "Button")?.GetComponentInChildren<Text>();
             if (buttonText != null)
@@ -124,19 +128,19 @@ public class ExternalUpgrade : MonoBehaviour
         switch (name)
         {
             case "Shield":
-                
+
                 break;
             case "Speed":
-                
+
                 break;
             case "Extra Bed":
-                
+
                 break;
             case "Dash":
-                
+
                 break;
             default:
-                
+
                 break;
         }
     }
@@ -216,6 +220,8 @@ public class ExternalUpgrade : MonoBehaviour
         Skill skill = skills.Find(s => s.name == skillName);
         return skill?.level ?? -1; // 如果技能未找到，返回 -1
     }
+
+
 }
 
 [System.Serializable]

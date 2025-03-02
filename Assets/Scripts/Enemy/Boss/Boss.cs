@@ -24,8 +24,9 @@ public class Boss : MonoBehaviour
         LaserCounter = LaserBetTime;
         VortexCounter = VortexBetTime;
         Player = PlayerHealthController.instance.gameObject;
+        SFXManager.instance.PlaySFX(SFXManager.instance.BossSound, 0);
 
-        
+
     }
     public int soundindex = 0;
     void Update()
@@ -58,6 +59,7 @@ public class Boss : MonoBehaviour
         {
             soundindex = 4;
             EventController.instance.End();
+            ResourceManager.instance.AddCrystal(1000);
             Destroy(gameObject);
         }
         SFXManager.instance.PlaysfxPitch(SFXManager.instance.BossSound, soundindex);

@@ -59,6 +59,14 @@ public class ResourceManager : MonoBehaviour
         AddResource(UnityEngine.Random.Range(1, 5), 3);// 随机掉落资源
         PlayerPrefs.SetFloat(CrystalCountKey, Resource[3]); // 默认水晶数量
         PlayerPrefs.Save(); // 保存数据
+        ExternalUpgrade.Instance.crystal = Resource[3];
+    }
+    public void AddCrystal(int a)
+    {
+        AddResource(a, 3);// 随机掉落资源
+        PlayerPrefs.SetFloat(CrystalCountKey, Resource[3]); // 默认水晶数量
+        PlayerPrefs.Save(); // 保存数据
+        ExternalUpgrade.Instance.crystal = Resource[3];
     }
 
     public bool UseCrystal(int amount)

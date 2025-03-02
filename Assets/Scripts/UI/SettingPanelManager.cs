@@ -65,7 +65,7 @@ public class SettingPanelManager : MonoBehaviour
     public void Exit()
     {
         settingPanel.SetActive(false);
-        PausePanelManager.instance.IsSetting = false;
+        //PausePanelManager.instance.IsSetting = false;
         //±£´æÊý¾Ý
         PlayerPrefs.SetFloat("slider1", slider1.value);
         PlayerPrefs.SetFloat("slider2", slider2.value);

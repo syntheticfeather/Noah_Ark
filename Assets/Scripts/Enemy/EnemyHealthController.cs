@@ -36,7 +36,6 @@ public class EnemyHealthController : MonoBehaviour
         if (CurHealth <= 0)
         {
             ResourceManager.instance.AddCrystal();
-
             Destroy(gameObject);
             //Debug.Log("enemy dead");
         }
