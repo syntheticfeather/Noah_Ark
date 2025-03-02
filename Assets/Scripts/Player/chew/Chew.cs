@@ -44,7 +44,7 @@ public class Chew : MonoBehaviour
                 Stats.Range += change;
                 break;
             case "timebetweenattacks":
-                Stats.TimeBetweenAttacks -= change;
+                Stats.TimeBetweenAttacks += change;
                 break;
             case "duration":
                 Stats.Duration += change;
@@ -63,12 +63,12 @@ public class Chew : MonoBehaviour
         int index = ChewManager.Instance.allCrews.IndexOf(chewAI);
         //文本实时显示
         
-        damage.text = (Math.Round(Stats.Damage,1)).ToString();
-        range.text = (Math.Round(Stats.Range,1)).ToString();
-        timeBetweenAttacks.text = (Math.Round(Stats.TimeBetweenAttacks, 1)).ToString();
-        duration.text = (Math.Round(Stats.Duration, 1)).ToString();        
-        cost.text = (Math.Round(Stats.Cost, 1)).ToString();
-        level.text = (Math.Round(Stats.Level, 1)).ToString();       
+        damage.text = (Math.Round(Stats.Damage,1)).ToString("F2");
+        range.text = (Math.Round(Stats.Range,1)).ToString("F2");
+        timeBetweenAttacks.text = (Math.Round(Stats.TimeBetweenAttacks, 1)).ToString("F2");
+        duration.text = (Math.Round(Stats.Duration, 1)).ToString("F2");        
+        cost.text = (Math.Round(Stats.Cost, 1)).ToString("F2");
+        level.text = (Math.Round(Stats.Level, 1)).ToString("F2");       
     }
     public void ApplyToBullet()
     {

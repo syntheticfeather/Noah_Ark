@@ -21,12 +21,18 @@ public class ArkStatusManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //初始化血条盾条
         maxHealth = PlayerHealthController.instance.Health;
-        maxShield = PlayerHealthController.instance.Shield;
         currentHealth = maxHealth;
-        currentShield = maxShield;
         currentHealth1 = maxHealth;
+        if (ExternalUpgrade.Instance.skills[0].level==0)
+        {
+            shieldFillImage.enabled = false;
+            shieldFillImage1.enabled = false;                        
+            return;
+        }
+        //初始化血条盾条
+        maxShield = PlayerHealthController.instance.Shield;
+        currentShield = maxShield;
         currentShield1 = maxShield;
 
     }

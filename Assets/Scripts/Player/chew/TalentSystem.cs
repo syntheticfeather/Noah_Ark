@@ -52,6 +52,10 @@ public class TalentSystem : MonoBehaviour
         {
             availableTalents = HighLevelTalents;
         }
+        else
+        {
+            return null;
+        }
         
 
         if (availableTalents != null)

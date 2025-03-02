@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ using UnityEngine.UI;
 public class LevelSystem : MonoBehaviour
 {   
     private TalentSystem talentSystem;
-    private ChewStats stats;   
+    public ChewStats stats;   
     public Button button;
     Chew chew;
     private void Start()
@@ -19,15 +20,18 @@ public class LevelSystem : MonoBehaviour
 
     public void LevelUp()
     {    
+        if (ResourceManager.instance.Resource[2] < stats.Cost)
+        {
+            return;
+        }
+        ResourceManager.instance.Resource[2] -= (int)stats.Cost;
         chew = GetComponent<Chew>();
-        ChewAI chewAI = GetComponent<ChewAI>();
-        int Index = ChewManager.Instance.allCrews.IndexOf(chewAI);
         // Ù–‘Ã·…˝
-        chew.UpdateData("Damage", .5f);
-        chew.UpdateData("Range", .2f);
-        chew.UpdateData("TimeBetweenAttacks", 0.1f);
+        chew.UpdateData("Damage", UnityEngine.Random.Range(.2f, .7f));
+        chew.UpdateData("Range", UnityEngine.Random.Range(.1f, .3f));
+        chew.UpdateData("TimeBetweenAttacks", UnityEngine.Random.Range(.1f, .2f));
         chew.UpdateData("Duration", 0.1f);        
-        chew.UpdateData("Cost", 2f);
+        chew.UpdateData("Cost", UnityEngine.Random.Range(2f, 5f));
         chew.UpdateData("Level", 1f);
 
         talentSystem = new TalentSystem();      

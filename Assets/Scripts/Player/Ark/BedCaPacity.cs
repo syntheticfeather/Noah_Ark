@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class SkillPic : MonoBehaviour
+public class BedCaPacity : MonoBehaviour
 {
-    public Image SkillImage;
-    public List<Sprite> Image;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +14,5 @@ public class SkillPic : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void Changeimage(int index)
-    {
-        SkillImage.sprite = Image[index];
     }
 }

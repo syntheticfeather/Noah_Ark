@@ -18,12 +18,17 @@ public class ArkMovement : MonoBehaviour
 
     // Dash 技能相关参数
     public float dashMultiplier ;    // Dash 速度倍率
+
     public float dashDuration ;      // Dash 持续时间
-    public float dashCooldown ;     // Dash 冷却时间
-    private bool isDashing = false;      
     private float dashTimer = 0f;        
-    private float cooldownTimer = 0f;    // 冷却计时器
-    private bool isOnCooldown = false;   // 是否处于冷却状态
+
+    public float dashCooldown ;     // Dash 冷却时间
+    private float cooldownTimer = 10f;    // 冷却计时器
+
+
+    private bool isDashing = false;
+    private bool isOnCooldown = true;   // 是否处于冷却状态
+
 
     // 引用 ExternalUpgrade 脚本
     public ExternalUpgrade externalUpgrade;
@@ -45,8 +50,8 @@ public class ArkMovement : MonoBehaviour
         maxSpeed = baseMaxSpeed;
 
         // 获取 Speed 技能的等级
-        int speedLevel = SkillLevelLoader.Instance.GetSkillLevel("Speed");
-
+        int speedLevel = ExternalUpgrade.Instance.skills[1].level;
+        Debug.Log("SpeedLevel: " + speedLevel);
         switch (speedLevel)
         {
             case 0:
@@ -54,16 +59,16 @@ public class ArkMovement : MonoBehaviour
                 maxSpeed = baseMaxSpeed;
                 break;
             case 1:
-                moveSpeed = baseMoveSpeed*1.1f;
-                maxSpeed = baseMaxSpeed*1.1f;
+                moveSpeed = baseMoveSpeed*1.4f;
+                maxSpeed = baseMaxSpeed*1.4f;
                 break;
             case 2:
-                moveSpeed = baseMoveSpeed * 1.3f;
-                maxSpeed = baseMaxSpeed * 1.3f;
+                moveSpeed = baseMoveSpeed * 1.7f;
+                maxSpeed = baseMaxSpeed * 1.7f;
                 break;
             case 3:
-                moveSpeed = baseMoveSpeed * 1.5f;
-                maxSpeed = baseMaxSpeed * 1.5f;
+                moveSpeed = baseMoveSpeed * 2f;
+                maxSpeed = baseMaxSpeed * 2f;
                 break;
             default:
                 break;
@@ -72,33 +77,35 @@ public class ArkMovement : MonoBehaviour
 
     void InitializeDash()
     {
-        int DashLevel = SkillLevelLoader.Instance.GetSkillLevel("Dash");
+        int DashLevel = ExternalUpgrade.Instance.skills[3].level;
+        Debug.Log("DashLevel: " + DashLevel);
         switch (DashLevel)
-        {
+        {            
             case 0:
              dashMultiplier = 1f;    
-             dashDuration = 0f;      
-             dashCooldown = 30f; 
+             dashDuration = .5f;      
+             dashCooldown = 16f; 
              break;
             case 1:
                 dashMultiplier = 3f;
                 dashDuration = 1f;
-                dashCooldown = 30f;
+                dashCooldown = 12f;
                 break;
             case 2:
                 dashMultiplier = 5f;
                 dashDuration = 1f;
-                dashCooldown = 25f;
+                dashCooldown = 10f;
                 break;
             case 3:
                 dashMultiplier = 5f;
                 dashDuration = 1.5f;
-                dashCooldown = 20f;
+                dashCooldown = 5f;
                 break;
             default:
                 break;
         }
-
+        dashTimer = dashDuration;
+        cooldownTimer = 0;
     }
 
     void Update()
@@ -106,12 +113,13 @@ public class ArkMovement : MonoBehaviour
         Movement();
 
         // 检查 Dash 技能是否解锁
-        if (externalUpgrade != null && externalUpgrade.IsSkillUnlocked("Dash"))
+        if (true)
         {
             // 如果按下 Z 键且未处于冷却状态，触发 Dash
             if (Input.GetKeyDown(KeyCode.Z) && !isDashing && !isOnCooldown)
             {
                 StartDash();
+                Debug.Log("Dash");
             }
         }
 
@@ -121,6 +129,7 @@ public class ArkMovement : MonoBehaviour
             dashTimer -= Time.deltaTime;
             if (dashTimer <= 0)
             {
+                dashTimer = dashDuration;
                 EndDash();
             }
         }
@@ -131,8 +140,8 @@ public class ArkMovement : MonoBehaviour
             cooldownTimer -= Time.deltaTime;
             if (cooldownTimer <= 0)
             {
-                isOnCooldown = false;
-               
+               isOnCooldown = false;
+               cooldownTimer = dashCooldown;
             }
         }
     }

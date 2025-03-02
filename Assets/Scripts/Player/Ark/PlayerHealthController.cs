@@ -15,21 +15,25 @@ public class PlayerHealthController : MonoBehaviour
 
     void Start()
     {
-        int speedLevel = SkillLevelLoader.Instance.GetSkillLevel("Speed");
-
-        switch (speedLevel)
+        int ShieldLevel = ExternalUpgrade.Instance.skills[0].level;
+        Debug.Log(ShieldLevel);
+        switch (ShieldLevel)
         {
             case 0:
                 Shield = 0f;
+                Debug.Log("No upgrade selected");
                 break;
             case 1:
-                Shield = 10f;
+                Shield = 20f;
+                Debug.Log("Upgrade 1 selected");
                 break;
             case 2:
-                Shield = 30f;
+                Shield = 50f;
+                Debug.Log("Upgrade 2 selected");
                 break;
             case 3:
-                Shield = 50f;
+                Shield = 200f;
+                Debug.Log("Upgrade 3 selected");
                 break;
             default:
                 break;
@@ -37,9 +41,7 @@ public class PlayerHealthController : MonoBehaviour
     }
     void Awake()
     {
-
-        instance = this;
-        
+        instance = this;        
     }
 
     // Update is called once per frame
@@ -50,7 +52,7 @@ public class PlayerHealthController : MonoBehaviour
     
     public void TakeDamage(int Damage)
     {
-        if (Shield > 0)
+        if (ExternalUpgrade.Instance.skills[0].level != 0 && Shield > 0)
         {
             Shield -= Damage;
             if (Shield < 0){ Shield = 0; }
@@ -66,7 +68,7 @@ public class PlayerHealthController : MonoBehaviour
         }
     }
 
-    public void Repair(float percent)
+    public void Repair(float percent)// .2f
     {
         float healing =percent * MaxHealth;       
         if (Health > 0 && Health != MaxHealth)
