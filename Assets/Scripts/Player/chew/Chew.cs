@@ -68,7 +68,7 @@ public class Chew : MonoBehaviour
         timeBetweenAttacks.text = (Math.Round(Stats.TimeBetweenAttacks, 1)).ToString("F2");
         duration.text = (Math.Round(Stats.Duration, 1)).ToString("F2");        
         cost.text = (Math.Round(Stats.Cost, 1)).ToString("F2");
-        level.text = (Math.Round(Stats.Level, 1)).ToString("F2");       
+        level.text = (Math.Round(Stats.Level, 1)).ToString();       
     }
     public void ApplyToBullet()
     {

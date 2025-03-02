@@ -41,7 +41,10 @@ public class CharacterPanelController : MonoBehaviour
         // 先禁用所有属性面板
         foreach (GameObject gameObject in list)
         {
-            gameObject.SetActive(false);
+            if (gameObject)
+            {
+                gameObject.SetActive(false);                
+            }
         }
         if (parentTransform != null)
         {
