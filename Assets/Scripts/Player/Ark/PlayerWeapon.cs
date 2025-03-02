@@ -26,11 +26,21 @@ public class PlayerWeapon : MonoBehaviour
     public bool CanAtk = true;
     void Start()
     {
+        CoolDown = Bomb.GetComponent<Father>().ATKSpeed - Animal.GetComponent<ChewStats>().TimeBetweenAttacks;
+        if (CoolDown <= 0)
+        {
+            CoolDown = .5f;
+        }
     }
 
 
     void Update()
-    {        
+    {
+        CoolDown = Bomb.GetComponent<Father>().ATKSpeed - Animal.GetComponent<ChewStats>().TimeBetweenAttacks;
+        if (CoolDown <= 0)
+        {
+            CoolDown = .5f;
+        }
         if (CanAtk)
         {
             //计时器如果小于0，表明冷却完毕，停止计时减少运算量

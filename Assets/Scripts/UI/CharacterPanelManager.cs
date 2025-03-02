@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class CharacterPanelController : MonoBehaviour
         {
             if (isPanelActive == false)
             {
+                // 遍历所有按钮，将其激活
                 // 切换Panel的活动状态，按c弹出面板            
                 characterPanel.SetActive(true);
                 isPanelActive = true;

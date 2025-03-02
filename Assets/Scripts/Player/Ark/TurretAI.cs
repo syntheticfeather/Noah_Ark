@@ -30,6 +30,10 @@ public class TurretAI : MonoBehaviour
         if (bulletPrefab)
         {
             fireRate = bulletPrefab.GetComponent<Father>().ATKSpeed - Animal.GetComponent<ChewStats>().TimeBetweenAttacks;// 以减法计算攻速
+            if (fireRate <= 0)
+            {
+                fireRate = .5f;
+            }
             //Debug.Log("" + fireRate);            
         }
         

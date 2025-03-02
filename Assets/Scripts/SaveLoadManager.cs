@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    public List<int> resources; // 资源数据
+    public List<float> resources; // 资源数据
     public Vector3 playerPosition; // 玩家位置
     public List<IslandData> islands; // 岛屿数据
     public float wholeTime; // 游戏时间
@@ -43,7 +43,7 @@ public class SaveLoadManager : MonoBehaviour
         ResourceManager resourceManager = FindObjectOfType<ResourceManager>();
         if (resourceManager != null)
         {
-            gameData.resources = new List<int>(resourceManager.Resource);
+            gameData.resources = new List<float>(resourceManager.Resource);
         }
 
         // 获取玩家位置
@@ -104,7 +104,7 @@ public class SaveLoadManager : MonoBehaviour
         ResourceManager resourceManager = FindObjectOfType<ResourceManager>();
         if (resourceManager != null)
         {
-            resourceManager.Resource = new List<int>(gameData.resources);
+            resourceManager.Resource = new List<float>(gameData.resources);
         }
 
         // 加载玩家位置
@@ -152,7 +152,7 @@ public class SaveLoadManager : MonoBehaviour
         ResourceManager resourceManager = FindObjectOfType<ResourceManager>();
         if (resourceManager != null)
         {
-            resourceManager.Resource = new List<int> { 100, 50, 200, 30 }; // 示例初始资源
+            resourceManager.Resource = new List<float> { 10, 5, 20, 0 }; // 示例初始资源
         }
 
         // 初始化玩家位置

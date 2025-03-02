@@ -16,6 +16,8 @@ public class SFXManager : MonoBehaviour
     {
         BossSound[0].volume = AudioSequencePlayer.instance.slider.value;
         soundEffects[0].volume = AudioSequencePlayer.instance.slider2.value;
+        soundEffects[1].volume = AudioSequencePlayer.instance.slider2.value;
+        soundEffects[2].volume = AudioSequencePlayer.instance.slider2.value;
     }
     public AudioClip[] sound;
     public AudioSource[] soundEffects;

@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class SkillPic : MonoBehaviour
 {
     public Image SkillImage;
-    public List<Sprite> Image;   
+    public List<Sprite> Image;  
+    public TMP_Text SkillCost;
     // Start is called before the first frame update
     void Start()
     {

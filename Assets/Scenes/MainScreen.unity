@@ -2827,7 +2827,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -902, y: -141, z: -2}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1894118907}
@@ -3806,7 +3806,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 219554323}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1224327865}
+        m_TargetAssemblyTypeName: LevelSystem, Assembly-CSharp
+        m_MethodName: LevelUp
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &219554323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5170,7 +5182,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 303212412}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1938550306}
+        m_TargetAssemblyTypeName: LevelSystem, Assembly-CSharp
+        m_MethodName: LevelUp
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &303212412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5785,7 +5809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 342907257}
   m_Layer: 0
-  m_Name: Animal1
+  m_Name: CatT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11599,7 +11623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383932336}
   m_Layer: 0
-  m_Name: Animal1 (2)
+  m_Name: SheepT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12778,8 +12802,8 @@ Transform:
   m_GameObject: {fileID: 449233481}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -756, y: -490, z: -2}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -757.2, y: -487.8, z: -2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1894118907}
@@ -23555,7 +23579,7 @@ Transform:
   m_GameObject: {fileID: 755323227}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 153, y: 229, z: 0}
+  m_LocalPosition: {x: 163.64, y: 229, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -24340,7 +24364,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 805465698}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1216891572}
+        m_TargetAssemblyTypeName: LevelSystem, Assembly-CSharp
+        m_MethodName: LevelUp
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &805465698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26676,7 +26712,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26731,7 +26767,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 1
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26742,7 +26778,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26764,7 +26800,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 1
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26775,7 +26811,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 2
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26786,7 +26822,7 @@ MonoBehaviour:
       count: 3
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26797,7 +26833,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26808,7 +26844,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 2
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26819,7 +26855,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 4
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26830,7 +26866,7 @@ MonoBehaviour:
       count: 5
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26841,7 +26877,7 @@ MonoBehaviour:
       count: 4
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 4
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26852,7 +26888,7 @@ MonoBehaviour:
       count: 1
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 3
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26863,7 +26899,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 2
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26874,7 +26910,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 6
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26885,7 +26921,7 @@ MonoBehaviour:
       count: 5
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26896,7 +26932,7 @@ MonoBehaviour:
       count: 5
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 5
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26907,7 +26943,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26918,7 +26954,7 @@ MonoBehaviour:
       count: 10
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26929,7 +26965,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 8
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26940,7 +26976,7 @@ MonoBehaviour:
       count: 5
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26951,7 +26987,7 @@ MonoBehaviour:
       count: 10
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 2
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26962,7 +26998,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26973,7 +27009,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26984,7 +27020,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 5
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -26995,7 +27031,7 @@ MonoBehaviour:
       count: 5
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 5
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -27006,7 +27042,7 @@ MonoBehaviour:
       count: 15
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -27017,7 +27053,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -27028,7 +27064,7 @@ MonoBehaviour:
       count: 15
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 1
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -27039,7 +27075,7 @@ MonoBehaviour:
       count: 10
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 5
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -27050,7 +27086,7 @@ MonoBehaviour:
       count: 0
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -27061,7 +27097,7 @@ MonoBehaviour:
       count: 20
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 20
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -27072,7 +27108,7 @@ MonoBehaviour:
       count: 30
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 0
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -27083,7 +27119,7 @@ MonoBehaviour:
       count: 40
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 20
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -27094,7 +27130,7 @@ MonoBehaviour:
       count: 20
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 20
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   - monsterGroups:
     - monsterPrefab: {fileID: 2083803906692332171, guid: f81ef6fee28ca8e409121cc87522b2ff, type: 3}
@@ -27105,7 +27141,7 @@ MonoBehaviour:
       count: 100
     - monsterPrefab: {fileID: 8359755428944950961, guid: 8b0f798977e8a6546b7a96fd4bc64863, type: 3}
       count: 50
-    spawnInterval: 0.5
+    spawnInterval: 0.1
     waveInterval: 45
   Bosswave:
     monsterGroups:
@@ -34217,7 +34253,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1032462296}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 186794272}
+        m_TargetAssemblyTypeName: LevelSystem, Assembly-CSharp
+        m_MethodName: LevelUp
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1032462296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35365,7 +35413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101484437}
   m_Layer: 0
-  m_Name: Animal1 (1)
+  m_Name: DogT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36316,7 +36364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178754356}
   m_Layer: 0
-  m_Name: Animal1 (3)
+  m_Name: NoahT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36740,8 +36788,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -397, y: 427}
-  m_SizeDelta: {x: 292.9839, y: 145.6382}
+  m_AnchoredPosition: {x: -407, y: 427}
+  m_SizeDelta: {x: 543.49, y: 145.638}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1200970562
 MonoBehaviour:
@@ -36776,7 +36824,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cat
+  m_Text: RedPanda
 --- !u!222 &1200970563
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37634,8 +37682,8 @@ Transform:
   m_GameObject: {fileID: 1224327857}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -738, y: -325, z: -2}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_LocalPosition: {x: -738.62, y: -323.86, z: -2}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1894118907}
@@ -39061,7 +39109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1292966797}
   m_Layer: 0
-  m_Name: Animal1 (5)
+  m_Name: NullT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40088,7 +40136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurHealth: 0
-  MaxHealth: 300
+  MaxHealth: 500
   renderer2D: {fileID: 1840244687}
   flashDuration: 0.1
 --- !u!58 &1338912228
@@ -42218,7 +42266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1466474765}
   m_Layer: 0
-  m_Name: Animal1 (4)
+  m_Name: RedPandaT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43802,7 +43850,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1563583820}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 449233483}
+        m_TargetAssemblyTypeName: LevelSystem, Assembly-CSharp
+        m_MethodName: LevelUp
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1563583820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44759,7 +44819,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7618df79550c8fd4f9789db899c7e157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Resource: 00000000000000000000000000000000
+  Resource:
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!4 &1626945205
 Transform:
   m_ObjectHideFlags: 0
@@ -54554,6 +54618,7 @@ MonoBehaviour:
   - {fileID: 1224327858}
   - {fileID: 186794266}
   - {fileID: 1938550300}
+  - {fileID: 449233485}
   ResourceList: []
 --- !u!114 &1894118909
 MonoBehaviour:
@@ -55293,8 +55358,8 @@ Transform:
   m_GameObject: {fileID: 1938550298}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -474.7, y: -23.200005, z: -2}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_LocalPosition: {x: -462.02, y: -23.200005, z: -2}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1894118907}

@@ -9,7 +9,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager instance;
-    public List<int> Resource = new List<int>();// 定义顺序为 木头 -> 0， 矿石 -> 1，食物 -> 2, crystal -> 3;
+    public List<float> Resource = new List<float>();// 定义顺序为 木头 -> 0， 矿石 -> 1，食物 -> 2, crystal -> 3;
     // 引用 ExternalUpgrade 脚本
     
     // 水晶数量的键名
@@ -25,18 +25,18 @@ public class ResourceManager : MonoBehaviour
         // 初始化水晶数量数据（如果不存在）
         if (!PlayerPrefs.HasKey(CrystalCountKey))
         {
-            PlayerPrefs.SetInt(CrystalCountKey, 0); // 默认水晶数量
+            PlayerPrefs.SetFloat(CrystalCountKey, 0); // 默认水晶数量
             PlayerPrefs.Save(); // 保存数据
         }
 
-        Resource[3] = PlayerPrefs.GetInt("CrystalCount", 0);// 读写局外crystal数据
+        Resource[3] = PlayerPrefs.GetFloat("CrystalCount", 0);// 读写局外crystal数据
         if (ExternalUpgrade.Instance.IsSkillUnlocked("Extra Bed"))
         {
-            InitialResource(1500, 500, 50);
+            InitialResource(10, 5, 20);
         }
         else
         {
-            InitialResource(5, 1, 50);
+            InitialResource(5, 2, 5);
         }
             
     }
@@ -56,7 +56,7 @@ public class ResourceManager : MonoBehaviour
     public void AddCrystal()
     {
         AddResource(UnityEngine.Random.Range(1, 5), 3);// 随机掉落资源
-        PlayerPrefs.SetInt(CrystalCountKey, Resource[3]); // 默认水晶数量
+        PlayerPrefs.SetFloat(CrystalCountKey, Resource[3]); // 默认水晶数量
         PlayerPrefs.Save(); // 保存数据
     }
 
@@ -66,7 +66,7 @@ public class ResourceManager : MonoBehaviour
         {
             Resource[3] -= amount;
             // 保存修改后的数据
-            PlayerPrefs.SetInt(CrystalCountKey, Resource[3]);
+            PlayerPrefs.SetFloat(CrystalCountKey, Resource[3]);
             PlayerPrefs.Save();
             return true;
         }

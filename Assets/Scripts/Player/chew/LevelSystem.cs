@@ -14,12 +14,17 @@ public class LevelSystem : MonoBehaviour
     Chew chew;
     private void Start()
     {
-        button.onClick.AddListener(LevelUp);
         
     }
-
-    public void LevelUp()
-    {    
+    public void LevelUp(string name)
+    {
+        if (stats.Level >= 10)
+            return;
+        if (GetComponent<ChewAI>().IsBought == false)
+        {
+            Debug.Log("You need to buy this chew first");
+            return;
+        }
         if (ResourceManager.instance.Resource[2] < stats.Cost)
         {
             return;

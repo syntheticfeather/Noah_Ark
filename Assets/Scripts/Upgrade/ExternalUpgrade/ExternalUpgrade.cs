@@ -18,7 +18,7 @@ public class ExternalUpgrade : MonoBehaviour
         new Skill("Dash", new List<int> { 500,5000,8198 })
     };
     private InternalUpgrade internalUpgrade;
-    public int crystal;
+    public float crystal;
     public TMP_Text crystalText;
     // 文件路径
     private string saveFilePath;
@@ -37,9 +37,18 @@ public class ExternalUpgrade : MonoBehaviour
             if (skill != null && skill.level == skill.maxLevel)
             {
                 Text buttonText = GameObject.Find(skill.name + "Button")?.GetComponentInChildren<Text>();
+                SkillPic skillPic = GameObject.Find(skill.name)?.GetComponent<SkillPic>();
                 if (buttonText != null)
                 {
                     buttonText.text = "Max Level";
+                }
+                if (skill.level == skill.maxLevel)
+                {
+                    skillPic.SkillCost.text = "Max Level";
+                }
+                else
+                {
+                    skillPic.SkillCost.text = "Cost:" + skill.Cost[skill.level].ToString();
                 }
             }
         }
@@ -55,7 +64,7 @@ public class ExternalUpgrade : MonoBehaviour
 
     void Start()
     {
-        crystal = PlayerPrefs.GetInt("CrystalCount", 0); // 读写局外crystal数据
+        crystal = PlayerPrefs.GetFloat("CrystalCount", 0); // 读写局外crystal数据
         if (crystalText!= null)
         crystalText.text = "Crystal:" + crystal.ToString();
         internalUpgrade = GetComponent<InternalUpgrade>();
@@ -66,11 +75,11 @@ public class ExternalUpgrade : MonoBehaviour
 
         Skill skill = skills.Find(s => s.name == skillName);
 
-        if (skill != null && skill.CanUnlock(crystal) && skill.level < skill.maxLevel)
+        if (skill != null && skill.CanUnlock(Mathf.FloorToInt(crystal)) && skill.level < skill.maxLevel)
         {
             // 扣除水晶
             crystal -= skill.Cost[skill.level]; // 扣除当前等级的升级花费
-            PlayerPrefs.SetInt("CrystalCount", crystal);
+            PlayerPrefs.SetFloat("CrystalCount", crystal);
             // 解锁技能
             skill.UnlockNextLevel();
              // 更高效地获取技能图标组件
@@ -78,6 +87,14 @@ public class ExternalUpgrade : MonoBehaviour
             if (skillPic != null)
             {
                 skillPic.Changeimage(skill.level);
+                if (skill.level == skill.maxLevel)
+                {
+                    skillPic.SkillCost.text = "Max Level";
+                }
+                else
+                {
+                    skillPic.SkillCost.text = "Cost:" + skill.Cost[skill.level].ToString();
+                }
             }            
 
             // 执行技能解锁后的逻辑
@@ -169,8 +186,8 @@ public class ExternalUpgrade : MonoBehaviour
                         SkillPic skillPic = GameObject.Find(targetSkill.name)?.GetComponent<SkillPic>();
                         if (skillPic != null)
                         {
-                            skillPic.Changeimage(targetSkill.level);                            
-                            Debug.Log("Change image");
+                            skillPic.Changeimage(targetSkill.level);
+
                         }
                     }
                 }

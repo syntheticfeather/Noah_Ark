@@ -26,15 +26,15 @@ public class PlayerHealthController : MonoBehaviour
                 Debug.Log("No upgrade selected");
                 break;
             case 1:
-                Shield = 20f;
+                Shield = 10f;
                 Debug.Log("Upgrade 1 selected");
                 break;
             case 2:
-                Shield = 50f;
+                Shield = 20f;
                 Debug.Log("Upgrade 2 selected");
                 break;
             case 3:
-                Shield = 200f;
+                Shield = 50f;
                 Debug.Log("Upgrade 3 selected");
                 break;
             default:
