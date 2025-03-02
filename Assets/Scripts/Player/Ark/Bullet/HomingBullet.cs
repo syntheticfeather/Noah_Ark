@@ -59,15 +59,24 @@ public class HomingBullet : Father
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ëºï¿½Í¼ï¿½ï¿½ï¿½ï¿?
-        if (((1 << other.gameObject.layer) & damageLayers) != 0)
+        if (collision.tag == "Enemy")
         {
-            // ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿?
-            
-            PlayExplosionEffect();
-            Destroy(gameObject);
+            collision.GetComponent<EnemyHealthController>().TakeDamage(ATK);
+            if (BloodSystem)
+                Instantiate(BloodSystem, transform.position, Quaternion.identity);
         }
+        if (collision.name == "boss")
+        {
+            Boss.Instance.GetComponent<EnemyHealthController>().CurHealth -= ATK / 3;
+            if (BloodSystem)
+                Instantiate(BloodSystem, transform.position, Quaternion.identity);
+        }
+        // ²¥·Å±¬Õ¨ÌØÐ§»òÒôÐ§
+        PlayExplosionEffect();
+        // Ïú»ÙÅÚµ¯
+        Destroy(gameObject);
+        //Debug.Log("ÒòÅö×²¶øÏú»Ù");
     }
 }

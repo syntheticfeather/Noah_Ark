@@ -11,7 +11,7 @@ public class ResourceManager : MonoBehaviour
     public static ResourceManager instance;
     public List<int> Resource = new List<int>();// 定义顺序为 木头 -> 0， 矿石 -> 1，食物 -> 2, crystal -> 3;
     // 引用 ExternalUpgrade 脚本
-    public ExternalUpgrade externalUpgrade;
+    
     // 水晶数量的键名
     public static string CrystalCountKey = "CrystalCount";
 
@@ -30,9 +30,9 @@ public class ResourceManager : MonoBehaviour
         }
 
         Resource[3] = PlayerPrefs.GetInt("CrystalCount", 0);// 读写局外crystal数据
-        if (externalUpgrade != null && externalUpgrade.IsSkillUnlocked("Extra Bed"))
+        if (ExternalUpgrade.Instance.IsSkillUnlocked("Extra Bed"))
         {
-            InitialResource(15, 3, 150);
+            InitialResource(1500, 500, 50);
         }
         else
         {

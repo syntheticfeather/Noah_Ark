@@ -9,12 +9,14 @@ public class PlayerHealthController : MonoBehaviour
     public float Health;
     public float MaxHealth;
     public float Shield;
-
+    public float Shield2;
+    public float Counter;
     // Start is called before the first frame update
     public ExternalUpgrade externalUpgrade;
 
     void Start()
     {
+        Health = MaxHealth;
         int ShieldLevel = ExternalUpgrade.Instance.skills[0].level;
         Debug.Log(ShieldLevel);
         switch (ShieldLevel)
@@ -38,6 +40,7 @@ public class PlayerHealthController : MonoBehaviour
             default:
                 break;
         }
+        Shield2 = Shield;
     }
     void Awake()
     {
@@ -47,7 +50,12 @@ public class PlayerHealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Counter -= Time.deltaTime;
+        if (Counter <= 0)
+        {
+            Shield = Shield2;
+            Counter = 45;
+        }
     }
     
     public void TakeDamage(int Damage)

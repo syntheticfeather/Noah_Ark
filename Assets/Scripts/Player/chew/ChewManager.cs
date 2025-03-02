@@ -80,14 +80,26 @@ public class ChewManager : MonoBehaviour
     }
     public void tryBuyCrew()// button调用
     {
+        if (Capacity.Instance.CurrentCapacity >= Capacity.Instance.maxCapacity)
+        {
+            ChewBuyUI.instance.DebugText.text = "Full capacity";
+            ChewBuyUI.instance.DebugText.gameObject.SetActive(true);
+        }
         if (ChewManager.Instance.allCrews.Contains(ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex]))
         {
             ChewBuyUI.instance.DebugText.text = "already bought";
             ChewBuyUI.instance.DebugText.gameObject.SetActive(true);
             return;
         }
+        if (ResourceManager.instance.Resource[2] < ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats.Cost)
+        {
+            ChewBuyUI.instance.DebugText.text = "not enough food";
+            ChewBuyUI.instance.DebugText.gameObject.SetActive(true);
+            Debug.Log("not enough food");
+            return;
+        }
         Debug.Log("tryBuyCrew");
-        if (ResourceManager.instance.Resource[2] >= ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats.Cost)
+        if (Capacity.Instance.CurrentCapacity < Capacity.Instance.maxCapacity && ResourceManager.instance.Resource[2] >= ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats.Cost)
         {
             // 可以购买
             ResourceManager.instance.Resource[2] -= Mathf.FloorToInt(ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].GetComponent<Chew>().Stats.Cost);
@@ -96,14 +108,12 @@ public class ChewManager : MonoBehaviour
             ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].gameObject.SetActive(false);
             idleCrews.Enqueue(ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex]);
             ChewManager.Instance.CrewsToBuy[ChewBuyUI.instance.CurChewindex].IsBought = true;
+            ChewBuyUI.instance.DebugText.text = "Buy crew";
+            Capacity.Instance.CurrentCapacity += 1;
             Debug.Log("Buy crew");
         }
-        else
-        {
-            ChewBuyUI.instance.DebugText.text = "not enough food";
-            ChewBuyUI.instance.DebugText.gameObject.SetActive(true);
-            Debug.Log("not enough food");
-        }
+
+        
         // 显示UI提示"购买船员"// 点击船员时
         //显示其数据，价格，以及资源消耗。
         // 调用资源系统的资源，对比是否可以。

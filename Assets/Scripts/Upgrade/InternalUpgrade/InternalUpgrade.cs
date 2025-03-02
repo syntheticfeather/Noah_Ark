@@ -1,36 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
+using TMPro;
 using UnityEngine;
 
 public class InternalUpgrade : MonoBehaviour
 {
-    public int Beds { get; set; }
-    public int CannoneerSlots { get; set; }
-
-    private ResourceManager resourceManager;
-    private PlayerHealthController healthController;
-
     void Start()
-    {
-        resourceManager = GetComponent<ResourceManager>();
-        healthController = GetComponent<PlayerHealthController>();
+    {        
     }
+    public TMP_Text capacityText;
+    public TMP_Text weaponText;
 
-    public void UpgradeBeds(int woodCost, int stoneCost)
+    public void UpgradeBeds()
     {
-        if (resourceManager.UseResource(woodCost, stoneCost))
+        if (Capacity.Instance.maxCapacity >= 6)
         {
-            Beds++;
+            UpgradeText();
+            return;
         }
-       
+        if (ResourceManager.instance.UseResource(10,6))
+        {
+            Capacity.Instance.maxCapacity += 1;
+            UpgradeText();
+        }
+        
     }
 
-    public void UpgradeCannoneerSlots(int woodCost, int stoneCost)
+    public void UpgradeCannoneerSlots()
     {
-        if (resourceManager.UseResource(woodCost, stoneCost))
+        if (Capacity.Instance.maxWeapon >= 6)
         {
-            CannoneerSlots++;   
+            UpgradeText();
+            return;
+        }
+        if (ResourceManager.instance.UseResource(20, 10))
+        {
+            Capacity.Instance.maxWeapon += 1;
+            UpgradeText();
         }
     }
 
@@ -42,6 +49,19 @@ public class InternalUpgrade : MonoBehaviour
         if (ResourceManager.instance.UseResource(woodCost, stoneCost))
         {
             PlayerHealthController.instance.Repair(percent);
+        }
+    }
+    public void UpgradeText()
+    {
+        capacityText.text = "Capacity: " + Capacity.Instance.maxCapacity;
+        weaponText.text = "Cannoneer Slots: " + Capacity.Instance.maxWeapon;
+        if (Capacity.Instance.maxCapacity >= 6)
+        {
+            capacityText.text = "MaxCapacity: 6";            
+        }
+        if (Capacity.Instance.maxWeapon >=6)
+        {
+            weaponText.text = "MaxCannoneerSlots: 6";            
         }
     }
 }

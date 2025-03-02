@@ -169,7 +169,8 @@ public class ExternalUpgrade : MonoBehaviour
                         SkillPic skillPic = GameObject.Find(targetSkill.name)?.GetComponent<SkillPic>();
                         if (skillPic != null)
                         {
-                            skillPic.Changeimage(targetSkill.level);
+                            skillPic.Changeimage(targetSkill.level);                            
+                            Debug.Log("Change image");
                         }
                     }
                 }

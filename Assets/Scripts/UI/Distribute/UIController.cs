@@ -32,6 +32,7 @@ public class UIController : MonoBehaviour
             if (ChewManagerPanel.activeSelf == false)
             {
                 ChewManagerPanel.SetActive(true);
+                Capacity.Instance.UpdateCapacity();
                 Time.timeScale = 0f;
             }
             else
