@@ -6,6 +6,6 @@ using UnityEngine;
 public class ChewStats : MonoBehaviour
 {
     public float Damage, Range, TimeBetweenAttacks, Duration, Cost, Level;
-    public int Maxtake;
+    public float Maxtake;
     public bool Leader, DoubleProjectile, AutoRepair;    
 }

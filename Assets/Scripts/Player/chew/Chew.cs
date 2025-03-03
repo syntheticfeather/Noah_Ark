@@ -54,6 +54,7 @@ public class Chew : MonoBehaviour
             default:
                 break;
         }
+        Stats.Maxtake = Stats.Duration;
         UpdateUI();
     }
     public void UpdateUI()

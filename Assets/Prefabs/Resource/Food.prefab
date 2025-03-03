@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f06bfee0d051334999d9e0020a8c284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: 15
+  Amount: 20
   selectionEffect: {fileID: 8267375301836359944}
   type: 2
 --- !u!50 &5940814502562072600

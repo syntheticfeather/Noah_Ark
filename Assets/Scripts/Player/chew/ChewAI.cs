@@ -69,7 +69,7 @@ public class ChewAI : MonoBehaviour
         {
             Debug.Log("Direct to ship");
             transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, shipDepositPoint.position) < 3f)
+            if (Vector3.Distance(transform.position, shipDepositPoint.position) < 7f)
             {
                 GetToWork = false;
                 WeaponManager.Instance.UpdateStatus();
@@ -82,7 +82,7 @@ public class ChewAI : MonoBehaviour
         if (!isCarryingWood && (currentResource == null || currentResource.Amount <= 0))// 物资采集完提前回船。
         {
             transform.position = Vector3.MoveTowards(transform.position, shipDepositPoint.position, moveSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, shipDepositPoint.position) < 5f)
+            if (Vector3.Distance(transform.position, shipDepositPoint.position) < 9f)
             {
                 if (ChewManager.Instance.ResourceList.Count != 0)
                 {

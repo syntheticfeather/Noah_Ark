@@ -19,7 +19,7 @@ public class InternalUpgrade : MonoBehaviour
             UpgradeText();
             return;
         }
-        if (ResourceManager.instance.UseResource(10,6))
+        if (ResourceManager.instance.UseResource(5,3))
         {
             Capacity.Instance.maxCapacity += 1;
             UpgradeText();
@@ -34,7 +34,7 @@ public class InternalUpgrade : MonoBehaviour
             UpgradeText();
             return;
         }
-        if (ResourceManager.instance.UseResource(20, 10))
+        if (ResourceManager.instance.UseResource(10, 5))
         {
             Capacity.Instance.maxWeapon += 1;
             UpgradeText();

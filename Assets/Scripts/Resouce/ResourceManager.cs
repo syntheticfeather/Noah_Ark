@@ -33,11 +33,11 @@ public class ResourceManager : MonoBehaviour
         Resource[3] = PlayerPrefs.GetFloat("CrystalCount", 0);// 读写局外crystal数据
         if (ExternalUpgrade.Instance.IsSkillUnlocked("Extra Bed"))
         {
-            InitialResource(10, 5, 20);
+            InitialResource(30, 18, 50);
         }
         else
         {
-            InitialResource(5, 2, 5);
+            InitialResource(20, 12, 30);
         }
             
     }

@@ -111,14 +111,14 @@ public class EventController : MonoBehaviour
     public void End()
     {
         SFXManager.instance.PlaysfxPitch(SFXManager.instance.BossSound, 4);
-        PlayerPrefs.SetFloat("CrystalCount", ResourceManager.instance.Resource[3]);
-        PlayerPrefs.Save();
-        var sss = GameObject.Find("ExternUpgrade");
-        sss.GetComponent<ExternalUpgrade>().Upgrade();
         Invoke("LoadStartScene", 5f);
     }        
     public void LoadStartScene()
     {
+        PlayerPrefs.SetFloat("CrystalCount", ResourceManager.instance.Resource[3]);
+        PlayerPrefs.Save();
+        var sss = GameObject.Find("ExternUpgrade");
+        sss.GetComponent<ExternalUpgrade>().Upgrade();
         var canvas = GameObject.Find("MenuCanvas");
         canvas.GetComponent<ActivateChildren>().ActivateAllChildren();
         SceneManager.LoadScene("StartScene");

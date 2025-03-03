@@ -32,11 +32,11 @@ public class LevelSystem : MonoBehaviour
         ResourceManager.instance.Resource[2] -= (int)stats.Cost;
         chew = GetComponent<Chew>();
         // Ù–‘Ã·…˝
-        chew.UpdateData("Damage", UnityEngine.Random.Range(.2f, .7f));
-        chew.UpdateData("Range", .1f);
+        chew.UpdateData("Damage", UnityEngine.Random.Range(1f, 2f));
+        chew.UpdateData("Range", .3f);
         chew.UpdateData("TimeBetweenAttacks", .1f);
-        chew.UpdateData("Duration", 0.1f);        
-        chew.UpdateData("Cost", UnityEngine.Random.Range(2f, 5f));
+        chew.UpdateData("Duration", 1f);        
+        chew.UpdateData("Cost", UnityEngine.Random.Range(2f, 4f));
         chew.UpdateData("Level", 1f);
 
         talentSystem = new TalentSystem();      
